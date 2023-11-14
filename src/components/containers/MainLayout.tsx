@@ -3,7 +3,7 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-  return <div>{children}</div>;
+  return <div className="bg-red-200 min-h-screen">{children}</div>;
 };
 
 export default MainLayout;
