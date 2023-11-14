@@ -8,7 +8,7 @@ interface FormInputProps {
 const FormInput: React.FC<FormInputProps> = ({ type, placeholder, rest }) => {
   return (
     <div>
-      {" "}
+    
       <input type={type} placeholder={placeholder} {...rest} />
     </div>
   );

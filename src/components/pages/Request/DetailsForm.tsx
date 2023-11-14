@@ -1,5 +1,5 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import FormInput from "./FormInput";
+import FormInput from "../../common/FormInput";
 
 interface DetailsFormProps {
     register:UseFormRegister<FieldValues>

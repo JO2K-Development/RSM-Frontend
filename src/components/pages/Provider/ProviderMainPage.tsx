@@ -1,7 +1,8 @@
 import LinkButton from "../../common/LinkButton";
+import LoginPage from "./LoginPage";
 
 const ProviderMainPage = () => {
-    return ( <div>provider page <LinkButton goTo="/home" text="home"/>
+    return ( <div><LoginPage/> <LinkButton goTo="/home" text="home"/>
     </div> );
 }
  

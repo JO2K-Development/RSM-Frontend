@@ -1,7 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import LandingPage from "./components/pages/LandingPage";
 import ProviderMainPage from "./components/pages/Provider/ProviderMainPage";
-import RequestPage from "./components/pages/Client/Request/RequestPage";
+import RequestPage from "./components/pages/Request/RequestPage";
 
 const router=createBrowserRouter([
     { path: "/home", element: <LandingPage /> },

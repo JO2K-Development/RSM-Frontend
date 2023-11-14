@@ -1,4 +1,4 @@
-import LinkButton from "../../../common/LinkButton";
+import LinkButton from "../../common/LinkButton";
 import GeneralForm from "./GeneralForm";
 
 const RequestPage = () => {
