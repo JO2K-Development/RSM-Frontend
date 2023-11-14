@@ -1,5 +1,8 @@
+import LinkButton from "../../common/LinkButton";
+
 const ProviderMainPage = () => {
-    return ( <div></div> );
+    return ( <div>provider page <LinkButton goTo="/home" text="home"/>
+    </div> );
 }
  
 export default ProviderMainPage;
