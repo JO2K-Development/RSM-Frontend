@@ -7,7 +7,7 @@ import login from "../../../api/login";
 const ProviderMainPage = () => {
     const isLogged=useSelector<Store>(state=>state.providerAuth)
     console.log(isLogged)
-    return ( <div><LoginPage login={(arg)=>{login(arg)}}/> <LinkButton goTo="/home" text="home"/>
+    return ( <div><LoginPage login={(arg)=>{console.log(JSON.stringify(arg));login(arg)}}/> <LinkButton goTo="/home" text="home"/>
     </div> );
 }
  
