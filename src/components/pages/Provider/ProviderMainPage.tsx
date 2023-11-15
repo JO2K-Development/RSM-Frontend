@@ -1,8 +1,13 @@
+import { useSelector } from "react-redux";
 import LinkButton from "../../common/LinkButton";
 import LoginPage from "./LoginPage";
+import { Store } from "../../../redux/store";
+import login from "../../../api/login";
 
 const ProviderMainPage = () => {
-    return ( <div><LoginPage/> <LinkButton goTo="/home" text="home"/>
+    const isLogged=useSelector<Store>(state=>state.providerAuth)
+    console.log(isLogged)
+    return ( <div><LoginPage login={(arg)=>{login(arg)}}/> <LinkButton goTo="/home" text="home"/>
     </div> );
 }
  
