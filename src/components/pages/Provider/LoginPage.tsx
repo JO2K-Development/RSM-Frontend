@@ -1,12 +1,19 @@
 import { useForm } from "react-hook-form";
 import FormInput from "../../common/FormInput";
-import { Login } from "../../../api/login";
+import { ProviderAuthState, loginProvider } from "../../../redux/slices/ProviderAuthReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, Store } from "../../../redux/store";
+import {  useNavigate } from "react-router-dom";
 
-interface LoginPageProps {
-  login(login:Login):void
-}
+
  
-const LoginPage :React.FC<LoginPageProps>= ({login}) => {
+const LoginPage = () => {
+    const{token,loading}=useSelector<Store,ProviderAuthState>((state)=>state.providerAuth)
+    const dispatch=useDispatch<AppDispatch>()
+    const navigate = useNavigate();
+    
+  console.log(token,loading)
+  
     const {
         register,
         handleSubmit,
@@ -14,7 +21,8 @@ const LoginPage :React.FC<LoginPageProps>= ({login}) => {
       } = useForm();
 
       const onSubmit = (data:any ) => {
-          login(data)
+        dispatch(loginProvider(data))
+        navigate('/provider')
         };
 
 
@@ -35,3 +43,4 @@ const LoginPage :React.FC<LoginPageProps>= ({login}) => {
 }
  
 export default LoginPage;
+
