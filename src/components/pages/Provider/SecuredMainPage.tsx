@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ProviderAuthState, logout } from "../../../redux/slices/ProviderAuthReducer";
+import { ProviderAuthState, logout } from "../../../redux/slices/ProviderAuthSlice";
 import { AppDispatch, Store } from "../../../redux/store";
 import { Navigate, useNavigate } from "react-router-dom";
 import LinkButton from "../../common/LinkButton";

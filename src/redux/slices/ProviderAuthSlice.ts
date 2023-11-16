@@ -22,7 +22,7 @@ const initialState: ProviderAuthState = {
   loading: false,
 };
 
-const ProviderAuthReducer = createSlice({
+const ProviderAuthSlice = createSlice({
   name: "providerAuth",
   initialState,
   reducers: {
@@ -45,5 +45,5 @@ const ProviderAuthReducer = createSlice({
   },
 });
 
-export const { logout } = ProviderAuthReducer.actions;
-export default ProviderAuthReducer.reducer;
+export const { logout } = ProviderAuthSlice.actions;
+export default ProviderAuthSlice.reducer;

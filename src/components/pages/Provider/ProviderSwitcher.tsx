@@ -2,9 +2,9 @@ import {  useSelector } from "react-redux";
 import { Store } from "../../../redux/store";
 import {
   ProviderAuthState,
-} from "../../../redux/slices/ProviderAuthReducer";
+} from "../../../redux/slices/ProviderAuthSlice";
 import Loading from "../../common/Loading";
-import {  Navigate} from "react-router-dom";
+import {  Navigate, Outlet} from "react-router-dom";
 
 const ProviderSwitcher = () => {
   const providerAuthState = useSelector<Store, ProviderAuthState>(
@@ -14,6 +14,7 @@ const ProviderSwitcher = () => {
   return (
     <div>
       PROVIDER
+      
       {providerAuthState.loading ? (
         <Loading />
       ) : providerAuthState.token ? (
@@ -21,6 +22,9 @@ const ProviderSwitcher = () => {
       ) : (
         <Navigate to="login" />
       )}
+
+
+     <Outlet />
     </div>
   );
 };

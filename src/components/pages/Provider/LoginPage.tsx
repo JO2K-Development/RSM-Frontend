@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import FormInput from "../../common/FormInput";
-import { ProviderAuthState, loginProvider } from "../../../redux/slices/ProviderAuthReducer";
+import { ProviderAuthState, loginProvider } from "../../../redux/slices/ProviderAuthSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, Store } from "../../../redux/store";
 import {  useNavigate } from "react-router-dom";
