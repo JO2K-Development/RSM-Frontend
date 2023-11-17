@@ -37,13 +37,13 @@ const RepairDataForm: React.FC<Props> = ({
         <FormTitle title="Please enter information about the request" />
         <FormInput
           type="carMake"
-          placeholder="carMake"
+          placeholder="Car make"
           defaultValue={defaultValues?.carMake}
           rest={register("carMake", { required: true, maxLength: 80 })}
         />
         <FormInput
           type="carModel"
-          placeholder="carModel"
+          placeholder="Car model"
           defaultValue={defaultValues?.carModel}
           rest={register("carModel", { required: true, maxLength: 80 })}
         />
