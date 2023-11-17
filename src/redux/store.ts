@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import ProviderAuthReducer, { ProviderAuthState } from "./slices/ProviderAuthReducer";
+import ProviderAuthSlice, { ProviderAuthState } from "./slices/ProviderAuthSlice";
 export const store= configureStore({ reducer: {
-    providerAuth: ProviderAuthReducer,
+    providerAuth: ProviderAuthSlice,
 } });
 
 export interface Store{
