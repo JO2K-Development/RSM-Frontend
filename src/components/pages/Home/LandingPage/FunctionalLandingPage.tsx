@@ -21,7 +21,7 @@ const FunctionalLandingPage = () => {
       />
       <ProviderButton
         onClick={() => {
-          navigate("/provider");
+          navigate("/provider/login");
         }}
       />
     </motion.div>

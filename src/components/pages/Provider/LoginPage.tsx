@@ -1,46 +1,63 @@
 import { useForm } from "react-hook-form";
 import FormInput from "../../common/FormInput";
-import { ProviderAuthState, loginProvider } from "../../../redux/slices/ProviderAuthSlice";
+import {
+  ProviderAuthState,
+  loginProvider,
+} from "../../../redux/slices/ProviderAuthSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, Store } from "../../../redux/store";
-import {  useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import FormContainer from "../../containers/FormContainer";
+import FormButton from "../Request/FormButton";
+import FormTitle from "../Request/FormTitle";
+import { InfinitySpin } from "react-loader-spinner";
 
-
- 
 const LoginPage = () => {
-    const{token,loading}=useSelector<Store,ProviderAuthState>((state)=>state.providerAuth)
-    const dispatch=useDispatch<AppDispatch>()
-    const navigate = useNavigate();
-    
-  console.log(token,loading)
-  
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm();
+  const { token, loading } = useSelector<Store, ProviderAuthState>(
+    (state) => state.providerAuth
+  );
+  const dispatch = useDispatch<AppDispatch>();
 
-      const onSubmit = (data:any ) => {
-        dispatch(loginProvider(data))
-        navigate('/provider')
-        };
+  console.log(token, loading);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
+  const onSubmit = (data: any) => {
+    dispatch(loginProvider(data));
+  };
 
-    return (  <div>LOGIN<form onSubmit={handleSubmit(onSubmit)}>
-        <FormInput
-        type="text"
-        placeholder="email"
-        rest={register("email", { required: true, maxLength: 80 })}
-      />
-      <FormInput
-        type="password"
-        placeholder="password"
-        rest={register("password", { required: true, maxLength: 80 })}
-      />
-        <input type="submit" />
-        </form></div>);
-}
- 
+  return token ? (
+    <Navigate to={`/provider/${token}`} />
+  ) : (
+    <div className="request-page-bg  h-screen w-full  relative">
+      <div className="bg-black bg-opacity-60  h-screen w-full  flex flex-col justify-center items-center ">
+        <FormContainer handleSubmit={handleSubmit(onSubmit)}>
+          <FormTitle title="Please enter your login  information" />
+          <FormInput
+            type="text"
+            placeholder="email"
+            rest={register("email", { required: true, maxLength: 80 })}
+          />
+          <FormInput
+            type="password"
+            placeholder="password"
+            rest={register("password", { required: true, maxLength: 80 })}
+          />
+          <FormButton text="Login" onClick={() => {}} type="submit" />
+
+          
+            <div className={`w-full h-full bg-black absolute opacity-90 scale-125 rounded-3xl duration-[20ms] flex items-center justify-center ${!loading? 'scale-0 ':''}`}>
+              <InfinitySpin width="200" color="red"  />
+            </div>
+          
+        </FormContainer>
+      </div>
+    </div>
+  );
+};
+
 export default LoginPage;
-
