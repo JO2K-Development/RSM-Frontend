@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { wholeForm } from "../components/pages/Request/RequestPage";
+import { RequestForm } from "../components/pages/Request/RequestPage";
 import { useNavigate } from "react-router-dom";
+import requestSend from "../api/requestSend";
 
 function useRequestForm(pagesLength: number): {
-  formState: wholeForm;
+  formState: RequestForm;
   page: number;
   addToForm: (arg: object) => void;
   goBack: (arg: object) => void;
 } {
-  const [formState, setFormState] = useState<wholeForm>({
+  const [formState, setFormState] = useState<RequestForm>({
     firstName: "",
     lastName: "",
     phoneNumber: "",
@@ -25,6 +26,8 @@ function useRequestForm(pagesLength: number): {
     if (page < pagesLength - 1) {
       setPage(page + 1);
     } else {
+      // requestSend({ ...formState, ...arg })
+      console.log({ ...formState, ...arg })
       navigate("/home");
     }
   };

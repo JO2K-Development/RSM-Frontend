@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import FormInput from "../../common/FormInput";
 import FormTitle from "./FormTitle";
 import FormButton from "./FormButton";
+import FormContainer from "../../containers/FormContainer";
 
 export interface RepairFormData {
   carMake: string;
@@ -19,7 +20,6 @@ const RepairDataForm: React.FC<Props> = ({
   defaultValues,
   goBack,
 }) => {
-  // Component logic here
 
   const {
     register,
@@ -32,8 +32,7 @@ const RepairDataForm: React.FC<Props> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex gap-[1rem] flex-col items-stretch">
+    <FormContainer handleSubmit={handleSubmit(onSubmit)} >
         <FormTitle title="Please enter information about the request" />
         <FormInput
           type="carMake"
@@ -59,8 +58,7 @@ const RepairDataForm: React.FC<Props> = ({
           <FormButton text="back" onClick={()=>{goBack(getValues())}} type="button" />
           <FormButton text="Next" onClick={() => {}} type="submit" />
         </div>
-      </div>
-    </form>
+    </FormContainer>
   );
 };
 
