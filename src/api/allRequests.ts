@@ -1,12 +1,11 @@
 import { RequestForm } from "../components/pages/Request/RequestPage";
 
-const requestSend = (form: RequestForm) => {
+const allRequests = () => {
  
 
   return fetch(`http://localhost:8080/api/v1/request`, {
-    method: "POST",
+    method: "GET",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(form),
   });
 };
-export default requestSend;
+export default allRequests;

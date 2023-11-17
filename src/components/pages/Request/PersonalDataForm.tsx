@@ -5,10 +5,10 @@ import FormButton from "./FormButton";
 import FormContainer from "../../containers/FormContainer";
 
 export interface PersonalFormDataState {
-  firstName: string;
+ creator: {firstName: string;
   lastName: string;
   phoneNumber: string;
-  email: string;
+  email: string;}
 }
 interface PersonalDataFormProps {
   addToForm: (data: any) => void;
@@ -33,26 +33,26 @@ const PersonalDataForm: React.FC<PersonalDataFormProps> = ({
       <FormInput
         type="firstName"
         placeholder="First name"
-        defaultValue={defaultValues?.firstName}
-        rest={register("firstName", { required: true, maxLength: 80 })}
+        defaultValue={defaultValues?.creator.firstName}
+        rest={register("creator.firstName", { required: true, maxLength: 80 })}
       />
       <FormInput
         type="lastName"
         placeholder="Last name"
-        defaultValue={defaultValues?.lastName}
-        rest={register("lastName", { required: true, maxLength: 80 })}
+        defaultValue={defaultValues?.creator.lastName}
+        rest={register("creator.lastName", { required: true, maxLength: 80 })}
       />
       <FormInput
         type="phoneNumber"
         placeholder="Phone number"
-        defaultValue={defaultValues?.phoneNumber}
-        rest={register("phonenumber", { required: true, maxLength: 80 })}
+        defaultValue={defaultValues?.creator.phoneNumber}
+        rest={register("creator.phoneNumber", { required: true, maxLength: 80 })}
       />
       <FormInput
         type="email"
         placeholder="Email"
-        defaultValue={defaultValues?.email}
-        rest={register("email", { required: true, maxLength: 80 })}
+        defaultValue={defaultValues?.creator.email}
+        rest={register("creator.email", { required: true, maxLength: 80 })}
       />
       <FormButton text="Next" onClick={() => {}} type="submit" />
     </FormContainer>

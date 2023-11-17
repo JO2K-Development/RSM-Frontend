@@ -2,6 +2,7 @@ import { useState } from "react";
 import { RequestForm } from "../components/pages/Request/RequestPage";
 import { useNavigate } from "react-router-dom";
 import requestSend from "../api/requestSend";
+import allRequests from "../api/allRequests";
 
 function useRequestForm(pagesLength: number): {
   formState: RequestForm;
@@ -10,10 +11,10 @@ function useRequestForm(pagesLength: number): {
   goBack: (arg: object) => void;
 } {
   const [formState, setFormState] = useState<RequestForm>({
-    firstName: "",
+   creator:{ firstName: "",
     lastName: "",
     phoneNumber: "",
-    email: "",
+    email: ""},
     carMake: "",
     carModel: "",
     message: "",
@@ -26,7 +27,7 @@ function useRequestForm(pagesLength: number): {
     if (page < pagesLength - 1) {
       setPage(page + 1);
     } else {
-      // requestSend({ ...formState, ...arg })
+      requestSend({ ...formState, ...arg }).then(arg=>{allRequests().then(data=>data.json()).then(data=>console.log(data))})
       console.log({ ...formState, ...arg })
       navigate("/home");
     }
