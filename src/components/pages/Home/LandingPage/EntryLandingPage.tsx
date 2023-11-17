@@ -10,8 +10,8 @@ const EntryLandingPage = () => {
     >
       <motion.div
         initial={{ scale: 1.5 }}
-        animate={{ scale: 7.5, y: "600%", opacity: 0 }}
-        transition={{ duration: 1 }}
+        animate={{ scale: 0.2, y: "600%", opacity: 0 }}
+        transition={{ duration: 0.8 }}
       >
         <BrandHead />
       </motion.div>

@@ -29,7 +29,6 @@ const RepairDataForm: React.FC<Props> = ({
   } = useForm();
   const onSubmit = (data: any) => {
     addToForm(data);
-    console.log(getValues());
   };
 
   return (
