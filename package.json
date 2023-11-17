@@ -12,7 +12,7 @@
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "axios": "^0.24.0",
-    "framer-motion": "^10.16.4",
+    "framer-motion": "^10.16.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
