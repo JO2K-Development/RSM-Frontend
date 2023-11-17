@@ -32,25 +32,25 @@ const PersonalDataForm: React.FC<PersonalDataFormProps> = ({
       <FormTitle title="Please enter your personal information" />
       <FormInput
         type="firstName"
-        placeholder="firstName"
+        placeholder="First name"
         defaultValue={defaultValues?.firstName}
         rest={register("firstName", { required: true, maxLength: 80 })}
       />
       <FormInput
         type="lastName"
-        placeholder="lastName"
+        placeholder="Last name"
         defaultValue={defaultValues?.lastName}
         rest={register("lastName", { required: true, maxLength: 80 })}
       />
       <FormInput
         type="phoneNumber"
-        placeholder="phoneNumber"
+        placeholder="Phone number"
         defaultValue={defaultValues?.phoneNumber}
-        rest={register("phoneNumber", { required: true, maxLength: 80 })}
+        rest={register("phonenumber", { required: true, maxLength: 80 })}
       />
       <FormInput
         type="email"
-        placeholder="email"
+        placeholder="Email"
         defaultValue={defaultValues?.email}
         rest={register("email", { required: true, maxLength: 80 })}
       />
