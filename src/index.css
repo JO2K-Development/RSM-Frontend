@@ -10,3 +10,10 @@
     background-position-x:left;
     background-position-y: bottom;
 }
+.request-page-bg{
+    background-image: url("/public/img/requestPageBG.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position-x:left;
+    background-position-y: bottom;
+}

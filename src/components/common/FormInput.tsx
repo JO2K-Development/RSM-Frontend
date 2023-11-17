@@ -2,14 +2,15 @@
 interface FormInputProps {
   type: React.HTMLInputTypeAttribute | undefined;
   placeholder: string;
+  defaultValue?:string;
   rest: any;
 }
 
-const FormInput: React.FC<FormInputProps> = ({ type, placeholder, rest }) => {
+const FormInput: React.FC<FormInputProps> = ({ defaultValue,type, placeholder,  rest }) => {
   return (
-    <div>
+    <div className="w-full flex ">
     
-      <input type={type} placeholder={placeholder} {...rest} />
+      <input className="w-full py-1 pl-2 " type={type} defaultValue={defaultValue} placeholder={placeholder} {...rest} />
     </div>
   );
 };
