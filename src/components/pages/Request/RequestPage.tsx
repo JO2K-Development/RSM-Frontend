@@ -1,9 +1,8 @@
-import PersonalDataForm, { PersonalFormDataState } from "./PersonalDataForm";
-import RepairDataForm, { RepairFormData } from "./RepairDataForm";
+import PersonalDataForm from "./PersonalDataForm";
+import RepairDataForm from "./RepairDataForm";
 import useRequestForm from "../../../hooks/useRequestForm";
 import BottomHome from "../../common/BottomHome";
 
-export interface RequestForm extends PersonalFormDataState, RepairFormData {}
 
 const RequestPage = () => {
   const { formState, page, addToForm, goBack } = useRequestForm(2);

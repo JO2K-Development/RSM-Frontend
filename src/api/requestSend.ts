@@ -1,6 +1,5 @@
-import { RequestForm } from "../components/pages/Request/RequestPage";
 
-const requestSend = (form: RequestForm) => {
+const requestSend = (form:any) => {
  
 
   return fetch(`http://localhost:8080/api/v1/request`, {

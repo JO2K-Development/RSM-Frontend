@@ -7,12 +7,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, Store } from "../../../redux/store";
 import { Navigate } from "react-router-dom";
-import { IoHome } from "react-icons/io5";
 import FormContainer from "../../containers/FormContainer";
 import FormButton from "../Request/FormButton";
 import FormTitle from "../Request/FormTitle";
 import { InfinitySpin } from "react-loader-spinner";
-import LinkButton from "../../common/LinkButton";
 import BottomHome from "../../common/BottomHome";
 
 const LoginPage = () => {

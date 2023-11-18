@@ -3,16 +3,15 @@ import FormInput from "../../common/FormInput";
 import FormTitle from "./FormTitle";
 import FormButton from "./FormButton";
 import FormContainer from "../../containers/FormContainer";
+import Request from '../../../types/Request'
+import User from "../../../types/User";
 
-export interface PersonalFormDataState {
- creator: {firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  email: string;}
-}
 interface PersonalDataFormProps {
   addToForm: (data: any) => void;
-  defaultValues?: PersonalFormDataState;
+  defaultValues?: Request;
+}
+export interface PersonalDataForm {
+  creator:User
 }
 const PersonalDataForm: React.FC<PersonalDataFormProps> = ({
   addToForm,
