@@ -1,6 +1,7 @@
 import PersonalDataForm, { PersonalFormDataState } from "./PersonalDataForm";
 import RepairDataForm, { RepairFormData } from "./RepairDataForm";
 import useRequestForm from "../../../hooks/useRequestForm";
+import BottomHome from "../../common/BottomHome";
 
 export interface RequestForm extends PersonalFormDataState, RepairFormData {}
 
@@ -20,6 +21,7 @@ const RequestPage = () => {
       <div className="bg-black bg-opacity-60  h-screen w-full  flex flex-col justify-center items-center ">
         {pages[page]}
       </div>
+      <BottomHome/>
     </div>
   );
 };

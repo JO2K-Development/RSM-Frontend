@@ -6,11 +6,14 @@ import {
 } from "../../../redux/slices/ProviderAuthSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, Store } from "../../../redux/store";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { IoHome } from "react-icons/io5";
 import FormContainer from "../../containers/FormContainer";
 import FormButton from "../Request/FormButton";
 import FormTitle from "../Request/FormTitle";
 import { InfinitySpin } from "react-loader-spinner";
+import LinkButton from "../../common/LinkButton";
+import BottomHome from "../../common/BottomHome";
 
 const LoginPage = () => {
   const { token, loading } = useSelector<Store, ProviderAuthState>(
@@ -24,16 +27,19 @@ const LoginPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = (data: any) => {
-    dispatch(loginProvider(data));
+    dispatch(loginProvider(data)).then((arg) => {
+      reset();
+    });
   };
 
   return token ? (
     <Navigate to={`/provider/${token}`} />
   ) : (
-    <div className="request-page-bg  h-screen w-full  relative">
+    <div className="request-page-bg  h-screen w-full  relative overflow-hidden">
       <div className="bg-black bg-opacity-60  h-screen w-full  flex flex-col justify-center items-center ">
         <FormContainer handleSubmit={handleSubmit(onSubmit)}>
           <FormTitle title="Please enter your login  information" />
@@ -49,13 +55,18 @@ const LoginPage = () => {
           />
           <FormButton text="Login" onClick={() => {}} type="submit" />
 
-          
-            <div className={`w-full h-full bg-black absolute opacity-90 scale-125 rounded-3xl duration-[20ms] flex items-center justify-center ${!loading? 'scale-0 ':''}`}>
-              <InfinitySpin width="200" color="red"  />
-            </div>
-          
+          <div
+            className={`w-full h-full bg-black absolute opacity-90 scale-125 rounded-3xl duration-[20ms] flex items-center justify-center  ${
+              !loading ? "hidden  " : ""
+            }`}
+          >
+            <InfinitySpin width="200" color="red" />
+          </div>
         </FormContainer>
+
+        
       </div>
+      <BottomHome/>
     </div>
   );
 };
