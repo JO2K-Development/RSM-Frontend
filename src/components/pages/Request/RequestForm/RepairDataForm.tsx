@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import FormInput from "../../common/FormInput";
+import FormInput from "../../../common/FormInput";
 import FormTitle from "./FormTitle";
 import FormButton from "./FormButton";
-import FormContainer from "../../containers/FormContainer";
+import FormContainer from "../../../containers/FormContainer";
 
 export interface RepairFormData {
   carMake: string;

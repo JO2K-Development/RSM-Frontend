@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, Store } from "../../../redux/store";
 import { Navigate } from "react-router-dom";
 import FormContainer from "../../containers/FormContainer";
-import FormButton from "../Request/FormButton";
-import FormTitle from "../Request/FormTitle";
+import FormButton from "../Request/RequestForm/FormButton";
+import FormTitle from "../Request/RequestForm/FormTitle";
 import { InfinitySpin } from "react-loader-spinner";
 import BottomHome from "../../common/BottomHome";
 

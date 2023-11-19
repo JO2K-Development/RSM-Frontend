@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
-import FormInput from "../../common/FormInput";
+import FormInput from "../../../common/FormInput";
 import FormTitle from "./FormTitle";
 import FormButton from "./FormButton";
-import FormContainer from "../../containers/FormContainer";
-import Request from '../../../types/Request'
-import User from "../../../types/User";
+import FormContainer from "../../../containers/FormContainer";
+import Request from '../../../../types/Request'
+import User from "../../../../types/User";
 
 interface PersonalDataFormProps {
   addToForm: (data: any) => void;

@@ -1,5 +1,5 @@
-import PersonalDataForm from "./PersonalDataForm";
-import RepairDataForm from "./RepairDataForm";
+import PersonalDataForm from "./RequestForm/PersonalDataForm";
+import RepairDataForm from "./RequestForm/RepairDataForm";
 import useRequestForm from "../../../hooks/useRequestForm";
 import BottomHome from "../../common/BottomHome";
 

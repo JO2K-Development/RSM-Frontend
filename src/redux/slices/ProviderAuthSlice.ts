@@ -18,7 +18,7 @@ interface Payload {
 }
 
 const initialState: ProviderAuthState = {
-  token: null,
+  token: "ESSA",
   loading: false,
 };
 

@@ -17,3 +17,10 @@
     background-position-x:left;
     background-position-y: bottom;
 }
+.provider-page-bg{
+    background-image: url("/public/img/ProviderBG.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position-x:left;
+    background-position-y: bottom;
+}
