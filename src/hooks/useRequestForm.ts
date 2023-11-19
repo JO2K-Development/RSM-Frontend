@@ -2,17 +2,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import requestSend from "../api/requestSend";
 import allRequests from "../api/allRequests";
-import { Request } from "../types/Request";
+import { RequestType } from "../types/Request";
 import { PersonalDataForm } from "../components/pages/Request/RequestForm/PersonalDataForm";
 import { RepairFormData } from "../components/pages/Request/RequestForm/RepairDataForm";
 
 function useRequestForm(pagesLength: number): {
-  formState: Request;
+  formState: RequestType;
   page: number;
   addToForm: (arg: object) => void;
   goBack: (arg: object) => void;
 } {
-  const [formState, setFormState] = useState<Request>({
+  const [formState, setFormState] = useState<RequestType>({
    creator:{ firstName: "",
     lastName: "",
     phoneNumber: "",

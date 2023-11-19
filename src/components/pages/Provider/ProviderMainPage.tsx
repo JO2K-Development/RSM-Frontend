@@ -8,9 +8,11 @@ import { Navigate, Outlet, useLocation, useNavigate, useOutlet } from "react-rou
 import LinkButton from "../../common/LinkButton";
 import ProviderHeader from "./Main/ProviderHeader";
 import requestSend from "../../../api/requestSend";
-import Request from "../../../types/Request";
+import RequestType from "../../../types/Request";
+import Provider from "../../../types/Provider";
 import RequestCard from "./RequestCard";
 import ColumnProvider from "./Main/ColumnProvider";
+import Navbar from "./Navbar";
 
 const ProviderMainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,7 +24,14 @@ const ProviderMainPage = () => {
     dispatch(logout());
   };
 
-  const requests: Request[] = [
+  const provider:Provider={
+    firstName:"walter",
+    lastName:'white',
+    email:'walter@white',
+    phoneNumber:'1234567890'
+  }
+
+  const requests: RequestType[] = [
     {
       carMake: "dsa",
       carModel: "sda",
@@ -62,22 +71,25 @@ const ProviderMainPage = () => {
   return token == null ? (
     <Navigate to="/provider/login" />
   ) : (
-    <div className="provider-page-bg h-screen flex flex-col">
-      <ProviderHeader />
-      <Outlet/>
-      { !outlet&&<div className="   grid grid-cols-2 max-h-[80%] h-[80%] flex-grow" >
-      <ColumnProvider title={'Your pending requests!'}>
-      <RequestCard />
-         </ColumnProvider>
-       
-         <ColumnProvider  title={"The  requests that need to be taken care of!"} >
-           {requests.map((request, index) => (
-            <RequestCard key={index} />
-                   ))}
-         </ColumnProvider>
-      </div>}
+    <div className="provider-page-bg">
+      <div className=" bg-neutral-900/60 lg:h-screen  flex flex-col ">
+        <Navbar />
+        <ProviderHeader provider={provider} />
+        <Outlet/>
+        { !outlet&&<div className="min-h-0   grid lg:grid-cols-2 lg:max-h-[80%] lg:h-[80%] h-[90vh] flex-grow" >
+        <ColumnProvider title={'Your pending requests!'}>
+        <RequestCard request={requests[0]}  />
+           </ColumnProvider>
+      
+           <ColumnProvider  title={"The  requests that need to be taken care of!"} >
+             {requests.map((request, index) => (
+              <RequestCard key={index} request={request} />
+                     ))}
+           </ColumnProvider>
+        </div>
+   }
     </div>
-  );
+    </div>);
 };
 
 export default ProviderMainPage;

@@ -3,12 +3,12 @@ import FormInput from "../../../common/FormInput";
 import FormTitle from "./FormTitle";
 import FormButton from "./FormButton";
 import FormContainer from "../../../containers/FormContainer";
-import Request from '../../../../types/Request'
+import RequestType from '../../../../types/Request'
 import User from "../../../../types/User";
 
 interface PersonalDataFormProps {
   addToForm: (data: any) => void;
-  defaultValues?: Request;
+  defaultValues?: RequestType;
 }
 export interface PersonalDataForm {
   creator:User
