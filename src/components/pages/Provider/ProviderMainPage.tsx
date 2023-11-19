@@ -4,15 +4,15 @@ import {
   logout,
 } from "../../../redux/slices/ProviderAuthSlice";
 import { AppDispatch, Store } from "../../../redux/store";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useNavigate, useOutlet } from "react-router-dom";
 import LinkButton from "../../common/LinkButton";
-import ProviderHeader from "./ProviderHeader";
+import ProviderHeader from "./Main/ProviderHeader";
 import requestSend from "../../../api/requestSend";
 import Request from "../../../types/Request";
 import RequestCard from "./RequestCard";
-import ColumnProvider from "./ColumnProvider";
+import ColumnProvider from "./Main/ColumnProvider";
 
-const SecuredMainPage = () => {
+const ProviderMainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { token } = useSelector<Store, ProviderAuthState>(
@@ -57,13 +57,15 @@ const SecuredMainPage = () => {
       message: "sad",
     },
   ];
-
+  const outlet = useOutlet()
+  
   return token == null ? (
     <Navigate to="/provider/login" />
   ) : (
     <div className="provider-page-bg h-screen flex flex-col">
       <ProviderHeader />
-      <div className="   grid grid-cols-2 max-h-[80vh] h-[80vh] flex-grow" >
+      <Outlet/>
+      { !outlet&&<div className="   grid grid-cols-2 max-h-[80%] h-[80%] flex-grow" >
       <ColumnProvider title={'Your pending requests!'}>
       <RequestCard />
          </ColumnProvider>
@@ -73,9 +75,9 @@ const SecuredMainPage = () => {
             <RequestCard key={index} />
                    ))}
          </ColumnProvider>
-      </div>
+      </div>}
     </div>
   );
 };
 
-export default SecuredMainPage;
+export default ProviderMainPage;
