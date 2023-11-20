@@ -24,3 +24,6 @@
     background-position-x:left;
     background-position-y: bottom;
 }
+.fancy{
+    transition: width 2s, height 4s;
+}

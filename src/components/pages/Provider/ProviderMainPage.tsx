@@ -33,38 +33,60 @@ const ProviderMainPage = () => {
 
   const requests: RequestType[] = [
     {
-      carMake: "dsa",
-      carModel: "sda",
+      createdAt: "20.20.1020",
+      carMake: "toyota",
+      carModel: "yarsi",
       creator: {
         firstName: "dsa",
         lastName: "das",
         email: "sda@sda",
         phoneNumber: "dsa",
       },
-      message: "sad",
+
+      message: "rozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwrozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sa",
+    },
+
+    {
+      createdAt: "20.20.1020",
+      carMake: "toyota",
+      carModel: "yarsi",
+      creator: {
+        firstName: "dsa",
+        lastName: "das",
+        email: "sda@sda",
+        phoneNumber: "dsa",
+      },
+
+      message: "adsklaskljdlasfjlasfj sie kurwarozjebałem sie kurwarozjebałem sa",
     },
     {
-      carMake: "dsa",
-      carModel: "sda",
+      createdAt: "20.20.1020",
+      carMake: "toyota",
+      carModel: "yarsi",
       creator: {
         firstName: "dsa",
         lastName: "das",
         email: "sda@sda",
         phoneNumber: "dsa",
       },
-      message: "sad",
+
+      message: "rozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwrozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sa",
     },
+
     {
-      carMake: "dsa",
-      carModel: "sda",
+      createdAt: "20.20.1020",
+      carMake: "toyota",
+      carModel: "yarsi",
       creator: {
         firstName: "dsa",
         lastName: "das",
         email: "sda@sda",
         phoneNumber: "dsa",
       },
-      message: "sad",
+
+      message: "adsklaskljdlasfjlasfj sie kurwarozjebałem sie kurwarozjebałem sa",
     },
+  
   ];
   const outlet = useOutlet()
   
@@ -78,7 +100,9 @@ const ProviderMainPage = () => {
         <Outlet/>
         { !outlet&&<div className="min-h-0   grid lg:grid-cols-2 lg:max-h-[80%] lg:h-[80%] h-[90vh] flex-grow" >
         <ColumnProvider title={'Your pending requests!'}>
-        <RequestCard request={requests[0]}  />
+        {requests.map((request, index) => (
+              <RequestCard key={index} request={request} />
+                     ))}
            </ColumnProvider>
       
            <ColumnProvider  title={"The  requests that need to be taken care of!"} >
