@@ -93,7 +93,7 @@ const ProviderMainPage = () => {
   return token == null ? (
     <Navigate to="/provider/login" />
   ) : (
-    <div className="provider-page-bg">
+    <div className="provider-page-bg ">
       <div className=" bg-neutral-900/60 lg:h-screen  flex flex-col ">
         <Navbar />
         <ProviderHeader provider={provider} />

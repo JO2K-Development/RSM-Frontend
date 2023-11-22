@@ -1,4 +1,3 @@
-import allRequests from "../../api/allRequests";
 
 interface MainLayoutProps {
   children: JSX.Element[] | null | JSX.Element;

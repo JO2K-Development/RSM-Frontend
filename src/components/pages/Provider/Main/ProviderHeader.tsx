@@ -7,7 +7,7 @@ interface ProviderHeaderProps {
 
 const ProviderHeader: React.FC<ProviderHeaderProps> = ({ provider }) => {
   return (
-    <div className="text-white   lg:grid-cols-2  w-full min-h-[15%] h-[15%] hidden lg:grid">
+    <div className="text-white   lg:grid-cols-2  w-full min-h-[15%] h-[15%] hidden lg:grid relative z-[5] ">
       <h1 className="text-center my-auto font-extrabold text-[3rem]">
         Have a great day, {provider.firstName}!
       </h1>
