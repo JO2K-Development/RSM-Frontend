@@ -54,7 +54,7 @@ const LoginPage = () => {
           <FormButton text="Login" onClick={() => {}} type="submit" />
 
           <div
-            className={`w-full h-full bg-black absolute opacity-90 scale-125 rounded-3xl duration-[20ms] flex items-center justify-center  ${
+            className={`w-full h-full  bg-black absolute opacity-90 scale-125 rounded-3xl duration-[20ms] flex items-center justify-center  ${
               !loading ? "hidden  " : ""
             }`}
           >

@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     path: "/provider/:id",
     element: <ProviderMainPage />,
     children: [
-      { path: "/provider/:id/stats", element: <ProviderStats /> },
+      { path: "/provider/:id/statistics", element: <ProviderStats /> },
       { path: "/provider/:id/account", element: <ProviderAccount /> },
       { path: "/provider/:id/your-requests", element: <ProviderRequests /> }
     ],

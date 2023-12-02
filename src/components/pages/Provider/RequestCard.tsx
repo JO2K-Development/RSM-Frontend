@@ -4,24 +4,31 @@ interface RequestCardProps {
 }
 
 const RequestCard: React.FC<RequestCardProps> = ({ request }) => {
-  const { carMake, carModel, message, creator, createdAt } = request;
+  const {title,state,message,carMake,carModel,createdAt } = request;
 
   //tailwind do stylowania 
   // nalezy wyswietlic dane ktore sa podane na gorze  carMake, carModel, message, creator, createdAt 
   return (
     <div 
-    className={` relative  rounded-lg  border backdrop-blur   mx-[0.5rem] h-fit  pb-[1rem] flex flex-col text-[1.5rem]`}>
-      <div className="flex duration-300  ">
-        <div className=" mx-[0.5rem] mt-[0.5rem] w-full flex">
-            <div> essa<div className="" /></div>
+    className={` bg-yellow-100/80 text-black relative  rounded-lg p-[.8rem]   mx-[0.5rem]   pb-[1rem] flex flex-col text-[1.5rem]`}>
+      <div className="flex duration-300 font-extrabold  justify-end mr-[1rem] items-baseline">
+        <div className="bg-green-800 p-[0.2rem] px-[0.8rem] text-[0.8em] mr-auto ml-[1rem] rounded-md text-white uppercase">
+      Button
+
+        </div>
+        <div className="italic ">
+          {state}
+        </div>
+        <div className=" w-[50%] flex">   
           <div className="ml-auto ">
               {carMake} {carModel}
-              <span className="mx-[1rem]">{createdAt}</span>
+              <span className="ml-[2rem]">{createdAt}</span>
           </div>
         </div>
        
       </div>
-      <div className=" duration-300 text-[1rem] mx-[0.5rem] mt-[0.5rem] w-full">{message}</div>
+      <div className="font-bold"> {title}</div>
+      <div className=" duration-300 text-[1.2rem] text  w-full">{message}</div>
       
     </div>
   );

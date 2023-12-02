@@ -15,7 +15,7 @@ const FormButton: FunctionComponent<FormButtonProps> = ({
     <button
       onClick={onClick}
       type={type}
-      className=" w-full p-[0.8rem] text-white text-[1.2rem] font-extrabold rounded-lg bg-green-900 bg-opacity-80"
+      className=" w-full p-[0.8rem]  text-white text-[1.2rem] font-extrabold rounded-lg bg-green-900 bg-opacity-80"
     >
       {text}
     </button>
