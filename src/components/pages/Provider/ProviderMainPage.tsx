@@ -19,23 +19,25 @@ import Provider from "../../../types/Provider";
 import RequestCard from "./RequestCard";
 import ColumnProvider from "./Main/ColumnProvider";
 import Navbar from "./Navbar";
+import { ProviderInfoState, getProviderInfo } from "../../../redux/slices/ProviderInfoSlice";
+import { useEffect, useState } from "react";
 
 const ProviderMainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
   const { token } = useSelector<Store, ProviderAuthState>(
     (state) => state.providerAuth
   );
+
+  const {ProviderInfo} = useSelector<Store, ProviderInfoState>(
+    (state) => state.providerInfo
+  );
+ 
+  useEffect(() => {dispatch(getProviderInfo("es"))},[])
+  console.log(ProviderInfo)
   const handleLogout = () => {
     dispatch(logout());
   };
 
-  const provider: Provider = {
-    firstName: "walter",
-    lastName: "white",
-    email: "walter@white",
-    phoneNumber: "1234567890",
-  };
 
   const requests: RequestType[] = [
     {
@@ -151,7 +153,7 @@ const ProviderMainPage = () => {
         {!outlet && (
           <>
             {" "}
-            <ProviderHeader provider={provider} />
+            {ProviderInfo&&<ProviderHeader provider={ProviderInfo} />}
             <div className="min-h-0   grid lg:grid-cols-2 lg:max-h-[80%] lg:h-[80%] h-[90vh] flex-grow">
               <ColumnProvider title={"Your pending requests!"}>
                 {requests.map((request, index) => (

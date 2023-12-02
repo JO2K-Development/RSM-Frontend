@@ -1,10 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import login, { Login } from "../../api/login";
+import { getProviderInfo } from "./ProviderInfoSlice";
 
 export const loginProvider = createAsyncThunk(
   "login/api",
   async (loginData: Login): Promise<Payload> => {
     const response = await login(loginData);
+    
     return response.json();
   }
 );
@@ -18,9 +20,13 @@ interface Payload {
 }
 
 const initialState: ProviderAuthState = {
-  token: "ESSA",
+  token: "",
   loading: false,
+
+
 };
+
+// import {getProviderInfo} from './ProviderInfoSlice';
 
 const ProviderAuthSlice = createSlice({
   name: "providerAuth",
@@ -35,12 +41,15 @@ const ProviderAuthSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(loginProvider.fulfilled, (state, action) => {
-      state.loading = false;
+  
       state.token = action.payload.token;
+      state.loading = false;
+
     });
     builder.addCase(loginProvider.rejected, (state, action) => {
       state.token = null;
       state.loading = false;
+
     });
   },
 });

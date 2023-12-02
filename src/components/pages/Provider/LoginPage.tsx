@@ -34,6 +34,7 @@ const LoginPage = () => {
     });
   };
 
+
   return token ? (
     <Navigate to={`/provider/${token}`} />
   ) : (

@@ -6,8 +6,6 @@ interface RequestCardProps {
 const RequestCard: React.FC<RequestCardProps> = ({ request }) => {
   const {title,state,message,carMake,carModel,createdAt } = request;
 
-  //tailwind do stylowania 
-  // nalezy wyswietlic dane ktore sa podane na gorze  carMake, carModel, message, creator, createdAt 
   return (
     <div 
     className={` bg-yellow-100/80 text-black relative  rounded-lg p-[.8rem]   mx-[0.5rem]   pb-[1rem] flex flex-col text-[1.5rem]`}>
