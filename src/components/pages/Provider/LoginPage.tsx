@@ -14,12 +14,11 @@ import { InfinitySpin } from "react-loader-spinner";
 import BottomHome from "../../common/BottomHome";
 
 const LoginPage = () => {
-  const { token, loading } = useSelector<Store, ProviderAuthState>(
+  const { token, loading,email } = useSelector<Store, ProviderAuthState>(
     (state) => state.providerAuth
   );
   const dispatch = useDispatch<AppDispatch>();
 
-  console.log(token, loading);
 
   const {
     register,
@@ -36,7 +35,7 @@ const LoginPage = () => {
 
 
   return token ? (
-    <Navigate to={`/provider/${token}`} />
+    <Navigate to={`/provider/${email}`} />
   ) : (
     <div className="request-page-bg  h-screen w-full  relative overflow-hidden">
       <div className="bg-black bg-opacity-60  h-screen w-full  flex flex-col justify-center items-center ">

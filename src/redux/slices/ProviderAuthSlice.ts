@@ -14,6 +14,7 @@ export const loginProvider = createAsyncThunk(
 export interface ProviderAuthState {
   token: string | null;
   loading: boolean;
+  email:string;
 }
 interface Payload {
   token: string;
@@ -22,7 +23,7 @@ interface Payload {
 const initialState: ProviderAuthState = {
   token: "",
   loading: false,
-
+  email:""
 
 };
 
@@ -34,6 +35,7 @@ const ProviderAuthSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.token = null;
+      state.email="";
     },
   },
   extraReducers(builder) {
@@ -44,12 +46,14 @@ const ProviderAuthSlice = createSlice({
   
       state.token = action.payload.token;
       state.loading = false;
+      state.email = action.meta.arg.email
 
     });
     builder.addCase(loginProvider.rejected, (state, action) => {
       state.token = null;
       state.loading = false;
-
+      state.email = ""
+     
     });
   },
 });
