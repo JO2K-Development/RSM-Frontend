@@ -29,7 +29,9 @@ function useRequestForm(pagesLength: number): {
       setPage(page + 1);
     } else {
 
-      requestSend({ ...formState,...arg }).then(arg=>{allRequests().then(data=>data.json()).then(data=>console.log(data))})
+      requestSend({ ...formState,...arg }).then(arg=>{
+        // allRequests().then(data=>data.json()).then(data=>console.log(data))
+      })
       console.log({ ...formState, ...arg })
       navigate("/home");
     }

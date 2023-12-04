@@ -6,8 +6,8 @@ import getProvider from '../../api/getProvider';
 
 export const getProviderInfo = createAsyncThunk(
     "getProvider/api",
-    async (email:string): Promise<Object> => {
-      const response = await getProvider('provider@gmail.com');
+    async ({email,token}:{email:string,token:string}): Promise<Object> => {
+      const response = await getProvider('provider@gmail.com',token);
       return response.json();
     }
   );
