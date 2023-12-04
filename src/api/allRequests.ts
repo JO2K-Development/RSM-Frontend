@@ -1,8 +1,8 @@
-
+import path from "./vars";
 const allRequests = () => {
  
 
-  return fetch(`http://localhost:8080/api/v1/request`, {
+  return fetch(`${path}/api/v1/request`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
