@@ -33,9 +33,9 @@ const LoginPage = () => {
     });
   };
 
-
+  console.log(token)
   return token ? (
-    <Navigate to={`/provider/${email}`} />
+    <Navigate to={`/provider/${token}`} />
   ) : (
     <div className="request-page-bg  h-screen w-full  relative overflow-hidden">
       <div className="bg-black bg-opacity-60  h-screen w-full  flex flex-col justify-center items-center ">

@@ -10,12 +10,10 @@ import {
   useLocation,
   useNavigate,
   useOutlet,
+  useParams,
 } from "react-router-dom";
-import LinkButton from "../../common/LinkButton";
 import ProviderHeader from "./Main/ProviderHeader";
-import requestSend from "../../../api/requestSend";
 import RequestType from "../../../types/Request";
-import Provider from "../../../types/Provider";
 import RequestCard from "./RequestCard";
 import ColumnProvider from "./Main/ColumnProvider";
 import Navbar from "./Navbar";
@@ -24,7 +22,10 @@ import {
   getProviderInfo,
 } from "../../../redux/slices/ProviderInfoSlice";
 import { useEffect, useState } from "react";
-import allRequests from "../../../api/allRequests";
+import {
+  RequestsSliceState,
+  getRequests,
+} from "../../../redux/slices/RequestsSlice";
 
 const ProviderMainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -34,127 +35,29 @@ const ProviderMainPage = () => {
   const { ProviderInfo } = useSelector<Store, ProviderInfoState>(
     (state) => state.providerInfo
   );
+  const { unassignedRequests, assignedRequests } = useSelector<
+    Store,
+    RequestsSliceState
+  >((state) => state.requests);
 
   useEffect(() => {
     dispatch(
       getProviderInfo({ email: email, token: token != null ? token : "" })
-    )
-
-    // .then(data=>data.json()).then(data=>console.log(data))
+    );
+    dispatch(getRequests(token!));
+    // allRequests(token!).then((res) => res.json()).then((data)=>console.log(data));
+    // pairRequest(token!)
   }, []);
 
+  console.log(unassignedRequests, assignedRequests);
   const handleLogout = () => {
     dispatch(logout());
   };
-
-  const requests: RequestType[] = [
-    {
-      createdAt: "20.20.1020",
-      carMake: "toyota",
-      carModel: "yaris",
-      title: "Do wymiany ffs",
-      state: "PENDING",
-
-      creator: {
-        firstName: "dsa",
-        lastName: "das",
-        email: "sda@sda",
-        phoneNumber: "dsa",
-      },
-
-      message:
-        "rozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwrozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sa",
-    },
-
-    {
-      createdAt: "20.20.1020",
-      carMake: "toyota",
-      carModel: "yaris",
-      title: "Do wymiany ffs",
-      state: "PENDING",
-
-      creator: {
-        firstName: "dsa",
-        lastName: "das",
-        email: "sda@sda",
-        phoneNumber: "dsa",
-      },
-
-      message:
-        "adsklaskljdlasfjlasfj sie kurwarozjebałem sie kurwarozjebałem sa",
-    },
-    {
-      createdAt: "20.20.1020",
-      carMake: "toyota",
-      carModel: "yaris",
-      title: "Do wymiany ffs",
-      state: "PENDING",
-
-      creator: {
-        firstName: "dsa",
-        lastName: "das",
-        email: "sda@sda",
-        phoneNumber: "dsa",
-      },
-
-      message:
-        "adsklaskljdlasfjlasfj sie kurwarozjebałem sie kurwarozjebałem sa",
-    },
-    {
-      createdAt: "20.20.1020",
-      carMake: "toyota",
-      carModel: "yaris",
-      title: "Do wymiany ffs",
-      state: "PENDING",
-
-      creator: {
-        firstName: "dsa",
-        lastName: "das",
-        email: "sda@sda",
-        phoneNumber: "dsa",
-      },
-
-      message:
-        "adsklaskljdlasfjlasfj sie kurwarozjebałem sie kurwarozjebałem sa",
-    },
-    {
-      createdAt: "20.20.1020",
-      carMake: "toyota",
-      carModel: "yaris",
-      title: "Do wymiany ffs",
-      state: "PENDING",
-
-      creator: {
-        firstName: "dsa",
-        lastName: "das",
-        email: "sda@sda",
-        phoneNumber: "dsa",
-      },
-
-      message:
-        "rozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwrozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sa",
-    },
-    {
-      createdAt: "20.20.1020",
-      carMake: "toyota",
-      carModel: "yaris",
-      title: "Do wymiany ffs",
-      state: "PENDING",
-
-      creator: {
-        firstName: "dsa",
-        lastName: "das",
-        email: "sda@sda",
-        phoneNumber: "dsa",
-      },
-
-      message:
-        "rozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwrozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem srozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sie kurwarozjebałem sa",
-    },
-  ];
+  let { id } = useParams();
   const outlet = useOutlet();
-
-  return token == null ? (
+ 
+    
+  return token == null|| id!=token ? (
     <Navigate to="/provider/login" />
   ) : (
     <div className="provider-page-bg ">
@@ -168,7 +71,7 @@ const ProviderMainPage = () => {
             {ProviderInfo && <ProviderHeader provider={ProviderInfo} />}
             <div className="min-h-0   grid lg:grid-cols-2 lg:max-h-[80%] lg:h-[80%] h-[90vh] flex-grow">
               <ColumnProvider title={"Your pending requests!"}>
-                {requests.map((request, index) => (
+                {assignedRequests.map((request, index) => (
                   <RequestCard key={index} request={request} />
                 ))}
               </ColumnProvider>
@@ -176,7 +79,7 @@ const ProviderMainPage = () => {
               <ColumnProvider
                 title={"The  requests that need to be taken care of!"}
               >
-                {requests.map((request, index) => (
+                {unassignedRequests.map((request, index) => (
                   <RequestCard key={index} request={request} />
                 ))}
               </ColumnProvider>
