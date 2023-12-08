@@ -1,12 +1,11 @@
 import path from "./vars";
 
 const allRequests = (token: string) => {
-  console.log(token);
-  return fetch(`${path}/api/v1/provider/not-assigned`, {
+  return fetch(`${path}/api/v1/provider/notassigned`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer  ${token}`,
+      "Authorization": `Bearer ${token}`,
     },
   });
 };
