@@ -42,6 +42,7 @@ const providerInfoSlice = createSlice({
     })
     builder.addCase(getProviderInfo.rejected, (state, action) => {
       state.ProviderInfo = null;
+      
       state.loading = false;
     })
 
