@@ -1,11 +1,8 @@
-# żeby  odpalić wystarczy zarzucić :
-### `npm start` w konsolę
-# ale musicie mieć node.js zainstalowane
+###Repair Service Manager
 
-# k
-## 0
-### n
-### i
-## e
-# c
+
+
+##To launch this app on localhost:3000
+1.`npm install`
+2.`npm start`
 
