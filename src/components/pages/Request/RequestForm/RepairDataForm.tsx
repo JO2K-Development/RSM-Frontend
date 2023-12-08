@@ -20,7 +20,6 @@ const RepairDataForm: React.FC<Props> = ({
   defaultValues,
   goBack,
 }) => {
-
   const {
     register,
     handleSubmit,
@@ -32,32 +31,38 @@ const RepairDataForm: React.FC<Props> = ({
   };
 
   return (
-    <FormContainer handleSubmit={handleSubmit(onSubmit)} >
-        <FormTitle title="Please enter information about the request" />
-        <FormInput
-          type="carMake"
-          placeholder="Car make"
-          defaultValue={defaultValues?.carMake}
-          rest={register("carMake", { required: true, maxLength: 80 })}
-        />
-        <FormInput
-          type="carModel"
-          placeholder="Car model"
-          defaultValue={defaultValues?.carModel}
-          rest={register("carModel", { required: true, maxLength: 80 })}
-        />
-        <textarea
-          {...register("message")}
-          defaultValue={defaultValues?.message}
-          name="message"
-          rows={4}
-        ></textarea>
+    <FormContainer handleSubmit={handleSubmit(onSubmit)}>
+      <FormTitle title="Please enter information about the request" />
+      <FormInput
+        type="carMake"
+        placeholder="Car make"
+        defaultValue={defaultValues?.carMake}
+        rest={register("carMake", { required: true, maxLength: 80 })}
+      />
+      <FormInput
+        type="carModel"
+        placeholder="Car model"
+        defaultValue={defaultValues?.carModel}
+        rest={register("carModel", { required: true, maxLength: 80 })}
+      />
+      <textarea
+        {...register("message")}
+        defaultValue={defaultValues?.message}
+        name="message"
+        rows={4}
+      ></textarea>
 
-        <div  className="flex gap-3  justify-stretch">
-          {" "}
-          <FormButton text="back" onClick={()=>{goBack(getValues())}} type="button" />
-          <FormButton text="Next" onClick={() => {}} type="submit" />
-        </div>
+      <div className="flex gap-3  justify-stretch">
+        {" "}
+        <FormButton
+          text="back"
+          onClick={() => {
+            goBack(getValues());
+          }}
+          type="button"
+        />
+        <FormButton text="Next" onClick={() => {}} type="submit" />
+      </div>
     </FormContainer>
   );
 };

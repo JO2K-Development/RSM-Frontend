@@ -9,7 +9,9 @@ const FormContainer: React.FC<FormContainerProps> = ({
 }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex gap-[1rem] flex-col items-stretch relative">{children} </div>
+      <div className="flex gap-[1rem] flex-col items-stretch relative">
+        {children}{" "}
+      </div>
     </form>
   );
 };

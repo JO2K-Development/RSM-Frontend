@@ -55,9 +55,8 @@ const ProviderMainPage = () => {
   };
   let { id } = useParams();
   const outlet = useOutlet();
- 
-    
-  return token == null|| id!=token ? (
+
+  return token == null || id != token ? (
     <Navigate to="/provider/login" />
   ) : (
     <div className="provider-page-bg ">

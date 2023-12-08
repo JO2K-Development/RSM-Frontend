@@ -3,7 +3,7 @@ import FormInput from "../../../common/FormInput";
 import FormTitle from "./FormTitle";
 import FormButton from "./FormButton";
 import FormContainer from "../../../containers/FormContainer";
-import RequestType from '../../../../types/Request'
+import RequestType from "../../../../types/Request";
 import User from "../../../../types/User";
 
 interface PersonalDataFormProps {
@@ -11,7 +11,7 @@ interface PersonalDataFormProps {
   defaultValues?: RequestType;
 }
 export interface PersonalDataForm {
-  creator:User
+  creator: User;
 }
 const PersonalDataForm: React.FC<PersonalDataFormProps> = ({
   addToForm,
@@ -45,7 +45,10 @@ const PersonalDataForm: React.FC<PersonalDataFormProps> = ({
         type="phoneNumber"
         placeholder="Phone number"
         defaultValue={defaultValues?.creator.phoneNumber}
-        rest={register("creator.phoneNumber", { required: true, maxLength: 80 })}
+        rest={register("creator.phoneNumber", {
+          required: true,
+          maxLength: 80,
+        })}
       />
       <FormInput
         type="email"

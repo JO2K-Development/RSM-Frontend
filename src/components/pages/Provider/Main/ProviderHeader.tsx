@@ -2,7 +2,7 @@ import Provider from "../../../../types/Provider";
 import PersonalSpace from "./PersonalSpace";
 
 interface ProviderHeaderProps {
-  provider:Provider;
+  provider: Provider;
 }
 
 const ProviderHeader: React.FC<ProviderHeaderProps> = ({ provider }) => {
@@ -11,7 +11,12 @@ const ProviderHeader: React.FC<ProviderHeaderProps> = ({ provider }) => {
       <h1 className="text-center my-auto font-extrabold text-[3rem]">
         Have a great day, {provider.firstName}!
       </h1>
-     <PersonalSpace firstName={provider.firstName} lastName={provider.lastName} phoneNumber={provider.phoneNumber} email={provider.email}/>
+      <PersonalSpace
+        firstName={provider.firstName}
+        lastName={provider.lastName}
+        phoneNumber={provider.phoneNumber}
+        email={provider.email}
+      />
     </div>
   );
 };
