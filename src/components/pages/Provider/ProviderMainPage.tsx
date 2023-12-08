@@ -4,14 +4,7 @@ import {
   logout,
 } from "../../../redux/slices/ProviderAuthSlice";
 import { AppDispatch, Store } from "../../../redux/store";
-import {
-  Navigate,
-  Outlet,
-  useLocation,
-  useNavigate,
-  useOutlet,
-  useParams,
-} from "react-router-dom";
+import { Navigate, Outlet, useOutlet, useParams } from "react-router-dom";
 import ProviderHeader from "./Main/ProviderHeader";
 import RequestType from "../../../types/Request";
 import RequestCard from "./RequestCard";
@@ -26,6 +19,7 @@ import {
   RequestsSliceState,
   getRequests,
 } from "../../../redux/slices/RequestsSlice";
+import pairRequest from "../../../api/pairRequest";
 
 const ProviderMainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -41,13 +35,11 @@ const ProviderMainPage = () => {
   >((state) => state.requests);
 
   useEffect(() => {
-    dispatch(
-      getProviderInfo({ email: email, token: token != null ? token : "" })
-    );
-    dispatch(getRequests(token!));
+    dispatch(getProviderInfo({ email: email, token: token != null ? token : "" })).then((state:any) => {dispatch(getRequests({ token: token!, email: state.payload.email }));});
     // allRequests(token!).then((res) => res.json()).then((data)=>console.log(data));
-    // pairRequest(token!)
+    // pairRequest(token!,ProviderInfo?.id!,"3a52c492-baad-45f3-963f-de0ba0d7452b")
   }, []);
+
 
   console.log(unassignedRequests, assignedRequests);
   const handleLogout = () => {

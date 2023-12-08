@@ -1,13 +1,13 @@
 
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import  { RequestType } from '../../types/Request';
-import allRequests from '../../api/allRequests';
-import { loadavg } from 'os';
+import notassignedRequests from '../../api/notassignedRequests';
+import assignedRequests from '../../api/assignedRequests';
 
 export const getRequests = createAsyncThunk(
     "getRequests",
-    async (token:string): Promise<Array<Array<RequestType>> >=> {
-        const requests=[allRequests(token).then(data=>data.json()),allRequests(token).then(data=>data.json())]
+    async ({token,email}:{token:string,email:string}): Promise<Array<Array<RequestType>> >=> {
+        const requests=[notassignedRequests(token).then(data=>data.json()),assignedRequests(token,email).then(data=>data.json())]
       const response =await Promise.all(requests)
       return response
     })

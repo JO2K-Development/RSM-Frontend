@@ -1,6 +1,6 @@
 import path from "./vars";
 
-const allRequests = (token: string) => {
+const notassignedRequests = (token: string) => {
   return fetch(`${path}/api/v1/provider/notassigned`, {
     method: "GET",
     headers: {
@@ -9,4 +9,4 @@ const allRequests = (token: string) => {
     },
   });
 };
-export default allRequests;
+export default notassignedRequests;
