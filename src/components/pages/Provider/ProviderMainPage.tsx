@@ -6,7 +6,6 @@ import {
 import { AppDispatch, Store } from "../../../redux/store";
 import { Navigate, Outlet, useOutlet, useParams } from "react-router-dom";
 import ProviderHeader from "./Main/ProviderHeader";
-import RequestType from "../../../types/Request";
 import RequestCard from "./RequestCard";
 import ColumnProvider from "./Main/ColumnProvider";
 import Navbar from "./Navbar";
@@ -17,9 +16,7 @@ import {
 import { useEffect, useState } from "react";
 import {
   RequestsSliceState,
-  getRequests,
 } from "../../../redux/slices/RequestsSlice";
-import pairRequest from "../../../api/pairRequest";
 
 const ProviderMainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -40,7 +37,6 @@ const ProviderMainPage = () => {
   }, []);
 
 
-  console.log(unassignedRequests, assignedRequests);
   const handleLogout = () => {
     dispatch(logout());
   };

@@ -28,7 +28,9 @@ const providerInfoSlice = createSlice({
   name: 'providerInfo',
   initialState,
   reducers: {
+    
     clearState: (state) => {
+
       state.ProviderInfo = null;
     }
   },
