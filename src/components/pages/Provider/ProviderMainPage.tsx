@@ -4,7 +4,7 @@ import {
   logout,
 } from "../../../redux/slices/ProviderAuthSlice";
 import { AppDispatch, Store } from "../../../redux/store";
-import { Navigate, Outlet, useOutlet, useParams } from "react-router-dom";
+import { Navigate, Outlet, useNavigate, useOutlet, useParams } from "react-router-dom";
 import ProviderHeader from "./Main/ProviderHeader";
 import RequestCard from "./RequestCard";
 import ColumnProvider from "./Main/ColumnProvider";
@@ -39,16 +39,18 @@ const ProviderMainPage = () => {
     );
   }, []);
 
+  const navigate=useNavigate()
 
-
-  const onPair=(id:string) => {
+  const handlePair=(id:string) => {
     pairRequest(token!,ProviderInfo?.id!,id).then(()=>{ dispatch(
       getProviderInfo({ email: email, token: token != null ? token : "" })
     );})
+  }
+  const handleEdit=(id:string)=>{
+      navigate(`/provider/${token}/your-requests`)
 
   }
 
-  console.log(providerLoading, "loading");
   const handleLogout = () => {
     dispatch(logout());
   };
@@ -58,9 +60,10 @@ const ProviderMainPage = () => {
   return token == null || id != token ? (
     <Navigate to="/provider/login" />
   ) : (
-    <div className="provider-page-bg ">
-      <div className=" bg-neutral-900/60 lg:h-screen  flex flex-col ">
+    <div className="provider-page-bg  flex h-screen max-h-screen overflow-hidden  flex-col">
         <Navbar />
+      <div className=" bg-neutral-900/60 lg:h-screen flex flex-grow flex-col ">
+      
 
         <Outlet />
         {!outlet && (
@@ -83,7 +86,7 @@ const ProviderMainPage = () => {
                   </div>
                 ) : (
                   assignedRequests.map((request, index) => (
-                    <RequestCard key={index} request={request} />
+                    <RequestCard key={index} request={request} handleButton={handleEdit} />
                   ))
                 )}
               </ColumnProvider>
@@ -105,7 +108,7 @@ const ProviderMainPage = () => {
                   </div>
                 ) : (
                   unassignedRequests.map((request, index) => (
-                    <RequestCard key={index} handleButton={onPair} request={request} />
+                    <RequestCard key={index} handleButton={handlePair} request={request} />
                   ))
                 )}
               </ColumnProvider>

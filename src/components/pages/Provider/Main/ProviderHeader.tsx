@@ -11,7 +11,6 @@ const ProviderHeader: React.FC<ProviderHeaderProps> = ({
   provider,
   loading,
 }) => {
-  console.log(loading);
   return (
     <div className="text-white   lg:grid-cols-2  w-full min-h-[15%] h-[15%] hidden lg:grid relative z-[5] pt-[0.5rem] ">
       <h1 className="text-center my-auto font-extrabold text-[3rem]">

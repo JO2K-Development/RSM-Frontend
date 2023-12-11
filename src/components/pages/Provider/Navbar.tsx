@@ -16,7 +16,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="lg:h-[5%] bg-neutral-200  w-full  h-[10vh] mt-0 flex pl-[1rem] relative items-center text-[1.5rem] gap-[1.5rem]">
+    <div className="lg:h-[5%] bg-neutral-200  w-full   mt-0 flex pl-[1rem] relative items-center text-[1.5rem] gap-[1.5rem]">
       <Link className="hover:scale-95 duration-300 " to={`/provider/${token}`}>
         <IoHome />
       </Link>

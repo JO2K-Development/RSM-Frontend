@@ -33,7 +33,6 @@ const LoginPage = () => {
     });
   };
 
-  console.log(token)
   return token ? (
     <Navigate to={`/provider/${token}`} />
   ) : (
