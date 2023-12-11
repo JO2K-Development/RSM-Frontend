@@ -14,29 +14,41 @@ import {
   getProviderInfo,
 } from "../../../redux/slices/ProviderInfoSlice";
 import { useEffect, useState } from "react";
-import {
-  RequestsSliceState,
-} from "../../../redux/slices/RequestsSlice";
+import { RequestsSliceState } from "../../../redux/slices/RequestsSlice";
+import { Bars } from "react-loader-spinner";
+import pairRequest from "../../../api/pairRequest";
 
 const ProviderMainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { token, email } = useSelector<Store, ProviderAuthState>(
     (state) => state.providerAuth
   );
-  const { ProviderInfo } = useSelector<Store, ProviderInfoState>(
-    (state) => state.providerInfo
-  );
-  const { unassignedRequests, assignedRequests } = useSelector<
+  const { ProviderInfo, loading: providerLoading } = useSelector<
     Store,
-    RequestsSliceState
-  >((state) => state.requests);
+    ProviderInfoState
+  >((state) => state.providerInfo);
+  const {
+    unassignedRequests,
+    assignedRequests,
+    loading: requestLoading,
+  } = useSelector<Store, RequestsSliceState>((state) => state.requests);
 
   useEffect(() => {
-    dispatch(getProviderInfo({ email: email, token: token != null ? token : "" }))
-    // pairRequest(token!,ProviderInfo?.id!,"3a52c492-baad-45f3-963f-de0ba0d7452b")
+    dispatch(
+      getProviderInfo({ email: email, token: token != null ? token : "" })
+    );
   }, []);
 
 
+
+  const onPair=(id:string) => {
+    pairRequest(token!,ProviderInfo?.id!,id).then(()=>{ dispatch(
+      getProviderInfo({ email: email, token: token != null ? token : "" })
+    );})
+
+  }
+
+  console.log(providerLoading, "loading");
   const handleLogout = () => {
     dispatch(logout());
   };
@@ -54,20 +66,48 @@ const ProviderMainPage = () => {
         {!outlet && (
           <>
             {" "}
-            {ProviderInfo && <ProviderHeader provider={ProviderInfo} />}
+            <ProviderHeader provider={ProviderInfo} loading={providerLoading} />
             <div className="min-h-0   grid lg:grid-cols-2 lg:max-h-[80%] lg:h-[80%] h-[90vh] flex-grow">
               <ColumnProvider title={"Your pending requests!"}>
-                {assignedRequests.map((request, index) => (
-                  <RequestCard key={index} request={request} />
-                ))}
+                {requestLoading ? (
+                  <div className="bg-black/40 h-full flex flex-col justify-center items-center ">
+                    <Bars
+                      height="80"
+                      width="80"
+                      color="#4fa94d"
+                      ariaLabel="bars-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      visible={true}
+                    />
+                  </div>
+                ) : (
+                  assignedRequests.map((request, index) => (
+                    <RequestCard key={index} request={request} />
+                  ))
+                )}
               </ColumnProvider>
 
               <ColumnProvider
                 title={"The  requests that need to be taken care of!"}
               >
-                {unassignedRequests.map((request, index) => (
-                  <RequestCard key={index} request={request} />
-                ))}
+                {requestLoading ? (
+                  <div className="bg-black/40 h-full flex flex-col justify-center items-center">
+                    <Bars
+                      height="80"
+                      width="80"
+                      color="#4fa94d"
+                      ariaLabel="bars-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      visible={true}
+                    />
+                  </div>
+                ) : (
+                  unassignedRequests.map((request, index) => (
+                    <RequestCard key={index} handleButton={onPair} request={request} />
+                  ))
+                )}
               </ColumnProvider>
             </div>
           </>

@@ -1,9 +1,10 @@
 import RequestType from "../../../types/Request";
 interface RequestCardProps {
   request: RequestType;
+  handleButton?: (arg: string) => void;
 }
 
-const RequestCard: React.FC<RequestCardProps> = ({ request }) => {
+const RequestCard: React.FC<RequestCardProps> = ({ request, handleButton }) => {
   const { title, state, message, carMake, carModel, createdAt } = request;
 
   return (
@@ -11,7 +12,12 @@ const RequestCard: React.FC<RequestCardProps> = ({ request }) => {
       className={` bg-yellow-100/80 text-black relative  rounded-lg p-[.8rem]   mx-[0.5rem]   pb-[1rem] flex flex-col text-[1.5rem]`}
     >
       <div className="flex duration-300 font-extrabold  justify-end mr-[1rem] items-baseline">
-        <div className="bg-green-800 p-[0.2rem] px-[0.8rem] text-[0.8em] mr-auto ml-[1rem] rounded-md text-white uppercase">
+        <div
+          onClick={() => {
+            if (handleButton) handleButton(request.id || "");
+          }}
+          className="bg-green-800 p-[0.2rem] px-[0.8rem] text-[0.8em] mr-auto ml-[1rem] rounded-md text-white uppercase"
+        >
           Button
         </div>
         <div className="italic ">{state}</div>
