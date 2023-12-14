@@ -2,12 +2,13 @@ import { useSelector } from "react-redux";
 import { RequestsSliceState } from "../../../../../redux/slices/RequestsSlice";
 import { Store } from "../../../../../redux/store";
 import ColumnProvider from "../../Main/ColumnProvider";
-import { Bars } from "react-loader-spinner";
 import RequestCard from "../../RequestCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RequestType from "../../../../../types/Request";
 import ActiveRequestView from "./ActiveRequestView";
 import { useLocation } from "react-router-dom";
+import Loading from "../../../../common/Loading";
+import DoubleColumnWrapper from "../../../../containers/DoubleColumnWrapper";
 
 const ProviderRequests = () => {
   const {
@@ -19,25 +20,20 @@ const ProviderRequests = () => {
   const handleFocus = (id: string) => {
     setActiveRequest(assignedRequests.find((request) => request.id === id)!);
   };
-  const {state}=useLocation()
-  console.log(state)
-  console.log(activeRequest)
+  const { state } = useLocation();
+  useEffect(() => {
+    if (state) {
+      setActiveRequest(
+        assignedRequests.find((request) => request.id === state.activeReqId)!
+      );
+    }
+  }, [state, assignedRequests]);
 
   return (
-    <div className=" h-full grid grid-cols-2  pb-[2rem]">
+    <DoubleColumnWrapper>
       <ColumnProvider title={"Your pending requests!"}>
         {requestLoading ? (
-          <div className="bg-black/40 h-full flex flex-col justify-center items-center ">
-            <Bars
-              height="80"
-              width="80"
-              color="#4fa94d"
-              ariaLabel="bars-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-            />
-          </div>
+          <Loading />
         ) : (
           assignedRequests.map((request, index) => (
             <RequestCard
@@ -49,11 +45,10 @@ const ProviderRequests = () => {
         )}
       </ColumnProvider>
 
-
       <ColumnProvider title="Edition:">
-        <ActiveRequestView request={activeRequest}/>
+        <ActiveRequestView request={activeRequest} />
       </ColumnProvider>
-    </div>
+    </DoubleColumnWrapper>
   );
 };
 

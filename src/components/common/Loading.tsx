@@ -1,15 +1,19 @@
-import { ColorRing } from "react-loader-spinner";
+import { Bars, ColorRing } from "react-loader-spinner";
 
 const Loading = () => {
-    return ( <ColorRing
-        visible={true}
+  return (
+    <div className="bg-black/40 h-full flex flex-col justify-center items-center ">
+      <Bars
         height="80"
         width="80"
-        ariaLabel="blocks-loading"
+        color="#4fa94d"
+        ariaLabel="bars-loading"
         wrapperStyle={{}}
-        wrapperClass="blocks-wrapper"
-        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-      /> );
-}
- 
+        wrapperClass=""
+        visible={true}
+      />
+    </div>
+  );
+};
+
 export default Loading;

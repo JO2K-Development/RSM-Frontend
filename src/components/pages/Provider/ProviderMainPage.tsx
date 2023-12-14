@@ -4,7 +4,13 @@ import {
   logout,
 } from "../../../redux/slices/ProviderAuthSlice";
 import { AppDispatch, Store } from "../../../redux/store";
-import { Navigate, Outlet, useNavigate, useOutlet, useParams } from "react-router-dom";
+import {
+  Navigate,
+  Outlet,
+  useNavigate,
+  useOutlet,
+  useParams,
+} from "react-router-dom";
 import ProviderHeader from "./Main/ProviderHeader";
 import RequestCard from "./RequestCard";
 import ColumnProvider from "./Main/ColumnProvider";
@@ -17,6 +23,8 @@ import { useEffect, useState } from "react";
 import { RequestsSliceState } from "../../../redux/slices/RequestsSlice";
 import { Bars } from "react-loader-spinner";
 import pairRequest from "../../../api/pairRequest";
+import Loading from "../../common/Loading";
+import DoubleColumnWrapper from "../../containers/DoubleColumnWrapper";
 
 const ProviderMainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -39,17 +47,20 @@ const ProviderMainPage = () => {
     );
   }, []);
 
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
-  const handlePair=(id:string) => {
-    pairRequest(token!,ProviderInfo?.id!,id).then(()=>{ dispatch(
-      getProviderInfo({ email: email, token: token != null ? token : "" })
-    );})
-  }
-  const handleEdit=(id:string)=>{
-      navigate(`/provider/${token}/your-requests`,{state:{activeReqId:id}},)
-
-  }
+  const handlePair = (id: string) => {
+    pairRequest(token!, ProviderInfo?.id!, id).then(() => {
+      dispatch(
+        getProviderInfo({ email: email, token: token != null ? token : "" })
+      );
+    });
+  };
+  const handleEdit = (id: string) => {
+    navigate(`/provider/${token}/your-requests`, {
+      state: { activeReqId: id },
+    });
+  };
 
   const handleLogout = () => {
     dispatch(logout());
@@ -60,32 +71,23 @@ const ProviderMainPage = () => {
     <Navigate to="/provider/login" />
   ) : (
     <div className="provider-page-bg  flex h-screen max-h-screen overflow-hidden  flex-col">
-        <Navbar />
+      <Navbar />
       <div className=" bg-neutral-900/60 lg:h-screen flex flex-grow flex-col ">
-      
-
-        <Outlet  />
+        <Outlet />
         {!outlet && (
           <>
-            {" "}
             <ProviderHeader provider={ProviderInfo} loading={providerLoading} />
-            <div className="min-h-0   grid lg:grid-cols-2 lg:max-h-[80%] lg:h-[80%] h-[90vh] flex-grow">
+            <DoubleColumnWrapper>
               <ColumnProvider title={"Your pending requests!"}>
                 {requestLoading ? (
-                  <div className="bg-black/40 h-full flex flex-col justify-center items-center ">
-                    <Bars
-                      height="80"
-                      width="80"
-                      color="#4fa94d"
-                      ariaLabel="bars-loading"
-                      wrapperStyle={{}}
-                      wrapperClass=""
-                      visible={true}
-                    />
-                  </div>
+                  <Loading />
                 ) : (
                   assignedRequests.map((request, index) => (
-                    <RequestCard key={index} request={request} handleButton={handleEdit} />
+                    <RequestCard
+                      key={index}
+                      request={request}
+                      handleButton={handleEdit}
+                    />
                   ))
                 )}
               </ColumnProvider>
@@ -94,24 +96,18 @@ const ProviderMainPage = () => {
                 title={"The  requests that need to be taken care of!"}
               >
                 {requestLoading ? (
-                  <div className="bg-black/40 h-full flex flex-col justify-center items-center">
-                    <Bars
-                      height="80"
-                      width="80"
-                      color="#4fa94d"
-                      ariaLabel="bars-loading"
-                      wrapperStyle={{}}
-                      wrapperClass=""
-                      visible={true}
-                    />
-                  </div>
+                  <Loading />
                 ) : (
                   unassignedRequests.map((request, index) => (
-                    <RequestCard key={index} handleButton={handlePair} request={request} />
+                    <RequestCard
+                      key={index}
+                      handleButton={handlePair}
+                      request={request}
+                    />
                   ))
                 )}
               </ColumnProvider>
-            </div>
+            </DoubleColumnWrapper>
           </>
         )}
       </div>

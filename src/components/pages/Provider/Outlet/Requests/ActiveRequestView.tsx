@@ -2,17 +2,11 @@ import { FC } from "react";
 import RequestType from "../../../../../types/Request";
 
 interface ActiveRequestViewProps {
-    request:RequestType|null
-
+  request: RequestType | null;
 }
- 
-const ActiveRequestView: FC<ActiveRequestViewProps> = ({request}) => {
-    return ( request&&<div>
 
-{request.id}
+const ActiveRequestView: FC<ActiveRequestViewProps> = ({ request }) => {
+  return request && <div>{request.id}</div>;
+};
 
-
-    </div> );
-}
- 
 export default ActiveRequestView;
