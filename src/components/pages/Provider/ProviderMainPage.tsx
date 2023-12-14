@@ -21,7 +21,6 @@ import {
 } from "../../../redux/slices/ProviderInfoSlice";
 import { useEffect, useState } from "react";
 import { RequestsSliceState } from "../../../redux/slices/RequestsSlice";
-import { Bars } from "react-loader-spinner";
 import pairRequest from "../../../api/pairRequest";
 import Loading from "../../common/Loading";
 import DoubleColumnWrapper from "../../containers/DoubleColumnWrapper";

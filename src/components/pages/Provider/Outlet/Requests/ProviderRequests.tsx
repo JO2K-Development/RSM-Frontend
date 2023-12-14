@@ -12,7 +12,6 @@ import DoubleColumnWrapper from "../../../../containers/DoubleColumnWrapper";
 
 const ProviderRequests = () => {
   const {
-    unassignedRequests,
     assignedRequests,
     loading: requestLoading,
   } = useSelector<Store, RequestsSliceState>((state) => state.requests);
