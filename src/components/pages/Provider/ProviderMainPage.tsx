@@ -47,7 +47,7 @@ const ProviderMainPage = () => {
     );})
   }
   const handleEdit=(id:string)=>{
-      navigate(`/provider/${token}/your-requests`)
+      navigate(`/provider/${token}/your-requests`,{state:{activeReqId:id}},)
 
   }
 
@@ -56,7 +56,6 @@ const ProviderMainPage = () => {
   };
   let { id } = useParams();
   const outlet = useOutlet();
-
   return token == null || id != token ? (
     <Navigate to="/provider/login" />
   ) : (
@@ -65,7 +64,7 @@ const ProviderMainPage = () => {
       <div className=" bg-neutral-900/60 lg:h-screen flex flex-grow flex-col ">
       
 
-        <Outlet />
+        <Outlet  />
         {!outlet && (
           <>
             {" "}

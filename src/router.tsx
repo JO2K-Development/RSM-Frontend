@@ -5,7 +5,7 @@ import LoginPage from "./components/pages/Provider/LoginPage";
 import ProviderMainPage from "./components/pages/Provider/ProviderMainPage";
 import ProviderStats from "./components/pages/Provider/Outlet/ProviderStats";
 import ProviderAccount from "./components/pages/Provider/Outlet/ProviderAccout";
-import ProviderRequests from "./components/pages/Provider/Outlet/ProviderRequests";
+import ProviderRequests from "./components/pages/Provider/Outlet/Requests/ProviderRequests";
 
 const router = createBrowserRouter([
   { path: "/home", element: <LandingPage /> },
