@@ -11,6 +11,7 @@ import { AppDispatch, Store } from '../../../../../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import updateRequest from '../../../../../api/updateRequestStatus';
 import { getRequests } from '../../../../../redux/slices/RequestsSlice';
+import useStatusDate from '../../../../../hooks/useStatusDate';
 interface ActiveRequestViewProps {
   request: RequestType | null;
 }
@@ -24,10 +25,8 @@ function formatDateToString(date: Date | null) {
 }
 
 const ActiveRequestView: FC<ActiveRequestViewProps> = ({ request }) => {
-  const [pickupDate, setPickupDate] = useState(new Date());
+  const { pickupDate, deliveryDate, setDeliveryDate, setPickupDate } = useStatusDate(request);
   const { token, email } = useSelector<Store, ProviderAuthState>((state) => state.providerAuth);
-  console.log(new Date(request?.pickupDate!), new Date(request?.deliveryDate!));
-  const [deliveryDate, setDeliveryDate] = useState(new Date());
   const dispatch = useDispatch<AppDispatch>();
   const updateReq = () => {
     updateRequest(token!, request?.id!, {
@@ -37,13 +36,6 @@ const ActiveRequestView: FC<ActiveRequestViewProps> = ({ request }) => {
     }).then((arg) => dispatch(getRequests({ token: token!, email })));
   };
 
-  useEffect(() => {
-    console.log(request?.pickupDate, request?.deliveryDate);
-    if (request?.deliveryDate) setDeliveryDate(new Date(request?.deliveryDate));
-    if (request?.pickupDate) setPickupDate(new Date(request?.pickupDate));
-  }, [request]);
-
-  // console.log(formatDateToString(pickupDate), formatDateToString(deliveryDate));
   return (
     request && (
       <div className="flex flex-col  gap-[1rem] ">
