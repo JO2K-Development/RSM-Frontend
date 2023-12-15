@@ -1,16 +1,12 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent } from 'react';
 
 interface FormButtonProps {
   text: string;
   onClick(): void;
-  type?: "button" | "submit" | "reset" | undefined;
+  type?: 'button' | 'submit' | 'reset' | undefined;
 }
 
-const FormButton: FunctionComponent<FormButtonProps> = ({
-  text,
-  onClick,
-  type,
-}) => {
+const FormButton: FunctionComponent<FormButtonProps> = ({ text, onClick, type }) => {
   return (
     <button
       onClick={onClick}

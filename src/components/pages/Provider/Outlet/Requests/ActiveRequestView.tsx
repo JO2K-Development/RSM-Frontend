@@ -1,5 +1,5 @@
-import { FC } from "react";
-import RequestType from "../../../../../types/Request";
+import { FC } from 'react';
+import RequestType from '../../../../../types/Request';
 
 interface ActiveRequestViewProps {
   request: RequestType | null;

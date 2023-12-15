@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
-import BrandHead from "./BrandHead";
-import RequestButton from "./RequestButton";
-import ProviderButton from "./ProviderButton";
-import { useNavigate } from "react-router-dom";
+import { motion } from 'framer-motion';
+import BrandHead from './BrandHead';
+import RequestButton from './RequestButton';
+import ProviderButton from './ProviderButton';
+import { useNavigate } from 'react-router-dom';
 
 const FunctionalLandingPage = () => {
   const navigate = useNavigate();
@@ -16,12 +16,12 @@ const FunctionalLandingPage = () => {
       <BrandHead />
       <RequestButton
         onClick={() => {
-          navigate("/request");
+          navigate('/request');
         }}
       />
       <ProviderButton
         onClick={() => {
-          navigate("/provider/login");
+          navigate('/provider/login');
         }}
       />
     </motion.div>

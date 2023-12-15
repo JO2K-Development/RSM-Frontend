@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import BrandHead from "./BrandHead";
+import { motion } from 'framer-motion';
+import BrandHead from './BrandHead';
 
 const EntryLandingPage = () => {
   return (
@@ -10,7 +10,7 @@ const EntryLandingPage = () => {
     >
       <motion.div
         initial={{ scale: 1.5 }}
-        animate={{ scale: 0.2, y: "600%", opacity: 0 }}
+        animate={{ scale: 0.2, y: '600%', opacity: 0 }}
         transition={{ duration: 0.8 }}
       >
         <BrandHead />

@@ -1,9 +1,9 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import FormInput from "../../../common/FormInput";
-import FormTitle from "./FormTitle";
-import FormButton from "./FormButton";
-import FormContainer from "../../../containers/FormContainer";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import FormInput from '../../../common/FormInput';
+import FormTitle from './FormTitle';
+import FormButton from './FormButton';
+import FormContainer from '../../../containers/FormContainer';
 
 export interface RepairFormData {
   carMake: string;
@@ -15,16 +15,12 @@ interface Props {
   goBack: (arg: Object) => void;
   defaultValues?: RepairFormData;
 }
-const RepairDataForm: React.FC<Props> = ({
-  addToForm,
-  defaultValues,
-  goBack,
-}) => {
+const RepairDataForm: React.FC<Props> = ({ addToForm, defaultValues, goBack }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
+    getValues
   } = useForm();
   const onSubmit = (data: any) => {
     addToForm(data);
@@ -37,23 +33,23 @@ const RepairDataForm: React.FC<Props> = ({
         type="carMake"
         placeholder="Car make"
         defaultValue={defaultValues?.carMake}
-        rest={register("carMake", { required: true, maxLength: 80 })}
+        rest={register('carMake', { required: true, maxLength: 80 })}
       />
       <FormInput
         type="carModel"
         placeholder="Car model"
         defaultValue={defaultValues?.carModel}
-        rest={register("carModel", { required: true, maxLength: 80 })}
+        rest={register('carModel', { required: true, maxLength: 80 })}
       />
       <textarea
-        {...register("message")}
+        {...register('message')}
         defaultValue={defaultValues?.message}
         name="message"
         rows={4}
       ></textarea>
 
       <div className="flex gap-3  justify-stretch">
-        {" "}
+        {' '}
         <FormButton
           text="back"
           onClick={() => {
@@ -61,7 +57,11 @@ const RepairDataForm: React.FC<Props> = ({
           }}
           type="button"
         />
-        <FormButton text="Next" onClick={() => {}} type="submit" />
+        <FormButton
+          text="Next"
+          onClick={() => {}}
+          type="submit"
+        />
       </div>
     </FormContainer>
   );

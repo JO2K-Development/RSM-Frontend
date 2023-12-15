@@ -1,12 +1,12 @@
-import path from "./vars";
+import path from './vars';
 
 const notassignedRequests = (token: string) => {
   return fetch(`${path}/api/v1/provider/notassigned`, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
-    },
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    }
   });
 };
 export default notassignedRequests;

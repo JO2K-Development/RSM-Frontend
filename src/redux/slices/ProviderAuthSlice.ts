@@ -1,12 +1,12 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import login, { Login } from "../../api/login";
-import { getProviderInfo } from "./ProviderInfoSlice";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import login, { Login } from '../../api/login';
+import { getProviderInfo } from './ProviderInfoSlice';
 
 export const loginProvider = createAsyncThunk(
-  "login/api",
+  'login/api',
   async (loginData: Login): Promise<Payload> => {
     const response = await login(loginData);
-    
+
     return response.json();
   }
 );
@@ -14,48 +14,44 @@ export const loginProvider = createAsyncThunk(
 export interface ProviderAuthState {
   token: string | null;
   loading: boolean;
-  email:string;
+  email: string;
 }
 interface Payload {
   token: string;
 }
 
 const initialState: ProviderAuthState = {
-  token: "",
+  token: '',
   loading: false,
-  email:""
-
+  email: ''
 };
 
 // import {getProviderInfo} from './ProviderInfoSlice';
 
 const ProviderAuthSlice = createSlice({
-  name: "providerAuth",
+  name: 'providerAuth',
   initialState,
   reducers: {
     logout: (state) => {
       state.token = null;
-      state.email="";
-    },
+      state.email = '';
+    }
   },
   extraReducers(builder) {
     builder.addCase(loginProvider.pending, (state, action) => {
       state.loading = true;
     });
     builder.addCase(loginProvider.fulfilled, (state, action) => {
-  
       state.token = action.payload.token;
       state.loading = false;
-      state.email = action.meta.arg.email
-
+      state.email = action.meta.arg.email;
     });
     builder.addCase(loginProvider.rejected, (state, action) => {
       state.token = null;
       state.loading = false;
-      state.email = ""
-     
+      state.email = '';
     });
-  },
+  }
 });
 
 export const { logout } = ProviderAuthSlice.actions;

@@ -1,4 +1,4 @@
-import RequestType from "../../../types/Request";
+import RequestType from '../../../types/Request';
 interface RequestCardProps {
   request: RequestType;
   handleButton?: (arg: string) => void;
@@ -14,7 +14,7 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, handleButton }) => {
       <div className="flex duration-300 font-extrabold  justify-end mr-[1rem] items-baseline">
         <div
           onClick={() => {
-            if (handleButton) handleButton(request.id || "");
+            if (handleButton) handleButton(request.id || '');
           }}
           className="bg-green-800 p-[0.2rem] px-[0.8rem] text-[0.8em] mr-auto ml-[1rem] rounded-md text-white uppercase"
         >

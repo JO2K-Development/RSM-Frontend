@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react';
 
-interface ProviderStatsProps {
-    
-}
- 
+interface ProviderStatsProps {}
+
 const ProviderStats: React.FC<ProviderStatsProps> = () => {
-    return (<div>ESSA</div>  );
-}
- 
+  return <div>ESSA</div>;
+};
+
 export default ProviderStats;

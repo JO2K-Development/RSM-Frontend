@@ -1,4 +1,4 @@
-import path from "./vars";
+import path from './vars';
 export interface Login {
   email: string;
   password: string;
@@ -6,9 +6,9 @@ export interface Login {
 
 const login = (login: Login) =>
   fetch(`${path}/api/v1/auth/login`, {
-    method: "POST",
+    method: 'POST',
 
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(login),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(login)
   });
 export default login;

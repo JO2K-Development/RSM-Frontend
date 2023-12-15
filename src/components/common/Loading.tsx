@@ -1,4 +1,4 @@
-import { Bars, ColorRing } from "react-loader-spinner";
+import { Bars, ColorRing } from 'react-loader-spinner';
 
 const Loading = () => {
   return (

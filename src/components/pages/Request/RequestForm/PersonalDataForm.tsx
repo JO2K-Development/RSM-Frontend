@@ -1,10 +1,10 @@
-import { useForm } from "react-hook-form";
-import FormInput from "../../../common/FormInput";
-import FormTitle from "./FormTitle";
-import FormButton from "./FormButton";
-import FormContainer from "../../../containers/FormContainer";
-import RequestType from "../../../../types/Request";
-import User from "../../../../types/User";
+import { useForm } from 'react-hook-form';
+import FormInput from '../../../common/FormInput';
+import FormTitle from './FormTitle';
+import FormButton from './FormButton';
+import FormContainer from '../../../containers/FormContainer';
+import RequestType from '../../../../types/Request';
+import User from '../../../../types/User';
 
 interface PersonalDataFormProps {
   addToForm: (data: any) => void;
@@ -13,15 +13,12 @@ interface PersonalDataFormProps {
 export interface PersonalDataForm {
   creator: User;
 }
-const PersonalDataForm: React.FC<PersonalDataFormProps> = ({
-  addToForm,
-  defaultValues,
-}) => {
+const PersonalDataForm: React.FC<PersonalDataFormProps> = ({ addToForm, defaultValues }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
+    getValues
   } = useForm();
   const onSubmit = (data: any) => {
     addToForm(data);
@@ -33,30 +30,34 @@ const PersonalDataForm: React.FC<PersonalDataFormProps> = ({
         type="firstName"
         placeholder="First name"
         defaultValue={defaultValues?.creator.firstName}
-        rest={register("creator.firstName", { required: true, maxLength: 80 })}
+        rest={register('creator.firstName', { required: true, maxLength: 80 })}
       />
       <FormInput
         type="lastName"
         placeholder="Last name"
         defaultValue={defaultValues?.creator.lastName}
-        rest={register("creator.lastName", { required: true, maxLength: 80 })}
+        rest={register('creator.lastName', { required: true, maxLength: 80 })}
       />
       <FormInput
         type="phoneNumber"
         placeholder="Phone number"
         defaultValue={defaultValues?.creator.phoneNumber}
-        rest={register("creator.phoneNumber", {
+        rest={register('creator.phoneNumber', {
           required: true,
-          maxLength: 80,
+          maxLength: 80
         })}
       />
       <FormInput
         type="email"
         placeholder="Email"
         defaultValue={defaultValues?.creator.email}
-        rest={register("creator.email", { required: true, maxLength: 80 })}
+        rest={register('creator.email', { required: true, maxLength: 80 })}
       />
-      <FormButton text="Next" onClick={() => {}} type="submit" />
+      <FormButton
+        text="Next"
+        onClick={() => {}}
+        type="submit"
+      />
     </FormContainer>
   );
 };

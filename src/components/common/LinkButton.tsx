@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 interface LinkButtonProps {
   goTo: string;
@@ -8,7 +8,10 @@ interface LinkButtonProps {
 
 const LinkButton: React.FC<LinkButtonProps> = ({ goTo, text, icon }) => {
   return (
-    <Link to={goTo} className="underline">
+    <Link
+      to={goTo}
+      className="underline"
+    >
       <div>
         <h1>{text}</h1>
         {icon}

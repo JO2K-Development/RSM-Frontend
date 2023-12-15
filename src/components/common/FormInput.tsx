@@ -6,13 +6,7 @@ interface FormInputProps {
   rest: any;
 }
 
-const FormInput: React.FC<FormInputProps> = ({
-  defaultValue,
-  type,
-  placeholder,
-  rest,
-  label,
-}) => {
+const FormInput: React.FC<FormInputProps> = ({ defaultValue, type, placeholder, rest, label }) => {
   return (
     <div className="w-full flex flex-col ">
       <div className="text-[0.7em] text-white">{label}</div>
