@@ -5,7 +5,7 @@ interface RequestCardProps {
 }
 
 const RequestCard: React.FC<RequestCardProps> = ({ request, handleButton }) => {
-  const { title, state, message, carMake, carModel, createdAt } = request;
+  const { title, state, message, carMake, carModel, creationDate: createdAt } = request;
 
   return (
     <div
