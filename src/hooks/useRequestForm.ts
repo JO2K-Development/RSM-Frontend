@@ -19,10 +19,12 @@ function useRequestForm(pagesLength: number): {
   const navigate = useNavigate();
 
   const addToForm = (arg: Object) => {
+    console.log(formState);
     setFormState({ ...formState, ...arg });
     if (page < pagesLength - 1) {
       setPage(page + 1);
     } else {
+      console.log(formState);
       requestSend({ ...formState, ...arg }).then((arg) => {
         navigate('/request/sent');
       });

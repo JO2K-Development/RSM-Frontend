@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import RequestType from '../../../../../types/Request';
 import { motion } from 'framer-motion';
 import Accordion from './Accordion';
