@@ -27,8 +27,9 @@ const LoginPage = () => {
   const onSubmit = (data: any) => {
     dispatch(loginProvider(data)).then((arg) => {
       reset();
-      if ((arg.payload as { token: string }).token)
-        navigate(`/provider/${(arg.payload as { token: string }).token}`);
+      if (arg.meta.requestStatus === 'fulfilled')
+        if ((arg.payload as { token: string }).token)
+          navigate(`/provider/${(arg.payload as { token: string }).token}`);
     });
   };
 
