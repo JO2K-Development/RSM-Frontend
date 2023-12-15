@@ -7,13 +7,15 @@ import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import { ProviderAuthState } from '../../../../../redux/slices/ProviderAuthSlice';
-import { Store } from '../../../../../redux/store';
-import { useSelector } from 'react-redux';
+import { AppDispatch, Store } from '../../../../../redux/store';
+import { useDispatch, useSelector } from 'react-redux';
 import updateRequest from '../../../../../api/updateRequestStatus';
+import { getRequests } from '../../../../../redux/slices/RequestsSlice';
 interface ActiveRequestViewProps {
   request: RequestType | null;
 }
-function formatDateToString(date: Date) {
+function formatDateToString(date: Date | null) {
+  if (!date) return null;
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Add 1 to month and pad with zero if needed
   const day = date.getDate().toString().padStart(2, '0'); // Pad with zero if needed
@@ -24,14 +26,22 @@ function formatDateToString(date: Date) {
 const ActiveRequestView: FC<ActiveRequestViewProps> = ({ request }) => {
   const [pickupDate, setPickupDate] = useState(new Date());
   const { token, email } = useSelector<Store, ProviderAuthState>((state) => state.providerAuth);
+  console.log(new Date(request?.pickupDate!), new Date(request?.deliveryDate!));
   const [deliveryDate, setDeliveryDate] = useState(new Date());
+  const dispatch = useDispatch<AppDispatch>();
   const updateReq = () => {
     updateRequest(token!, request?.id!, {
       requestStatus: request?.requestStatus,
       pickupDate: formatDateToString(pickupDate),
       deliveryDate: formatDateToString(deliveryDate)
-    }).then((response) => console.log(response));
+    }).then((arg) => dispatch(getRequests({ token: token!, email })));
   };
+
+  useEffect(() => {
+    console.log(request?.pickupDate, request?.deliveryDate);
+    if (request?.deliveryDate) setDeliveryDate(new Date(request?.deliveryDate));
+    if (request?.pickupDate) setPickupDate(new Date(request?.pickupDate));
+  }, [request]);
 
   // console.log(formatDateToString(pickupDate), formatDateToString(deliveryDate));
   return (
