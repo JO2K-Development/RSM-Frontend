@@ -34,7 +34,7 @@ const ProviderRequests = () => {
           assignedRequests.map((request, index) => (
             <RequestCard
               key={index}
-              request={request}
+              request={{ ...request, message: '' }}
               handleButton={handleFocus}
             />
           ))
