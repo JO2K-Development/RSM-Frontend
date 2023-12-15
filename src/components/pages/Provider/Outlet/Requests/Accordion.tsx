@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useRef, useState } from 'react';
+import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react';
 
 interface AccordionProps {
   title: string;
@@ -8,15 +8,22 @@ const Accordion: FC<PropsWithChildren<AccordionProps>> = ({ children, title }) =
   const [show, setShow] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-
+  const [maxHeight, setMaxHeight] = useState<number | null>(null);
+  useEffect(() => {
+    if (ref.current && contentRef.current) {
+      setMaxHeight(
+        !show
+          ? ref.current.clientHeight
+          : ref.current.clientHeight + contentRef.current.clientHeight
+      );
+    }
+  }, [show]);
   return (
     <div
-      className="overflow-hidden "
       style={{
-        maxHeight: show
-          ? `${ref.current?.clientHeight! + contentRef.current?.clientHeight!}px`
-          : `${ref.current?.clientHeight}px`,
-        transition: !show ? 'max-height 0.3s ' : 'max-height 0.3s ',
+        maxHeight: `${maxHeight}px`,
+        overflow: 'hidden',
+        transition: 'max-height 0.3s ',
         willChange: 'max-height'
       }}
     >
@@ -29,7 +36,7 @@ const Accordion: FC<PropsWithChildren<AccordionProps>> = ({ children, title }) =
       >
         {title}
       </h1>
-      <div ref={contentRef}>{children}</div>{' '}
+      <div ref={contentRef}>{children}</div>
     </div>
   );
 };

@@ -9,8 +9,6 @@ interface ActiveRequestViewProps {
 
 const ActiveRequestView: FC<ActiveRequestViewProps> = ({ request }) => {
   console.log(request);
-  const [show, setShow] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
   return (
     request && (
       <div className="flex flex-col  gap-[1rem]">
