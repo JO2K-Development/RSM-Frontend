@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import requestSend from '../api/requestSend';
-import notassignedRequests from '../api/notassignedRequests';
 import RequestType from '../types/Request';
 
 function useRequestForm(pagesLength: number): {
@@ -25,10 +24,8 @@ function useRequestForm(pagesLength: number): {
       setPage(page + 1);
     } else {
       requestSend({ ...formState, ...arg }).then((arg) => {
-        // allRequests().then(data=>data.json()).then(data=>console.log(data))
+        navigate('/request/sent');
       });
-      console.log({ ...formState, ...arg });
-      navigate('/home');
     }
   };
   const goBack = (arg: Object) => {

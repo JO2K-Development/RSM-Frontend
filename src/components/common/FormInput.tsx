@@ -4,14 +4,23 @@ interface FormInputProps {
   defaultValue?: string;
   label?: string;
   rest: any;
+  disabled?: boolean;
 }
 
-const FormInput: React.FC<FormInputProps> = ({ defaultValue, type, placeholder, rest, label }) => {
+const FormInput: React.FC<FormInputProps> = ({
+  defaultValue,
+  type,
+  placeholder,
+  rest,
+  label,
+  disabled
+}) => {
   return (
     <div className="w-full flex flex-col ">
       <div className="text-[0.7em] text-white">{label}</div>
       <input
         className="w-full py-1 pl-2 "
+        disabled={disabled}
         type={type}
         defaultValue={defaultValue}
         placeholder={placeholder}
