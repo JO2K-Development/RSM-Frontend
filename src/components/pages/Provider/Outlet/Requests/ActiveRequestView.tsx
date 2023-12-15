@@ -1,6 +1,5 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import RequestType from '../../../../../types/Request';
-import { motion } from 'framer-motion';
 import Accordion from './Accordion';
 import ProviderField from '../../Common/ProviderField';
 
@@ -9,6 +8,7 @@ interface ActiveRequestViewProps {
 }
 
 const ActiveRequestView: FC<ActiveRequestViewProps> = ({ request }) => {
+  console.log(request);
   return (
     request && (
       <div className="flex flex-col  gap-[1rem] ">
