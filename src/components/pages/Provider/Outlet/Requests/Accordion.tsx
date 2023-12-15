@@ -18,6 +18,9 @@ const Accordion: FC<PropsWithChildren<AccordionProps>> = ({ children, title }) =
       );
     }
   }, [show]);
+  useEffect(() => {
+    setShow(true);
+  }, []);
   return (
     <div
       style={{

@@ -1,6 +1,7 @@
 import { Bars } from 'react-loader-spinner';
 import Provider from '../../../../types/Provider';
 import PersonalSpace from './PersonalSpace';
+import Loading from '../../../common/Loading';
 
 interface ProviderHeaderProps {
   provider: Provider | null;
@@ -14,17 +15,7 @@ const ProviderHeader: React.FC<ProviderHeaderProps> = ({ provider, loading }) =>
         Have a great day, {provider?.firstName}!
       </h1>
       {loading ? (
-        <div className=" bg-black/40 h-full backdrop-blur-xl flex flex-col  justify-center items-center">
-          <Bars
-            height="80"
-            width="80"
-            color="#4fa94d"
-            ariaLabel="bars-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
-        </div>
+        <Loading />
       ) : (
         <PersonalSpace
           firstName={provider?.firstName}

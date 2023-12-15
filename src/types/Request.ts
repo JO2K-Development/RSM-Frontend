@@ -10,5 +10,6 @@ interface RequestType {
   carMake: string;
   carModel: string;
   createdAt?: string;
+  carYear?: number;
 }
 export default RequestType;
