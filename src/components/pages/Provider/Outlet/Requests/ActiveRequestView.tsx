@@ -6,6 +6,10 @@ import RequestStatus, { requestStatusMap } from '../../../../../types/RequestSta
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
+import { ProviderAuthState } from '../../../../../redux/slices/ProviderAuthSlice';
+import { Store } from '../../../../../redux/store';
+import { useSelector } from 'react-redux';
+import updateRequest from '../../../../../api/updateRequestStatus';
 interface ActiveRequestViewProps {
   request: RequestType | null;
 }
@@ -19,8 +23,17 @@ function formatDateToString(date: Date) {
 
 const ActiveRequestView: FC<ActiveRequestViewProps> = ({ request }) => {
   const [pickupDate, setPickupDate] = useState(new Date());
+  const { token, email } = useSelector<Store, ProviderAuthState>((state) => state.providerAuth);
   const [deliveryDate, setDeliveryDate] = useState(new Date());
-  console.log(formatDateToString(pickupDate), formatDateToString(deliveryDate));
+  const updateReq = () => {
+    updateRequest(token!, request?.id!, {
+      requestStatus: request?.requestStatus,
+      pickupDate: formatDateToString(pickupDate),
+      deliveryDate: formatDateToString(deliveryDate)
+    }).then((response) => console.log(response));
+  };
+
+  // console.log(formatDateToString(pickupDate), formatDateToString(deliveryDate));
   return (
     request && (
       <div className="flex flex-col  gap-[1rem] ">
@@ -81,6 +94,13 @@ const ActiveRequestView: FC<ActiveRequestViewProps> = ({ request }) => {
                 onChange={(date: Date) => setDeliveryDate(date)}
               />
             </div>{' '}
+            <button
+              onClick={() => {
+                updateReq();
+              }}
+            >
+              UPPPDATE
+            </button>
           </div>
         </Accordion>
       </div>
