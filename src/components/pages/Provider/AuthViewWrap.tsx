@@ -9,10 +9,12 @@ import { clearState as clearRequestSlice } from '../../../redux/slices/RequestsS
 const AuthViewWrap: FC<PropsWithChildren> = ({ children }) => {
   const { token, email } = useSelector<Store, ProviderAuthState>((state) => state.providerAuth);
   const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
     if (token == null) dispatch(clearProvInfoSlice());
     dispatch(clearRequestSlice());
   }, [token, dispatch]);
+
   return token == null ? <Navigate to="/provider/login" /> : <>{children}</>;
 };
 

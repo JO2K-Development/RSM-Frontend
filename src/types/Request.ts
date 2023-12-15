@@ -1,6 +1,6 @@
 import Client from './Client';
 import Provider from './Provider';
-export interface RequestType {
+interface RequestType {
   id?: string;
   title?: string;
   state?: string;

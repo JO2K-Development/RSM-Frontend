@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RequestType } from '../../types/Request';
+import RequestType from '../../types/Request';
 import notassignedRequests from '../../api/notassignedRequests';
 import assignedRequests from '../../api/assignedRequests';
 
