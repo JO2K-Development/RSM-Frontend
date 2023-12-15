@@ -3,7 +3,7 @@ import FormInput from '../../common/FormInput';
 import { ProviderAuthState, loginProvider } from '../../../redux/slices/ProviderAuthSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, Store } from '../../../redux/store';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import FormContainer from '../../containers/FormContainer';
 import FormButton from '../Request/RequestForm/FormButton';
 import FormTitle from '../Request/RequestForm/FormTitle';
@@ -23,9 +23,12 @@ const LoginPage = () => {
     reset
   } = useForm();
 
+  const navigate = useNavigate();
   const onSubmit = (data: any) => {
     dispatch(loginProvider(data)).then((arg) => {
       reset();
+      if ((arg.payload as { token: string }).token)
+        navigate(`/provider/${(arg.payload as { token: string }).token}`);
     });
   };
 

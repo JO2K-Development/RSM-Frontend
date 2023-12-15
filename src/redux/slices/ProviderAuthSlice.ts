@@ -21,7 +21,7 @@ interface Payload {
 }
 
 const initialState: ProviderAuthState = {
-  token: '',
+  token: null,
   loading: false,
   email: ''
 };
