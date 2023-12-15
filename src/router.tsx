@@ -3,8 +3,8 @@ import LandingPage from './components/pages/Home/LandingPage';
 import RequestPage from './components/pages/Request/RequestPage';
 import LoginPage from './components/pages/Provider/LoginPage';
 import ProviderMainPage from './components/pages/Provider/ProviderMainPage';
-import ProviderStats from './components/pages/Provider/Outlet/ProviderStats';
-import ProviderAccount from './components/pages/Provider/Outlet/ProviderAccout';
+import ProviderStats from './components/pages/Provider/Outlet/Stats/ProviderStats';
+import ProviderAccount from './components/pages/Provider/Outlet/Account/ProviderAccout';
 import ProviderRequests from './components/pages/Provider/Outlet/Requests/ProviderRequests';
 
 const router = createBrowserRouter([

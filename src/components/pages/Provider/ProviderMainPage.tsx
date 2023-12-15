@@ -3,15 +3,16 @@ import { ProviderAuthState, logout } from '../../../redux/slices/ProviderAuthSli
 import { AppDispatch, Store } from '../../../redux/store';
 import { Navigate, Outlet, useNavigate, useOutlet, useParams } from 'react-router-dom';
 import ProviderHeader from './Main/ProviderHeader';
-import RequestCard from './RequestCard';
-import ColumnProvider from './Main/ColumnProvider';
-import Navbar from './Navbar';
+import RequestCard from './Common/RequestCard';
+import ColumnProvider from './Common/ColumnProvider';
+import Navbar from './Common/Navbar';
 import { ProviderInfoState, getProviderInfo } from '../../../redux/slices/ProviderInfoSlice';
 import { useEffect, useState } from 'react';
 import { RequestsSliceState } from '../../../redux/slices/RequestsSlice';
 import pairRequest from '../../../api/pairRequest';
 import Loading from '../../common/Loading';
 import DoubleColumnWrapper from '../../containers/DoubleColumnWrapper';
+import AuthViewWrap from './AuthViewWrap';
 
 const ProviderMainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -47,52 +48,52 @@ const ProviderMainPage = () => {
   };
   let { id } = useParams();
   const outlet = useOutlet();
-  return token == null || id != token ? (
-    <Navigate to="/provider/login" />
-  ) : (
-    <div className="provider-page-bg  flex h-screen max-h-screen overflow-hidden  flex-col">
-      <Navbar />
-      <div className=" bg-neutral-900/60 lg:h-screen flex flex-grow flex-col ">
-        <Outlet />
-        {!outlet && (
-          <>
-            <ProviderHeader
-              provider={ProviderInfo}
-              loading={providerLoading}
-            />
-            <DoubleColumnWrapper>
-              <ColumnProvider title={'Your pending requests!'}>
-                {requestLoading ? (
-                  <Loading />
-                ) : (
-                  assignedRequests.map((request, index) => (
-                    <RequestCard
-                      key={index}
-                      request={request}
-                      handleButton={handleEdit}
-                    />
-                  ))
-                )}
-              </ColumnProvider>
+  return (
+    <AuthViewWrap>
+      <div className="provider-page-bg  flex h-screen max-h-screen overflow-hidden  flex-col">
+        <Navbar />
+        <div className=" bg-neutral-900/60 lg:h-screen flex flex-grow flex-col ">
+          <Outlet />
+          {!outlet && (
+            <>
+              <ProviderHeader
+                provider={ProviderInfo}
+                loading={providerLoading}
+              />
+              <DoubleColumnWrapper>
+                <ColumnProvider title={'Your pending requests!'}>
+                  {requestLoading ? (
+                    <Loading />
+                  ) : (
+                    assignedRequests.map((request, index) => (
+                      <RequestCard
+                        key={index}
+                        request={request}
+                        handleButton={handleEdit}
+                      />
+                    ))
+                  )}
+                </ColumnProvider>
 
-              <ColumnProvider title={'The  requests that need to be taken care of!'}>
-                {requestLoading ? (
-                  <Loading />
-                ) : (
-                  unassignedRequests.map((request, index) => (
-                    <RequestCard
-                      key={index}
-                      handleButton={handlePair}
-                      request={request}
-                    />
-                  ))
-                )}
-              </ColumnProvider>
-            </DoubleColumnWrapper>
-          </>
-        )}
+                <ColumnProvider title={'The  requests that need to be taken care of!'}>
+                  {requestLoading ? (
+                    <Loading />
+                  ) : (
+                    unassignedRequests.map((request, index) => (
+                      <RequestCard
+                        key={index}
+                        handleButton={handlePair}
+                        request={request}
+                      />
+                    ))
+                  )}
+                </ColumnProvider>
+              </DoubleColumnWrapper>
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </AuthViewWrap>
   );
 };
 

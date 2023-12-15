@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
-import FormInput from '../../../common/FormInput';
-import { ProviderInfoState } from '../../../../redux/slices/ProviderInfoSlice';
+import FormInput from '../../../../common/FormInput';
+import { ProviderInfoState } from '../../../../../redux/slices/ProviderInfoSlice';
 import { useSelector } from 'react-redux';
-import { Store } from '../../../../redux/store';
+import { Store } from '../../../../../redux/store';
 const ProviderAccount = () => {
   const {
     register,

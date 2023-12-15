@@ -1,4 +1,4 @@
-import RequestType from '../../../types/Request';
+import RequestType from '../../../../types/Request';
 interface RequestCardProps {
   request: RequestType;
   handleButton?: (arg: string) => void;

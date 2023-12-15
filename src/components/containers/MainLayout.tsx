@@ -1,6 +1,6 @@
-import { PropsWithChildren } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
-const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
+const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return <div className=" min-h-screen">{children}</div>;
 };
 

@@ -1,8 +1,8 @@
 import { IoHome } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ProviderAuthState, logout } from '../../../redux/slices/ProviderAuthSlice';
-import { Store } from '../../../redux/store';
+import { ProviderAuthState, logout } from '../../../../redux/slices/ProviderAuthSlice';
+import { Store } from '../../../../redux/store';
 
 interface NavbarProps {}
 
