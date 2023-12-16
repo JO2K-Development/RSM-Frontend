@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lumanosimo&family=Permanent+Marker&family=Raleway:wght@400;500;700&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela+Round&display=swap');
+body {
+  /* font-family: 'Varela Round', sans-serif; */
+  font-family: 'Urbanist', sans-serif;
+}
 .landing-page-bg {
   background-image: url('/public/img/landingPageBG.png');
   background-repeat: no-repeat;
@@ -24,7 +29,7 @@
   background-position-y: bottom;
 }
 .tilt:hover {
-  transform: perspective(20em) rotateX(6deg) rotateY(1deg);
+  transform: scale(0.95) perspective(20em) rotateX(6deg) rotateY(1deg);
   box-shadow:
     rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
     rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
