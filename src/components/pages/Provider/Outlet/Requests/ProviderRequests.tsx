@@ -33,9 +33,12 @@ const ProviderRequests = () => {
         ) : (
           assignedRequests.map((request, index) => (
             <RequestCard
+              handleCard={() => {
+                handleFocus(request.id!);
+              }}
+              active={request.id === activeRequest?.id}
               key={index}
               request={{ ...request, message: '' }}
-              handleButton={handleFocus}
             />
           ))
         )}

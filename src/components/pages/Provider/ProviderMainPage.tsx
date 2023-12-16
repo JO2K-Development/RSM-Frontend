@@ -69,6 +69,7 @@ const ProviderMainPage = () => {
                   ) : (
                     assignedRequests.map((request, index) => (
                       <RequestCard
+                        buttonText="show details"
                         key={index}
                         request={request}
                         handleButton={handleEdit}
@@ -80,12 +81,13 @@ const ProviderMainPage = () => {
                 <></>
               )}
 
-              <ColumnProvider title={'The  requests that need to be taken care of!'}>
+              <ColumnProvider title={'Requests that you might want!'}>
                 {requestLoading ? (
                   <Loading />
                 ) : (
                   unassignedRequests.map((request, index) => (
                     <RequestCard
+                      buttonText="Take it!"
                       key={index}
                       handleButton={handlePair}
                       request={request}

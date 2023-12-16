@@ -28,8 +28,36 @@ body {
   background-position-x: right;
   background-position-y: top;
 }
-.tilt:hover {
-  transform: scale(0.95) perspective(20em) rotateX(6deg) rotateY(1deg);
+.active {
+  background: rgb(254 249 195 / 0.8)
+    repeating-linear-gradient(
+      45deg,
+      rgb(254, 249, 195, 0.519),
+      rgba(254, 249, 195, 0.519) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+}
+.tilt1:hover {
+  transform: scale(0.95) perspective(200em) rotateX(5deg) rotateY(5deg);
+  box-shadow:
+    rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
+    rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
+}
+.tilt2:hover {
+  transform: scale(0.95) perspective(200em) rotateX(5deg) rotateY(-5deg);
+  box-shadow:
+    rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
+    rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
+}
+.tilt3:hover {
+  transform: scale(0.95) perspective(200em) rotateX(-5deg) rotateY(5deg);
+  box-shadow:
+    rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
+    rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
+}
+.tilt4:hover {
+  transform: scale(0.95) perspective(200em) rotateX(-5deg) rotateY(-5deg);
   box-shadow:
     rgba(22, 31, 39, 0.42) 0px 60px 123px -25px,
     rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
