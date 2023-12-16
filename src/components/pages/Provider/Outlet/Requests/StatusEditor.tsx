@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import RequestType from '../../../../../types/Request';
-import useStatusDate from '../../../../../hooks/useStatusDate';
+import useCalendar from '../../../../../hooks/useCalendar';
 import updateRequest from '../../../../../api/updateRequestStatus';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, Store } from '../../../../../redux/store';
@@ -30,7 +30,7 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
       deliveryDate: formatDateToString(deliveryDate)
     }).then((arg) => dispatch(getRequests({ token: token!, email })));
   };
-  const { pickupDate, deliveryDate, setDeliveryDate, setPickupDate } = useStatusDate(request);
+  const { pickupDate, deliveryDate, setDeliveryDate, setPickupDate } = useCalendar(request);
   return (
     request && (
       <div className=" flex flex-col justify-center mx-auto gap-[0.5rem] text-center w-[80%]">

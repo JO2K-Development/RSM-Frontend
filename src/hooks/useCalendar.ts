@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import RequestType from '../types/Request';
 
-function useStatusDate(request: RequestType | null) {
+function useCalendar(request: RequestType | null) {
   const [pickupDate, setPickupDate] = useState<Date | null>(null);
   const [deliveryDate, setDeliveryDate] = useState<Date | null>(null);
   useEffect(() => {
@@ -17,4 +17,4 @@ function useStatusDate(request: RequestType | null) {
     setDeliveryDate: setDeliveryDate
   };
 }
-export default useStatusDate;
+export default useCalendar;
