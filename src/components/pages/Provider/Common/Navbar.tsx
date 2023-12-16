@@ -15,7 +15,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex fixed mt-[0.2rem] bottom-0 text-white z-10  rounded-lg   text-[2rem]  gap-[0.8rem]  left-[50vw] translate-x-[-50%] group  p-[1.2rem]">
+    <div className="flex fixed mt-[0.2rem] bottom-0 text-white z-[999]  rounded-lg   text-[2rem]  gap-[0.8rem]  left-[50vw] translate-x-[-50%] group  p-[1.2rem]">
       <div className=" opacity/20 group-hover:hidden absolute right-1/2 translate-x-1/2 h-full  w-full top-0 flex flex-col justify-center items-center">
         <IoIosArrowUp className="  text-[20rem] text-slate-400 stroke-[5] stroke-white  " />
       </div>

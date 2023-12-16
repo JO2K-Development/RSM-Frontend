@@ -31,7 +31,7 @@ const RequestCard: React.FC<RequestCardProps> = ({
       }}
       className={`${
         active && 'active'
-      }   tilt${random} duration-300  bg-yellow-100/80  text-black relative  rounded-lg p-[.8rem]   mx-[0.5rem]   pb-[1rem] flex flex-col text-[1.5rem]`}
+      }   tilt${random} duration-300 bg-yellow-100/80  text-black relative  rounded-lg p-[.8rem]   mx-[0.5rem]   pb-[1rem] flex flex-col text-[1.5rem]`}
     >
       <div className="flex duration-300   justify-end mr-[1rem] items-center">
         {isbutton ? (

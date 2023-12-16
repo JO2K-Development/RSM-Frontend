@@ -14,6 +14,7 @@ import Loading from '../../common/Loading';
 import DoubleColumnWrapper from '../../containers/DoubleColumnWrapper';
 import AuthViewWrap from './AuthViewWrap';
 import { useWindowSize } from 'usehooks-ts';
+import ProviderModal from './Common/ProviderModal';
 
 const ProviderMainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -45,11 +46,9 @@ const ProviderMainPage = () => {
     });
   };
 
-  const handleLogout = () => {
-    dispatch(logout());
-  };
   let { id } = useParams();
   const outlet = useOutlet();
+
   return (
     <AuthViewWrap>
       <Navbar />

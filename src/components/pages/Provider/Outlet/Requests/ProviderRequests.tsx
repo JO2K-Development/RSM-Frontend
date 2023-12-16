@@ -9,6 +9,8 @@ import ActiveRequestView from './ActiveRequestView';
 import { useLocation } from 'react-router-dom';
 import Loading from '../../../../common/Loading';
 import DoubleColumnWrapper from '../../../../containers/DoubleColumnWrapper';
+import { useWindowSize } from 'usehooks-ts';
+import { useProviderModal } from '../../../../../hooks/useProviderModal';
 
 const ProviderRequests = () => {
   const { assignedRequests, loading: requestLoading } = useSelector<Store, RequestsSliceState>(
@@ -16,8 +18,10 @@ const ProviderRequests = () => {
   );
   const [activeRequest, setActiveRequest] = useState<RequestType | null>(null);
   const handleFocus = (id: string) => {
+    if (width < 1024) setIsModal(true);
     setActiveRequest(assignedRequests.find((request) => request.id === id)!);
   };
+
   const { state } = useLocation();
   useEffect(() => {
     if (state) {
@@ -25,6 +29,24 @@ const ProviderRequests = () => {
     }
   }, [state, assignedRequests]);
 
+  const { width, height } = useWindowSize();
+  useEffect(() => {
+    if (width < 1024 && !isModal) {
+      setActiveRequest(null);
+    }
+  }, [width]);
+  const { isModal, setIsModal, modal } = useProviderModal(
+    <div
+      onClick={() => {
+        setIsModal(false);
+      }}
+    >
+      <ColumnProvider title="Edition:">
+        <ActiveRequestView request={activeRequest} />
+      </ColumnProvider>
+    </div>
+  );
+  console.log('mod', isModal);
   return (
     <DoubleColumnWrapper>
       <ColumnProvider title={'Your pending requests!'}>
@@ -44,9 +66,13 @@ const ProviderRequests = () => {
         )}
       </ColumnProvider>
 
-      <ColumnProvider title="Edition:">
-        <ActiveRequestView request={activeRequest} />
-      </ColumnProvider>
+      {width >= 1024 ? (
+        <ColumnProvider title="Edition:">
+          <ActiveRequestView request={activeRequest} />
+        </ColumnProvider>
+      ) : (
+        modal
+      )}
     </DoubleColumnWrapper>
   );
 };
