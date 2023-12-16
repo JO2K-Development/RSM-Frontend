@@ -9,8 +9,8 @@ interface ProviderHeaderProps {
 
 const ProviderHeader: React.FC<ProviderHeaderProps> = ({ provider, loading }) => {
   return (
-    <div className="text-white   xl:grid-cols-2  w-full  xl:grid  lg:flex  flex-col gap-[0.5rem] relative z-[5]  p-[0.5rem]  rounded-md xl:p-[2rem] ">
-      <h1 className="text-center my-auto font-extrabold md:text-[3rem] text-[2rem]  ">
+    <div className="text-white  max-h-full   xl:grid-cols-2  w-full  xl:grid  lg:flex  flex-col gap-[0.5rem] relative z-[5]  p-[0.5rem]  rounded-md xl:p-[2rem] ">
+      <h1 className="text-center my-auto font-extrabold md:text-[3rem] text-[2rem]   ">
         Have a great day{provider?.firstName && ','} {provider?.firstName}!
       </h1>
       {loading ? (

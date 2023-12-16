@@ -22,11 +22,11 @@ body {
   background-position-y: bottom;
 }
 .provider-page-bg {
-  background-image: url('/public/img/ProviderBG.png');
+  background-image: url('/public/img/Car_repair_shop.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-x: left;
-  background-position-y: bottom;
+  background-position-x: right;
+  background-position-y: top;
 }
 .tilt:hover {
   transform: scale(0.95) perspective(20em) rotateX(6deg) rotateY(1deg);
