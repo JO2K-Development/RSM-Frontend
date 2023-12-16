@@ -2,6 +2,7 @@ import Client from './Client';
 import Provider from './Provider';
 import RequestStatus from './RequestStatusEnum';
 interface RequestType {
+  diagnosis?: string;
   id?: string;
   title?: string;
   state?: string;

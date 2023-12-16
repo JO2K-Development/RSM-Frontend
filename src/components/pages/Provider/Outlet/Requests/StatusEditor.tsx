@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import RequestType from '../../../../../types/Request';
 import useCalendar from '../../../../../hooks/useCalendar';
 import updateRequest from '../../../../../api/updateRequestStatus';
@@ -18,18 +18,24 @@ interface StatusEditorProps {
 
 const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
   const { token, email } = useSelector<Store, ProviderAuthState>((state) => state.providerAuth);
+  console.log(request);
   const dispatch = useDispatch<AppDispatch>();
   const updateReq = (nextStat: boolean) => {
     const nextReq = nextStat ? getNextStatus(request?.requestStatus) : request?.requestStatus;
-    console.log(nextReq);
     updateRequest(token!, request?.id!, {
       requestStatus: nextReq,
       pickupDate: formatDateToString(pickupDate),
-      deliveryDate: formatDateToString(deliveryDate)
+      deliveryDate: formatDateToString(deliveryDate),
+      diagnosis: text
     }).then((arg) => dispatch(getRequests({ token: token!, email })));
   };
   const { pickupDate, deliveryDate, setDeliveryDate, setPickupDate } = useCalendar(request);
   const [edit, setEdit] = useState(false);
+  const [text, setText] = useState('');
+  console.log(text);
+  useEffect(() => {
+    request?.diagnosis ? setText(request?.diagnosis) : setText('');
+  }, [request]);
   return (
     request && (
       <>
@@ -100,15 +106,26 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
               current={pickupDate}
               onChange={(date: Date) => setPickupDate(date)}
             />
-            diagnosis field
-            <br />
+            <textarea
+              className="text-black  w-full"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+            <Button
+              color="green"
+              onClick={() => {
+                updateReq(false);
+              }}
+            >
+              send diagnosis
+            </Button>
             <Button
               color="red"
               onClick={() => {
                 updateReq(true);
               }}
             >
-              Place diagnosis
+              confirm diagnosis and set the estimate date for delivery
             </Button>
           </div>
         ) : request.requestStatus == RequestStatusEnum.IN_REPAIR ? (
@@ -120,8 +137,13 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
               current={pickupDate}
               onChange={(date: Date) => setPickupDate(date)}
             />
+            <textarea
+              disabled
+              className="text-black  w-full"
+              defaultValue={text}
+              onChange={(e) => setText(e.target.value)}
+            />
             <CalendarPick
-              disabled={!edit}
               title={'delivery date'}
               current={deliveryDate}
               onChange={(date: Date) => setDeliveryDate(date)}
@@ -129,11 +151,10 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
             <Button
               color="green"
               onClick={() => {
-                edit && updateReq(false);
-                setEdit(!edit);
+                updateReq(false);
               }}
             >
-              {edit ? 'save' : 'edit the date'}
+              save
             </Button>
             <Button
               color="red"
