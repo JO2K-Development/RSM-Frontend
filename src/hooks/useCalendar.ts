@@ -9,7 +9,7 @@ function useCalendar(request: RequestType | null) {
     else setDeliveryDate(null);
     if (request?.pickupDate) setPickupDate(new Date(request?.pickupDate));
     else setPickupDate(null);
-  }, [request]);
+  }, [request?.deliveryDate, request?.pickupDate, request]);
   return {
     pickupDate: pickupDate,
     setPickupDate: setPickupDate,

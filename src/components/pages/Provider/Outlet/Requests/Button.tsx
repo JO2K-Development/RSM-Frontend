@@ -9,6 +9,7 @@ interface ButtonProps {
 const Button: FC<PropsWithChildren<ButtonProps>> = ({ children, color, onClick, disabled }) => {
   return (
     <button
+      className={`${!disabled && 'font-bold'}`}
       style={{ backgroundColor: color }}
       disabled={disabled}
       onClick={() => {

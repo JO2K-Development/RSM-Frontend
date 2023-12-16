@@ -5,13 +5,16 @@ interface CalendarPickProps {
   current: Date | null;
   onChange(date: Date): void;
   title: string;
+  disabled?: boolean;
 }
 
-const CalendarPick: FC<CalendarPickProps> = ({ title, onChange, current }) => {
+const CalendarPick: FC<CalendarPickProps> = ({ title, onChange, current, disabled }) => {
   return (
     <div className="flex text-black ">
       <div className="text-white mr-auto">{title}</div>
       <DatePicker
+        disabled={disabled}
+        placeholderText={current?.toLocaleDateString()}
         dateFormat="dd-MM-yyyy"
         selected={current}
         onChange={onChange}

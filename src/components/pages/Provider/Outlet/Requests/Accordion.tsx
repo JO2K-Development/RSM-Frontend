@@ -17,7 +17,7 @@ const Accordion: FC<PropsWithChildren<AccordionProps>> = ({ children, title }) =
           : ref.current.clientHeight + contentRef.current.clientHeight
       );
     }
-  }, [show]);
+  }, [show, children]);
   useEffect(() => {
     setShow(true);
   }, []);
