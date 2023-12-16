@@ -5,7 +5,7 @@ interface DoubleColumnWrapperProps {
 }
 
 const DoubleColumnWrapper: FC<DoubleColumnWrapperProps> = ({ children }) => {
-  return <div className="h-full    grid grid-cols-2 flex-grow`">{children}</div>;
+  return <div className="bg-red- min-h-0 grid grid-cols-2 flex-grow">{children}</div>;
 };
 
 export default DoubleColumnWrapper;

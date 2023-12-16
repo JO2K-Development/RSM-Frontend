@@ -53,7 +53,7 @@ const ProviderMainPage = () => {
   return (
     <AuthViewWrap>
       <Navbar />
-      <div className="h-screen overflow-hidden bg-neutral-900/60 provider-page-bg  flex flex-grow flex-col ">
+      <div className="h-screen pb-[2rem] bg-neutral-900/60 provider-page-bg  flex  flex-col ">
         <Outlet />
         {!outlet && (
           <>
