@@ -7,9 +7,8 @@ import { AppDispatch, Store } from '../../../../../redux/store';
 import { ProviderAuthState } from '../../../../../redux/slices/ProviderAuthSlice';
 import { getRequests } from '../../../../../redux/slices/RequestsSlice';
 import { requestStatusMap } from '../../../../../types/RequestStatusEnum';
-import DatePicker from 'react-datepicker';
+import CalendarPick from './CalendarPick';
 
-import 'react-datepicker/dist/react-datepicker.css';
 interface StatusEditorProps {
   request: RequestType | null;
 }
@@ -34,21 +33,19 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
   const { pickupDate, deliveryDate, setDeliveryDate, setPickupDate } = useStatusDate(request);
   return (
     request && (
-      <div className=" flex flex-col">
-        {request.requestStatus && requestStatusMap[request.requestStatus]}
-        <div className="text-black">
-          <DatePicker
-            dateFormat="dd-MM-yyyy"
-            selected={pickupDate}
-            onChange={(date: Date) => setPickupDate(date)}
-          />
-          <div />
-          <DatePicker
-            dateFormat="dd-MM-yyyy"
-            selected={deliveryDate}
-            onChange={(date: Date) => setDeliveryDate(date)}
-          />
-        </div>{' '}
+      <div className=" flex flex-col justify-center mx-auto gap-[0.5rem] text-center w-[80%]">
+        <div>{request.requestStatus && requestStatusMap[request.requestStatus]}</div>
+
+        <CalendarPick
+          title={'Delivery date'}
+          current={deliveryDate}
+          onChange={(date: Date) => setDeliveryDate(date)}
+        />
+        <CalendarPick
+          title={'Pickup date'}
+          current={pickupDate}
+          onChange={(date: Date) => setPickupDate(date)}
+        />
         <button
           onClick={() => {
             updateReq();
