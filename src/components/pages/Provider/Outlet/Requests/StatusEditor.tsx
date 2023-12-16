@@ -8,18 +8,13 @@ import { ProviderAuthState } from '../../../../../redux/slices/ProviderAuthSlice
 import { getRequests } from '../../../../../redux/slices/RequestsSlice';
 import RequestStatusEnum, { requestStatusMap } from '../../../../../types/RequestStatusEnum';
 import CalendarPick from './CalendarPick';
+import { formatDateToString } from '../../../../../utils/dateFormatters';
+import { getNextStatus } from '../../../../../utils/statusHandlers';
 
 interface StatusEditorProps {
   request: RequestType | null;
 }
-function formatDateToString(date: Date | null) {
-  if (!date) return null;
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Add 1 to month and pad with zero if needed
-  const day = date.getDate().toString().padStart(2, '0'); // Pad with zero if needed
 
-  return `${year}-${month}-${day}`;
-}
 const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
   const { token, email } = useSelector<Store, ProviderAuthState>((state) => state.providerAuth);
   const dispatch = useDispatch<AppDispatch>();
@@ -31,26 +26,6 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
     }).then((arg) => dispatch(getRequests({ token: token!, email })));
   };
   const { pickupDate, deliveryDate, setDeliveryDate, setPickupDate } = useCalendar(request);
-
-  function getNextStatus(currentStatus: RequestStatusEnum | undefined): RequestStatusEnum | null {
-    if (!currentStatus) return null;
-    const statusOrder: RequestStatusEnum[] = [
-      RequestStatusEnum.WAITING_FOR_AN_EMAIL_VERIFICATION,
-      RequestStatusEnum.WAITING_FOR_A_MECHANIC_ASSIGNMENT,
-      RequestStatusEnum.WAITING_FOR_A_CAR,
-      RequestStatusEnum.CAR_DIAGNOSIS,
-      RequestStatusEnum.IN_REPAIR,
-      RequestStatusEnum.READY_TO_GO,
-      RequestStatusEnum.DONE
-    ];
-
-    const currentIndex = statusOrder.indexOf(currentStatus);
-    if (currentIndex === -1 || currentIndex === statusOrder.length - 1) {
-      return null; // Return null if current status is not found or it is the last status
-    }
-
-    return statusOrder[currentIndex + 1];
-  }
 
   return (
     request &&

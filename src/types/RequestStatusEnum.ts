@@ -7,6 +7,7 @@ enum RequestStatus {
   READY_TO_GO = 'READY_TO_GO',
   DONE = 'DONE'
 }
+export const getStatusText = (status?: RequestStatus) => status && requestStatusMap[status];
 
 export const requestStatusMap: Record<RequestStatus, string> = {
   [RequestStatus.WAITING_FOR_AN_EMAIL_VERIFICATION]: 'Waiting for an email verification',

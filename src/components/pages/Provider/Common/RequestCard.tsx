@@ -1,26 +1,18 @@
 import RequestType from '../../../../types/Request';
-import { requestStatusMap } from '../../../../types/RequestStatusEnum';
+import { getStatusText, requestStatusMap } from '../../../../types/RequestStatusEnum';
 interface RequestCardProps {
   request: RequestType;
   handleButton?: (arg: string) => void;
 }
 
 const RequestCard: React.FC<RequestCardProps> = ({ request, handleButton }) => {
-  const {
-    title,
-    state,
-    message,
-    carMake,
-    carModel,
-    creationDate: createdAt,
-    requestStatus
-  } = request;
+  const { title, message, carMake, carModel, creationDate: createdAt, requestStatus } = request;
 
   return (
     <div
-      className={` bg-yellow-100/80 text-black relative  rounded-lg p-[.8rem]   mx-[0.5rem]   pb-[1rem] flex flex-col text-[1.5rem]`}
+      className={`tilt duration-300  bg-yellow-100/80 text-black relative  rounded-lg p-[.8rem]   mx-[0.5rem]   pb-[1rem] flex flex-col text-[1.5rem]`}
     >
-      <div className="flex duration-300 font-extrabold  justify-end mr-[1rem] items-center">
+      <div className="flex duration-300   justify-end mr-[1rem] items-center">
         <div
           onClick={() => {
             if (handleButton) handleButton(request.id || '');
@@ -31,12 +23,14 @@ const RequestCard: React.FC<RequestCardProps> = ({ request, handleButton }) => {
         </div>
 
         <div className=" w-[50%] flex ">
-          <div className="ml-auto  flex flex-col   ">
+          <div className="ml-auto  flex flex-col items-end  ">
             <div>
               {carMake} {carModel}
               <span className="ml-[2rem]">{createdAt}</span>
             </div>
-            <div className="italic text-[0.5em] text-end ">{requestStatusMap[requestStatus!]}</div>
+            <div className="font-extrabold italic text-[0.6em] text-end ">
+              {getStatusText(requestStatus)}
+            </div>
           </div>
         </div>
       </div>
