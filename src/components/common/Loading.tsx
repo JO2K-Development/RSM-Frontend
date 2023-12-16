@@ -2,7 +2,7 @@ import { Bars, ColorRing } from 'react-loader-spinner';
 
 const Loading = () => {
   return (
-    <div className="bg-black/40 h-full flex flex-col justify-center items-center ">
+    <div className=" h-full flex flex-col justify-center items-center ">
       <Bars
         height="80"
         width="80"
