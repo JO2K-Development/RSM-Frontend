@@ -31,7 +31,7 @@ const Accordion: FC<PropsWithChildren<AccordionProps>> = ({ children, title }) =
       }}
     >
       <h1
-        className="cursor-pointer bg-neutral-500/20 p-[0.5rem] text-center text-lg font-[1000]"
+        className="cursor-pointer bg-neutral-500/20 p-[0.5rem] text-center text-lg font-[1000] italic"
         onClick={() => {
           setShow(!show);
         }}

@@ -6,11 +6,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, Store } from '../../../../../redux/store';
 import { ProviderAuthState } from '../../../../../redux/slices/ProviderAuthSlice';
 import { getRequests } from '../../../../../redux/slices/RequestsSlice';
-import RequestStatusEnum, { requestStatusMap } from '../../../../../types/RequestStatusEnum';
+import RequestStatusEnum, {
+  getStatusText,
+  requestStatusMap
+} from '../../../../../types/RequestStatusEnum';
 import CalendarPick from './CalendarPick';
 import { formatDateToString } from '../../../../../utils/dateFormatters';
 import { getNextStatus } from '../../../../../utils/statusHandlers';
 import Button from './Button';
+import StatusEditContainer from './StatusEditContainer';
 
 interface StatusEditorProps {
   request: RequestType | null;
@@ -21,6 +25,7 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
 
   const dispatch = useDispatch<AppDispatch>();
   const updateReq = (nextStat: boolean) => {
+    console.log(text, 'tutaj');
     const nextReq = nextStat ? getNextStatus(request?.requestStatus) : request?.requestStatus;
     updateRequest(token!, request?.id!, {
       requestStatus: nextReq,
@@ -29,155 +34,166 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
       diagnosis: text
     }).then((arg) => dispatch(getRequests({ token: token!, email })));
   };
-
+  const active = 'rgb(239 68 68 / 0.4)';
+  const second = 'rgb(239 208 68 / 0.4)';
   const { pickupDate, deliveryDate, setDeliveryDate, setPickupDate } = useCalendar(request);
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState('');
-  console.log(text);
+
   useEffect(() => {
     request?.diagnosis ? setText(request?.diagnosis) : setText('');
   }, [request]);
   return (
     request && (
-      <div>
-        {request.requestStatus}
-        {request.requestStatus == RequestStatusEnum.WAITING_FOR_AN_EMAIL_VERIFICATION ? (
-          <div>
-            {RequestStatusEnum.WAITING_FOR_AN_EMAIL_VERIFICATION}
-
-            <Button
-              color="red"
-              disabled={false}
-              onClick={() => {
-                updateReq(true);
-              }}
-            >
-              go next
-            </Button>
-          </div>
-        ) : request.requestStatus == RequestStatusEnum.WAITING_FOR_DATE_ASSIGNMENT ? (
-          <div>
+      <div className="flex flex-col gap-[0.5rem] text-center  text-base">
+        <div>{getStatusText(request.requestStatus)}</div>
+        {request.requestStatus == RequestStatusEnum.WAITING_FOR_DATE_ASSIGNMENT ? (
+          <StatusEditContainer
+            buttons={
+              <Button
+                color={active}
+                disabled={pickupDate == null}
+                onClick={() => {
+                  updateReq(true);
+                }}
+              >
+                go next
+              </Button>
+            }
+          >
             <CalendarPick
-              title={'Pickup date'}
+              title={'Pickup date:'}
               current={pickupDate}
               onChange={(date: Date) => setPickupDate(date)}
             />
-            <Button
-              color="red"
-              disabled={pickupDate == null}
-              onClick={() => {
-                updateReq(true);
-              }}
-            >
-              go next
-            </Button>
-          </div>
+          </StatusEditContainer>
         ) : request.requestStatus == RequestStatusEnum.WAITING_FOR_A_CAR ? (
-          <div>
+          <StatusEditContainer
+            buttons={
+              <>
+                <Button
+                  color={second}
+                  onClick={() => {
+                    edit && updateReq(false);
+                    setEdit(!edit);
+                  }}
+                >
+                  {edit ? 'save' : 'edit the date'}
+                </Button>
+                <Button
+                  color={active}
+                  disabled={pickupDate == null || edit}
+                  onClick={() => {
+                    updateReq(true);
+                  }}
+                >
+                  Go Further
+                </Button>
+              </>
+            }
+          >
             <CalendarPick
               disabled={!edit}
               title={'Pickup date'}
               current={pickupDate}
               onChange={(date: Date) => setPickupDate(date)}
             />
-            <Button
-              color="green"
-              onClick={() => {
-                edit && updateReq(false);
-                setEdit(!edit);
-              }}
-            >
-              {edit ? 'save' : 'edit the date'}
-            </Button>
-            <Button
-              color="red"
-              disabled={pickupDate == null || edit}
-              onClick={() => {
-                updateReq(true);
-              }}
-            >
-              CAR DELIVERED
-            </Button>
-          </div>
+          </StatusEditContainer>
         ) : request.requestStatus == RequestStatusEnum.CAR_DIAGNOSIS ? (
-          <div>
+          <StatusEditContainer
+            second={
+              <textarea
+                className="w-full  min-w-full  text-black"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+              />
+            }
+            buttons={
+              <>
+                <Button
+                  color={second}
+                  onClick={() => {
+                    updateReq(false);
+                  }}
+                >
+                  send diagnosis
+                </Button>
+                <Button
+                  color={active}
+                  onClick={() => {
+                    updateReq(true);
+                  }}
+                >
+                  Go further{' '}
+                </Button>
+              </>
+            }
+          >
             <CalendarPick
               disabled={true}
               title={'Pickup date'}
               current={pickupDate}
               onChange={(date: Date) => setPickupDate(date)}
             />
-            <textarea
-              className="w-full  text-black"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
-            <Button
-              color="green"
-              onClick={() => {
-                updateReq(false);
-              }}
-            >
-              send diagnosis
-            </Button>
-            <Button
-              color="red"
-              onClick={() => {
-                updateReq(true);
-              }}
-            >
-              confirm diagnosis and set the estimate date for delivery
-            </Button>
-          </div>
+          </StatusEditContainer>
         ) : request.requestStatus == RequestStatusEnum.IN_REPAIR ? (
-          <div>
-            {' '}
+          <StatusEditContainer
+            buttons={
+              <>
+                {' '}
+                <Button
+                  color={second}
+                  onClick={() => {
+                    updateReq(false);
+                  }}
+                >
+                  save
+                </Button>
+                <Button
+                  color={active}
+                  disabled={deliveryDate == null || edit}
+                  onClick={() => {
+                    updateReq(true);
+                  }}
+                >
+                  Ready to go
+                </Button>
+              </>
+            }
+            second={
+              <textarea
+                disabled
+                className="w-full  text-black"
+                defaultValue={text}
+                onChange={(e) => setText(e.target.value)}
+              />
+            }
+          >
             <CalendarPick
               disabled={true}
               title={'Pickup date'}
               current={pickupDate}
               onChange={(date: Date) => setPickupDate(date)}
-            />
-            <textarea
-              disabled
-              className="w-full  text-black"
-              defaultValue={text}
-              onChange={(e) => setText(e.target.value)}
             />
             <CalendarPick
               title={'delivery date'}
               current={deliveryDate}
               onChange={(date: Date) => setDeliveryDate(date)}
             />
-            <Button
-              color="green"
-              onClick={() => {
-                updateReq(false);
-              }}
-            >
-              save
-            </Button>
-            <Button
-              color="red"
-              disabled={deliveryDate == null || edit}
-              onClick={() => {
-                updateReq(true);
-              }}
-            >
-              Ready to go
-            </Button>
-          </div>
+          </StatusEditContainer>
         ) : request.requestStatus == RequestStatusEnum.READY_TO_GO ? (
-          <div>
-            <Button
-              color="red"
-              onClick={() => {
-                updateReq(true);
-              }}
-            >
-              Done{' '}
-            </Button>
-          </div>
+          <StatusEditContainer
+            buttons={
+              <Button
+                color={active}
+                onClick={() => {
+                  updateReq(true);
+                }}
+              >
+                Done{' '}
+              </Button>
+            }
+          ></StatusEditContainer>
         ) : (
           <></>
         )}
