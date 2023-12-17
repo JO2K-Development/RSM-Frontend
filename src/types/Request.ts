@@ -16,5 +16,6 @@ interface RequestType {
   requestStatus?: RequestStatus;
   pickupDate?: Date | null;
   deliveryDate?: Date | null;
+  licencePlateNumber?: string;
 }
 export default RequestType;

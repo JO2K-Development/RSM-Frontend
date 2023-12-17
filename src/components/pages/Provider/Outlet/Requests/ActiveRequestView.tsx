@@ -43,12 +43,12 @@ const ActiveRequestView: FC<ActiveRequestViewProps> = ({ request }) => {
               value={request.carYear?.toString()}
             />
             <ProviderField
-              text={'Car make:'}
-              value={request.carMake}
-            />
-            <ProviderField
               text={'Car model:'}
               value={request.carModel}
+            />
+            <ProviderField
+              text={'License  plate:'}
+              value={request.licencePlateNumber}
             />
           </div>
           <div className="">{request.message}</div>

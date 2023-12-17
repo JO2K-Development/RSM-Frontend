@@ -13,7 +13,8 @@ function useRequestForm(pagesLength: number): {
     creator: { firstName: '', lastName: '', phoneNumber: '', email: '' },
     carMake: '',
     carModel: '',
-    message: ''
+    message: '',
+    licencePlateNumber: ''
   });
   const [page, setPage] = useState(0);
   const navigate = useNavigate();

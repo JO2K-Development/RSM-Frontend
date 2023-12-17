@@ -10,6 +10,7 @@ export interface RepairFormData {
   carModel: string;
   message: string;
   carYear?: number;
+  licencePlateNumber?: string;
 }
 interface Props {
   addToForm: (data: any) => void;
@@ -24,6 +25,7 @@ const RepairDataForm: React.FC<Props> = ({ addToForm, defaultValues, goBack }) =
     getValues
   } = useForm();
   const onSubmit = (data: any) => {
+    console.log(data);
     addToForm(data);
   };
 
@@ -47,6 +49,12 @@ const RepairDataForm: React.FC<Props> = ({ addToForm, defaultValues, goBack }) =
         placeholder="Car year"
         defaultValue={defaultValues?.carYear?.toString()}
         rest={register('carYear', { required: true, maxLength: 80, pattern: /^[0-9]*$/ })}
+      />
+      <FormInput
+        type="licensePlateNumber"
+        placeholder="Licence Plate Number"
+        defaultValue={defaultValues?.licencePlateNumber?.toString()}
+        rest={register('licencePlateNumber', { required: true, maxLength: 80 })}
       />
       <textarea
         {...register('message')}
