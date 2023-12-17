@@ -4,7 +4,7 @@ interface ProviderButtonProps {
 
 const ProviderButton: React.FC<ProviderButtonProps> = ({ onClick }) => {
   return (
-    <div className="flex justify-center text-gray-500">
+    <div className="flex justify-center text-sm text-gray-500">
       <p>
         {' '}
         Are you a provider?{' '}

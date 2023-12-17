@@ -6,7 +6,7 @@ interface FormContainerProps {
 const FormContainer: React.FC<FormContainerProps> = ({ children, handleSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <div className="relative flex flex-col items-stretch gap-[1rem]">{children}</div>
+      <div className="relative flex flex-col items-stretch gap-[1rem] text-base">{children}</div>
     </form>
   );
 };
