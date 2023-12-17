@@ -17,28 +17,21 @@ const ProviderRequests = () => {
     (state) => state.requests
   );
   const [activeRequest, setActiveRequest] = useState<RequestType | null>(null);
-  const handleFocus = (id: string) => {
+  const handleFocus = (id: string | null) => {
+    if (id == null) {
+      setActiveRequest(null);
+      setIsModal(false);
+      return;
+    }
+
     if (width < 1024) setIsModal(true);
     setActiveRequest(assignedRequests.find((request) => request.id === id)!);
   };
-
-  const { state } = useLocation();
-  useEffect(() => {
-    if (state) {
-      setActiveRequest(assignedRequests.find((request) => request.id === state.activeReqId)!);
-    }
-  }, [state, assignedRequests]);
-
-  const { width, height } = useWindowSize();
-  useEffect(() => {
-    if (width < 1024 && !isModal) {
-      setActiveRequest(null);
-    }
-  }, [width]);
   const { isModal, setIsModal, modal } = useProviderModal(
     <div
+      className="flex    h-full  py-[2rem] "
       onClick={() => {
-        setIsModal(false);
+        handleFocus(null);
       }}
     >
       <ColumnProvider title="Edition:">
@@ -46,7 +39,20 @@ const ProviderRequests = () => {
       </ColumnProvider>
     </div>
   );
-  console.log('mod', isModal);
+  const { state } = useLocation();
+  useEffect(() => {
+    if (state) {
+      setActiveRequest(assignedRequests.find((request) => request.id === state.activeReqId)!);
+    }
+  }, [state, assignedRequests]);
+
+  const { width } = useWindowSize();
+  // useEffect(() => {
+  //   if (width < 1024 && !isModal) {
+  //     setActiveRequest(null);
+  //   }
+  // }, [width,isModal]);
+
   return (
     <DoubleColumnWrapper>
       <ColumnProvider title={'Your pending requests!'}>
