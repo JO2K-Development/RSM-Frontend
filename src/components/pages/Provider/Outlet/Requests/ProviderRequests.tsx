@@ -43,6 +43,8 @@ const ProviderRequests = () => {
   useEffect(() => {
     if (state) {
       setActiveRequest(assignedRequests.find((request) => request.id === state.activeReqId)!);
+    } else if (activeRequest) {
+      setActiveRequest(assignedRequests.find((request) => request.id === activeRequest.id)!);
     }
   }, [state, assignedRequests]);
 

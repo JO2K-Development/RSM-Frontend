@@ -18,7 +18,7 @@ interface StatusEditorProps {
 
 const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
   const { token, email } = useSelector<Store, ProviderAuthState>((state) => state.providerAuth);
-  console.log(request);
+
   const dispatch = useDispatch<AppDispatch>();
   const updateReq = (nextStat: boolean) => {
     const nextReq = nextStat ? getNextStatus(request?.requestStatus) : request?.requestStatus;
@@ -29,6 +29,7 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
       diagnosis: text
     }).then((arg) => dispatch(getRequests({ token: token!, email })));
   };
+
   const { pickupDate, deliveryDate, setDeliveryDate, setPickupDate } = useCalendar(request);
   const [edit, setEdit] = useState(false);
   const [text, setText] = useState('');

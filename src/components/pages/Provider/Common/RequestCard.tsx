@@ -23,7 +23,6 @@ const RequestCard: React.FC<RequestCardProps> = ({
   const { title, message, carMake, carModel, creationDate: createdAt, requestStatus } = request;
   const isbutton = buttonText && handleButton;
   const random = 1 + Math.floor(Math.random() * 4);
-  console.log(random);
   return (
     <div
       onClick={() => {

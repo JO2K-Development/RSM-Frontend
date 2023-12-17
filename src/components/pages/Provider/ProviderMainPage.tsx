@@ -32,7 +32,6 @@ const ProviderMainPage = () => {
     dispatch(getProviderInfo({ email: email, token: token != null ? token : '' }));
   }, []);
   const { width, height } = useWindowSize();
-  console.log(width);
   const navigate = useNavigate();
 
   const handlePair = (id: string) => {
