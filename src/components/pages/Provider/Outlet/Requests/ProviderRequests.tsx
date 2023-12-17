@@ -43,17 +43,20 @@ const ProviderRequests = () => {
   useEffect(() => {
     if (state) {
       setActiveRequest(assignedRequests.find((request) => request.id === state.activeReqId)!);
-    } else if (activeRequest) {
-      setActiveRequest(assignedRequests.find((request) => request.id === activeRequest.id)!);
+    }
+  }, []);
+  useEffect(() => {
+    // console.log("ess",assignedRequests.find((request) => request.id == activeRequest?.id))
+    if (activeRequest) {
+      if (assignedRequests.find((request) => request.id == activeRequest.id) != null)
+        setActiveRequest(assignedRequests.find((request) => request.id === activeRequest.id)!);
+      else {
+        setActiveRequest(null);
+      }
     }
   }, [state, assignedRequests]);
 
   const { width } = useWindowSize();
-  // useEffect(() => {
-  //   if (width < 1024 && !isModal) {
-  //     setActiveRequest(null);
-  //   }
-  // }, [width,isModal]);
 
   return (
     <DoubleColumnWrapper>

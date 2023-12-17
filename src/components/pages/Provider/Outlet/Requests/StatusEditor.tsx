@@ -39,7 +39,7 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
   }, [request]);
   return (
     request && (
-      <>
+      <div>
         {request.requestStatus}
         {request.requestStatus == RequestStatusEnum.WAITING_FOR_AN_EMAIL_VERIFICATION ? (
           <div>
@@ -55,7 +55,7 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
               go next
             </Button>
           </div>
-        ) : request.requestStatus == RequestStatusEnum.WAITING_FOR_A_MECHANIC_ASSIGNMENT ? (
+        ) : request.requestStatus == RequestStatusEnum.WAITING_FOR_DATE_ASSIGNMENT ? (
           <div>
             <CalendarPick
               title={'Pickup date'}
@@ -181,7 +181,7 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
         ) : (
           <></>
         )}
-      </>
+      </div>
     )
   );
 

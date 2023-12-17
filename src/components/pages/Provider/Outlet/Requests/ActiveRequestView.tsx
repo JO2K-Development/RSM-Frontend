@@ -11,7 +11,7 @@ const ActiveRequestView: FC<ActiveRequestViewProps> = ({ request }) => {
   console.log(request);
   return (
     request && (
-      <div className="flex flex-col  gap-[1rem] text-sm ">
+      <div className="flex flex-col  gap-[1rem] text-base">
         <Accordion title={'Client'}>
           <div className="grid grid-cols-2">
             <ProviderField
