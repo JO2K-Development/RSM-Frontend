@@ -16,7 +16,7 @@ const FormInput: React.FC<FormInputProps> = ({
   disabled
 }) => {
   return (
-    <div className="w-full flex flex-col ">
+    <div className="flex w-full flex-col ">
       <div className="text-[0.7em] text-white">{label}</div>
       <input
         className="w-full py-1 pl-2 "

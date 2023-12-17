@@ -15,31 +15,31 @@ const Navbar: React.FC<NavbarProps> = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex fixed mt-[0.2rem] bottom-0 text-white z-[999]  rounded-lg   text-[2rem]  gap-[0.8rem]  left-[50vw] translate-x-[-50%] group  p-[1.2rem]">
-      <div className=" opacity/20 group-hover:hidden absolute right-1/2 translate-x-1/2 h-full  w-full top-0 flex flex-col justify-center items-center">
-        <IoIosArrowUp className="  text-[20rem] text-slate-400 stroke-[5] stroke-white  " />
+    <div className="group fixed bottom-0 left-[50vw] z-[999] mt-[0.2rem]  flex   translate-x-[-50%]  gap-[0.8rem]  rounded-lg p-[1.2rem] text-[2rem]  text-white">
+      <div className=" opacity/20 absolute right-1/2 top-0 flex h-full  w-full translate-x-1/2 flex-col items-center justify-center group-hover:hidden">
+        <IoIosArrowUp className="  stroke-white stroke-[5] text-[20rem] text-slate-400  " />
       </div>
 
       <Link
-        className=" bg-neutral-700/80 p-[0.8rem] translate-y-full group-hover:translate-y-0 opacity-0 rounded-sm  aspect-square outline outline-white   duration-300 hover:scale-105   active:scale-75 group-hover:opacity-100"
+        className=" aspect-square translate-y-full rounded-sm bg-neutral-700/80 p-[0.8rem] opacity-0  outline outline-white duration-300   hover:scale-105 active:scale-75   group-hover:translate-y-0 group-hover:opacity-100"
         to={`/provider/${token}`}
       >
         <IoHome />
       </Link>
       <Link
-        className=" bg-neutral-700/80 p-[0.8rem] translate-y-full group-hover:translate-y-0 opacity-0 rounded-sm  aspect-square outline outline-white   duration-300 hover:scale-105   active:scale-75 group-hover:opacity-100 "
+        className=" aspect-square translate-y-full rounded-sm bg-neutral-700/80 p-[0.8rem] opacity-0  outline outline-white duration-300   hover:scale-105 active:scale-75   group-hover:translate-y-0 group-hover:opacity-100 "
         to={`/provider/${token}/account`}
       >
         <RiAccountCircleLine />
       </Link>
       <Link
-        className=" bg-neutral-700/80 p-[0.8rem] translate-y-full group-hover:translate-y-0 opacity-0 rounded-sm  aspect-square outline outline-white   duration-300 hover:scale-105   active:scale-75 group-hover:opacity-100 "
+        className=" aspect-square translate-y-full rounded-sm bg-neutral-700/80 p-[0.8rem] opacity-0  outline outline-white duration-300   hover:scale-105 active:scale-75   group-hover:translate-y-0 group-hover:opacity-100 "
         to={`/provider/${token}/your-requests`}
       >
         <AiOutlineForm />
       </Link>
       <Link
-        className=" bg-neutral-700/80 p-[0.8rem] translate-y-full group-hover:translate-y-0 opacity-0 rounded-sm  aspect-square outline outline-white   duration-300 hover:scale-105   active:scale-75 group-hover:opacity-100 "
+        className=" aspect-square translate-y-full rounded-sm bg-neutral-700/80 p-[0.8rem] opacity-0  outline outline-white duration-300   hover:scale-105 active:scale-75   group-hover:translate-y-0 group-hover:opacity-100 "
         to={`/provider/${token}/statistics`}
       >
         <IoIosStats />
@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
       <div
         onClick={() => dispatch(logout())}
-        className=" bg-neutral-700/80 p-[0.8rem] translate-y-full group-hover:translate-y-0 opacity-0 rounded-sm  aspect-square outline outline-white   duration-300 hover:scale-105   active:scale-75 group-hover:opacity-100"
+        className=" aspect-square translate-y-full rounded-sm bg-neutral-700/80 p-[0.8rem] opacity-0  outline outline-white duration-300   hover:scale-105 active:scale-75   group-hover:translate-y-0 group-hover:opacity-100"
       >
         <IoMdLogOut />
       </div>

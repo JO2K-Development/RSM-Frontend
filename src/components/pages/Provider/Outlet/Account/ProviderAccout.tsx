@@ -12,8 +12,8 @@ const ProviderAccount = () => {
   const { ProviderInfo } = useSelector<Store, ProviderInfoState>((state) => state.providerInfo);
 
   return (
-    <div className="flex flex-col max-w-[1200px] w-full mx-auto p-[2rem] gap-[1rem] text-[2rem]">
-      <div className="flex text-white font-bold  items-center mr-[2rem]">
+    <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-[1rem] p-[2rem] text-[2rem]">
+      <div className="mr-[2rem] flex items-center  font-bold text-white">
         <h1> Edit Profile</h1>
         <div className="ml-auto overflow-hidden rounded-full">
           <img

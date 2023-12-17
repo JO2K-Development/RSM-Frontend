@@ -108,7 +108,7 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
               onChange={(date: Date) => setPickupDate(date)}
             />
             <textarea
-              className="text-black  w-full"
+              className="w-full  text-black"
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
@@ -140,7 +140,7 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
             />
             <textarea
               disabled
-              className="text-black  w-full"
+              className="w-full  text-black"
               defaultValue={text}
               onChange={(e) => setText(e.target.value)}
             />

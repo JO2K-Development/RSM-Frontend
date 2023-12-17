@@ -4,7 +4,7 @@ interface ProviderModalProps {}
 
 const ProviderModal: FC<PropsWithChildren<ProviderModalProps>> = ({ children }) => {
   return (
-    <div className="fixed h-screen w-full     z-[998] flex flex-col justify-center items-center  backdrop-blur-lg duration-300">
+    <div className="fixed z-[998] flex     h-screen w-full flex-col items-center justify-center  backdrop-blur-lg duration-300">
       {children}
     </div>
   );

@@ -36,8 +36,8 @@ const LoginPage = () => {
   return token ? (
     <Navigate to={`/provider/${token}`} />
   ) : (
-    <div className="request-page-bg  h-screen w-full  relative overflow-hidden">
-      <div className="bg-black bg-opacity-60  h-screen w-full  flex flex-col justify-center items-center ">
+    <div className="request-page-bg  relative h-screen  w-full overflow-hidden">
+      <div className="flex h-screen  w-full flex-col  items-center justify-center bg-black bg-opacity-60 ">
         <FormContainer handleSubmit={handleSubmit(onSubmit)}>
           <FormTitle title="Please enter your login  information" />
           <FormInput
@@ -57,7 +57,7 @@ const LoginPage = () => {
           />
 
           <div
-            className={`w-full h-full  bg-black absolute opacity-90 scale-125 rounded-3xl duration-[20ms] flex items-center justify-center  ${
+            className={`absolute flex  h-full w-full scale-125 items-center justify-center rounded-3xl bg-black opacity-90 duration-[20ms]  ${
               !loading ? 'hidden  ' : ''
             }`}
           >

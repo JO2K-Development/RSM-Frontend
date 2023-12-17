@@ -51,7 +51,7 @@ const ProviderMainPage = () => {
   return (
     <AuthViewWrap>
       <Navbar />
-      <div className="h-screen pb-[2rem] bg-neutral-900/60 provider-page-bg  flex  flex-col ">
+      <div className="provider-page-bg flex h-screen flex-col  bg-neutral-900/60  pb-[2rem] ">
         <Outlet />
         {!outlet && (
           <>

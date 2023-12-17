@@ -55,7 +55,7 @@ const RepairDataForm: React.FC<Props> = ({ addToForm, defaultValues, goBack }) =
         rows={4}
       ></textarea>
 
-      <div className="flex gap-3  justify-stretch">
+      <div className="flex justify-stretch  gap-3">
         {' '}
         <FormButton
           text="back"

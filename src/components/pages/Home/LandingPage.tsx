@@ -2,7 +2,7 @@ import FunctionalLandingPage from './LandingPage/FunctionalLandingPage';
 import EntryLandingPage from './LandingPage/EntryLandingPage';
 const LandingPage = () => {
   return (
-    <div className="h-screen landing-page-bg text-white ">
+    <div className="landing-page-bg h-screen text-white ">
       <EntryLandingPage />
       <FunctionalLandingPage />
     </div>

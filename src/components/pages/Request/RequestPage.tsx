@@ -18,8 +18,8 @@ const RequestPage = () => {
   ];
 
   return (
-    <div className="request-page-bg  h-screen w-full  relative">
-      <div className="bg-black bg-opacity-60  h-screen w-full  flex flex-col justify-center items-center ">
+    <div className="request-page-bg  relative h-screen  w-full">
+      <div className="flex h-screen  w-full flex-col  items-center justify-center bg-black bg-opacity-60 ">
         {pages[page]}
       </div>
       <BottomHome />

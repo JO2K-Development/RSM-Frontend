@@ -9,7 +9,7 @@ const ProviderButton: React.FC<ProviderButtonProps> = ({ onClick }) => {
         {' '}
         Are you a provider?{' '}
         <span
-          className="underline font-bold cursor-pointer"
+          className="cursor-pointer font-bold underline"
           onClick={() => {
             onClick();
           }}

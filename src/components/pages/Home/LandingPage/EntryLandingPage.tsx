@@ -6,7 +6,7 @@ const EntryLandingPage = () => {
     <motion.div
       animate={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full absolute h-screen flex flex-col justify-center items-center  overflow-y-hidden  "
+      className="absolute flex h-screen w-full flex-col items-center justify-center  overflow-y-hidden  "
     >
       <motion.div
         initial={{ scale: 1.5 }}

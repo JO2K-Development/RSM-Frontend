@@ -14,7 +14,7 @@ const PersonalSpace: React.FC<PersonalSpaceProps> = ({
   phoneNumber
 }) => {
   return (
-    <div className=" grid-cols-2  grid-rows-2 xl:w-full mx-auto text-[1.1rem] md:w-[80%]  hidden md:grid  ">
+    <div className=" mx-auto  hidden grid-cols-2 grid-rows-2 text-[1.1rem] md:grid  md:w-[80%] xl:w-full  ">
       <ProviderField
         text={'First name:'}
         value={firstName}

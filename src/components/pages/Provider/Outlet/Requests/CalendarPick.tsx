@@ -11,7 +11,7 @@ interface CalendarPickProps {
 const CalendarPick: FC<CalendarPickProps> = ({ title, onChange, current, disabled }) => {
   return (
     <div className="flex text-black ">
-      <div className="text-white mr-auto">{title}</div>
+      <div className="mr-auto text-white">{title}</div>
       <DatePicker
         disabled={disabled}
         placeholderText={current?.toLocaleDateString()}
