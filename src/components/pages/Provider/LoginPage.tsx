@@ -11,6 +11,7 @@ import { InfinitySpin } from 'react-loader-spinner';
 import NavbarContainer from '../../containers/NavbarContainer';
 import { IoHome } from 'react-icons/io5';
 import NavbarIcon from '../../common/NavbarIcon';
+import PageLayout from '../../containers/PageLayout';
 
 const LoginPage = () => {
   const { token, loading, email } = useSelector<Store, ProviderAuthState>(
@@ -38,45 +39,42 @@ const LoginPage = () => {
   return token ? (
     <Navigate to={`/provider/${token}`} />
   ) : (
-    <div className="request-page-bg  relative h-screen  w-full overflow-hidden">
-      <div className="flex h-screen  w-full flex-col  items-center justify-center bg-black bg-opacity-60 ">
-        <FormContainer handleSubmit={handleSubmit(onSubmit)}>
-          <FormTitle title="Please enter your login  information" />
-          <FormInput
-            type="text"
-            placeholder="email"
-            rest={register('email', { required: true, maxLength: 80 })}
+    <PageLayout className="request-page-bg bg-black/80 text-black">
+      <FormContainer handleSubmit={handleSubmit(onSubmit)}>
+        <FormTitle title="Please enter your login  information" />
+        <FormInput
+          type="text"
+          placeholder="email"
+          rest={register('email', { required: true, maxLength: 80 })}
+        />
+        <FormInput
+          type="password"
+          placeholder="password"
+          rest={register('password', { required: true, maxLength: 80 })}
+        />
+        <FormButton
+          text="Login"
+          onClick={() => {}}
+          type="submit"
+        />
+        <div
+          className={`absolute flex  h-full w-full scale-125 items-center justify-center rounded-3xl bg-black opacity-90 duration-[20ms]  ${
+            !loading ? 'hidden  ' : ''
+          }`}
+        >
+          <InfinitySpin
+            width="200"
+            color="red"
           />
-          <FormInput
-            type="password"
-            placeholder="password"
-            rest={register('password', { required: true, maxLength: 80 })}
-          />
-          <FormButton
-            text="Login"
-            onClick={() => {}}
-            type="submit"
-          />
-
-          <div
-            className={`absolute flex  h-full w-full scale-125 items-center justify-center rounded-3xl bg-black opacity-90 duration-[20ms]  ${
-              !loading ? 'hidden  ' : ''
-            }`}
-          >
-            <InfinitySpin
-              width="200"
-              color="red"
-            />
-          </div>
-        </FormContainer>
-      </div>
+        </div>
+      </FormContainer>
       <NavbarContainer>
         <NavbarIcon
           to="/home"
           icon={<IoHome />}
         />
       </NavbarContainer>
-    </div>
+    </PageLayout>
   );
 };
 

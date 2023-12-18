@@ -12,9 +12,10 @@ import { RequestsSliceState } from '../../../redux/slices/RequestsSlice';
 import pairRequest from '../../../api/pairRequest';
 import Loading from '../../common/Loading';
 import DoubleColumnWrapper from '../../containers/DoubleColumnWrapper';
-import AuthViewWrap from './AuthViewWrap';
+import AuthViewWrap from './Common/AuthViewWrap';
 import { useWindowSize } from 'usehooks-ts';
 import ProviderModal from './Common/ProviderModal';
+import PageLayout from '../../containers/PageLayout';
 
 const ProviderMainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -51,7 +52,7 @@ const ProviderMainPage = () => {
   return (
     <AuthViewWrap>
       <ProviderNavbar />
-      <div className="provider-page-bg flex h-screen flex-col  bg-neutral-900/60  pb-[2rem] ">
+      <PageLayout className="provider-page-bg flex flex-col bg-neutral-900/60  pb-[2rem]">
         <Outlet />
         {!outlet && (
           <>
@@ -78,7 +79,6 @@ const ProviderMainPage = () => {
               ) : (
                 <></>
               )}
-
               <ColumnProvider title={'Requests that you might want!'}>
                 {requestLoading ? (
                   <Loading />
@@ -96,7 +96,7 @@ const ProviderMainPage = () => {
             </DoubleColumnWrapper>
           </>
         )}
-      </div>
+      </PageLayout>
     </AuthViewWrap>
   );
 };

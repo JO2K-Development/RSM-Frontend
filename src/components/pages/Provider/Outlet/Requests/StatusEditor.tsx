@@ -10,10 +10,10 @@ import RequestStatusEnum, {
   getStatusText,
   requestStatusMap
 } from '../../../../../types/RequestStatusEnum';
-import CalendarPick from './CalendarPick';
+import CalendarPick from '../../Common/CalendarPick';
 import { formatDateToString } from '../../../../../utils/dateFormatters';
 import { getNextStatus } from '../../../../../utils/statusHandlers';
-import Button from './Button';
+import Button from '../../Common/Button';
 import StatusEditContainer from './StatusEditContainer';
 
 interface StatusEditorProps {
