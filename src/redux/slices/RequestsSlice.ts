@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import RequestType from '../../types/Request';
+import RequestWithBackend from '../../types/Request';
 import notassignedRequests from '../../api/notassignedRequests';
 import assignedRequests from '../../api/assignedRequests';
 
@@ -11,7 +11,7 @@ export const getRequests = createAsyncThunk(
   }: {
     token: string;
     email: string;
-  }): Promise<Array<Array<RequestType>>> => {
+  }): Promise<Array<Array<RequestWithBackend>>> => {
     const requests = [
       notassignedRequests(token).then((data) => data.json()),
       assignedRequests(token, email).then((data) => data.json())
@@ -22,8 +22,8 @@ export const getRequests = createAsyncThunk(
 );
 
 export interface RequestsSliceState {
-  assignedRequests: Array<RequestType>;
-  unassignedRequests: Array<RequestType>;
+  assignedRequests: Array<RequestWithBackend>;
+  unassignedRequests: Array<RequestWithBackend>;
   loading: boolean;
 }
 

@@ -1,9 +1,9 @@
 import { useHover } from '../../../../hooks/useHover';
-import RequestType from '../../../../types/Request';
+import RequestWithBackend from '../../../../types/Request';
 import { getStatusText } from '../../../../types/RequestStatusEnum';
 
 interface RequestCardProps {
-  request: RequestType;
+  request: RequestWithBackend;
   handleButton?: (arg: string) => void;
   buttonText?: string;
   hideStatus?: boolean;
@@ -19,7 +19,7 @@ const RequestCard: React.FC<RequestCardProps> = ({
   buttonText,
   hideStatus
 }) => {
-  const { title, message, carMake, carModel, creationDate: createdAt, requestStatus } = request;
+  const { message, carMake, carModel, creationDate: createdAt, requestStatus } = request;
   const isbutton = buttonText && handleButton;
   const random = 1 + Math.floor(Math.random() * 4);
   const angles = [5, -5, 2, -2];

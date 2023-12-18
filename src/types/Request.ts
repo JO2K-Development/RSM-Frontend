@@ -1,21 +1,31 @@
 import Client from './Client';
 import Provider from './Provider';
 import RequestStatus from './RequestStatusEnum';
-interface RequestType {
-  diagnosis?: string;
-  id?: string;
-  title?: string;
-  state?: string;
+
+export interface RequestPersonalData {
   creator: Client;
-  assignedTo?: Provider;
+}
+export interface RequestDetailsFromUser {
   message: string;
   carMake: string;
   carModel: string;
+
+  carYear: number | null;
+  licencePlateNumber: string;
+}
+
+export interface RequestDetailsFromBackend {
   creationDate?: string;
-  carYear?: number;
+  id?: string;
+  assignedTo?: Provider;
   requestStatus?: RequestStatus;
   pickupDate?: Date | null;
   deliveryDate?: Date | null;
-  licencePlateNumber?: string;
+  diagnosis?: string;
 }
-export default RequestType;
+export interface RequestWithoutBackend extends RequestDetailsFromUser, RequestPersonalData {}
+export interface RequestWithBackend
+  extends RequestDetailsFromUser,
+    RequestDetailsFromBackend,
+    RequestPersonalData {}
+export default RequestWithBackend;

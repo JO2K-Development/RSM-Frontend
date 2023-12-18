@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import RequestType from '../../../../../types/Request';
+import RequestWithBackend from '../../../../../types/Request';
 import useCalendar from '../../../../../hooks/useCalendar';
 import updateRequest from '../../../../../api/updateRequestStatus';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,7 +17,7 @@ import Button from '../../Common/Button';
 import StatusEditContainer from './StatusEditContainer';
 
 interface StatusEditorProps {
-  request: RequestType | null;
+  request: RequestWithBackend | null;
 }
 
 const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
@@ -47,7 +47,7 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
     request && (
       <div className="flex flex-col gap-[0.5rem] text-center  text-base">
         <div>{getStatusText(request.requestStatus)}</div>
-        {request.requestStatus == RequestStatusEnum.WAITING_FOR_DATE_ASSIGNMENT ? (
+        {request.requestStatus === RequestStatusEnum.WAITING_FOR_DATE_ASSIGNMENT ? (
           <StatusEditContainer
             buttons={
               <Button
@@ -99,7 +99,7 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
               onChange={(date: Date) => setPickupDate(date)}
             />
           </StatusEditContainer>
-        ) : request.requestStatus == RequestStatusEnum.CAR_DIAGNOSIS ? (
+        ) : request.requestStatus === RequestStatusEnum.CAR_DIAGNOSIS ? (
           <StatusEditContainer
             second={
               <textarea
@@ -136,7 +136,7 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
               onChange={(date: Date) => setPickupDate(date)}
             />
           </StatusEditContainer>
-        ) : request.requestStatus == RequestStatusEnum.IN_REPAIR ? (
+        ) : request.requestStatus === RequestStatusEnum.IN_REPAIR ? (
           <StatusEditContainer
             buttons={
               <>
@@ -181,7 +181,7 @@ const StatusEditor: FC<StatusEditorProps> = ({ request }) => {
               onChange={(date: Date) => setDeliveryDate(date)}
             />
           </StatusEditContainer>
-        ) : request.requestStatus == RequestStatusEnum.READY_TO_GO ? (
+        ) : request.requestStatus === RequestStatusEnum.READY_TO_GO ? (
           <StatusEditContainer
             buttons={
               <Button

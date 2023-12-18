@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import RequestType from '../types/Request';
+import RequestWithBackend from '../types/Request';
 
-function useCalendar(request: RequestType | null) {
+function useCalendar(request: RequestWithBackend | null) {
   const [pickupDate, setPickupDate] = useState<Date | null>(null);
   const [deliveryDate, setDeliveryDate] = useState<Date | null>(null);
   useEffect(() => {

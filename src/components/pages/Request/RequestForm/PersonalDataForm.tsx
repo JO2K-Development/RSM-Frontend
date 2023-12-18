@@ -3,16 +3,14 @@ import FormInput from '../../../common/FormInput';
 import FormTitle from './FormTitle';
 import FormButton from './FormButton';
 import FormContainer from '../../../containers/FormContainer';
-import RequestType from '../../../../types/Request';
+import RequestWithBackend, { RequestPersonalData } from '../../../../types/Request';
 import User from '../../../../types/User';
 
 interface PersonalDataFormProps {
   addToForm: (data: any) => void;
-  defaultValues?: RequestType;
+  defaultValues?: RequestPersonalData;
 }
-export interface PersonalDataForm {
-  creator: User;
-}
+
 const PersonalDataForm: React.FC<PersonalDataFormProps> = ({ addToForm, defaultValues }) => {
   const {
     register,

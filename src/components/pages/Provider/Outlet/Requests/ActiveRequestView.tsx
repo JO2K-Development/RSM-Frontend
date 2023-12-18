@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import RequestType from '../../../../../types/Request';
+import RequestWithBackend from '../../../../../types/Request';
 import Accordion from '../../Common/Accordion';
 import ProviderField from '../../Common/ProviderField';
 import StatusEditor from './StatusEditor';
 interface ActiveRequestViewProps {
-  request: RequestType | null;
+  request: RequestWithBackend | null;
 }
 
 const ActiveRequestView: FC<ActiveRequestViewProps> = ({ request }) => {

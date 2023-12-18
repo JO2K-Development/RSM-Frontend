@@ -23,7 +23,7 @@ const RequestPage = () => {
   ];
 
   return (
-    <PageLayout className="request-page-bg">
+    <PageLayout className="request-page-bg text-black">
       <PageLayout className="bg-black   bg-opacity-80 ">
         <FlexCenterContainer>{pages[page]}</FlexCenterContainer>
       </PageLayout>

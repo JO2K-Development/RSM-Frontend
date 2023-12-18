@@ -4,18 +4,12 @@ import FormInput from '../../../common/FormInput';
 import FormTitle from './FormTitle';
 import FormButton from './FormButton';
 import FormContainer from '../../../containers/FormContainer';
+import { RequestDetailsFromUser } from '../../../../types/Request';
 
-export interface RepairFormData {
-  carMake: string;
-  carModel: string;
-  message: string;
-  carYear?: number;
-  licencePlateNumber?: string;
-}
 interface Props {
   addToForm: (data: any) => void;
   goBack: (arg: Object) => void;
-  defaultValues?: RepairFormData;
+  defaultValues?: RequestDetailsFromUser;
 }
 const RepairDataForm: React.FC<Props> = ({ addToForm, defaultValues, goBack }) => {
   const {

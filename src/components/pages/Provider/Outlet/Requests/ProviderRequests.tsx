@@ -4,7 +4,7 @@ import { Store } from '../../../../../redux/store';
 import ColumnProvider from '../../Common/ColumnProvider';
 import RequestCard from '../../Common/RequestCard';
 import { useEffect, useState } from 'react';
-import RequestType from '../../../../../types/Request';
+import RequestWithBackend from '../../../../../types/Request';
 import ActiveRequestView from './ActiveRequestView';
 import { useLocation } from 'react-router-dom';
 import Loading from '../../../../common/Loading';
@@ -16,7 +16,7 @@ const ProviderRequests = () => {
   const { assignedRequests, loading: requestLoading } = useSelector<Store, RequestsSliceState>(
     (state) => state.requests
   );
-  const [activeRequest, setActiveRequest] = useState<RequestType | null>(null);
+  const [activeRequest, setActiveRequest] = useState<RequestWithBackend | null>(null);
   const handleFocus = (id: string | null) => {
     if (id == null) {
       setActiveRequest(null);

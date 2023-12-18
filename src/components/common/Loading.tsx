@@ -1,8 +1,9 @@
 import { Bars, ColorRing } from 'react-loader-spinner';
+import FlexCenterContainer from '../containers/FlexCenterContainer';
 
 const Loading = () => {
   return (
-    <div className=" flex h-full flex-col items-center justify-center ">
+    <FlexCenterContainer>
       <Bars
         height="80"
         width="80"
@@ -12,7 +13,7 @@ const Loading = () => {
         wrapperClass=""
         visible={true}
       />
-    </div>
+    </FlexCenterContainer>
   );
 };
 

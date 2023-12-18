@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import requestSend from '../api/requestSend';
-import RequestType from '../types/Request';
+import RequestWithBackend, { RequestWithoutBackend } from '../types/Request';
 
 function useRequestForm(pagesLength: number): {
-  formState: RequestType;
+  formState: RequestWithBackend;
   page: number;
   addToForm: (arg: object) => void;
   goBack: (arg: object) => void;
 } {
-  const [formState, setFormState] = useState<RequestType>({
+  const [formState, setFormState] = useState<RequestWithoutBackend>({
     creator: { firstName: '', lastName: '', phoneNumber: '', email: '' },
     carMake: '',
     carModel: '',
+    carYear: null,
     message: '',
     licencePlateNumber: ''
   });
