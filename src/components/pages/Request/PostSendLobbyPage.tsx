@@ -1,4 +1,7 @@
-import BottomHome from '../../common/BottomHome';
+import { Link } from 'react-router-dom';
+import NavbarContainer from '../../containers/NavbarContainer';
+import { IoHome } from 'react-icons/io5';
+import NavbarIcon from '../../common/NavbarIcon';
 
 const PostSendLobbyPage = () => {
   return (
@@ -10,8 +13,12 @@ const PostSendLobbyPage = () => {
           <span className="font-bold underline">link in the email</span>
         </p>
       </div>
-
-      <BottomHome />
+      <NavbarContainer>
+        <NavbarIcon
+          to="/home"
+          icon={<IoHome />}
+        />
+      </NavbarContainer>
     </div>
   );
 };

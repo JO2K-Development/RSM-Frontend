@@ -13,7 +13,7 @@ const CalendarPick: FC<CalendarPickProps> = ({ title, onChange, current, disable
     <div className="flex items-baseline gap-[inherit]  text-black ">
       <div className="mr-auto text-white">{title}</div>
       <DatePicker
-        className={`p-[0.5rem] text-right ${
+        className={`w-[9rem] p-[0.5rem] text-center ${
           disabled ? 'text-gray-500' : 'text-white'
         } rounded-xl font-extrabold ${'bg-neutral-800/80'}`}
         disabled={disabled}

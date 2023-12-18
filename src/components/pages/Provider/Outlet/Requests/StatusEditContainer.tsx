@@ -12,7 +12,7 @@ const StatusEditContainer: FC<PropsWithChildren<StatusEditContainerProps>> = ({
 }) => {
   return (
     <div className="flex flex-col gap-[1.5rem]">
-      <div className="mx-auto  max-w-[25rem] gap-[0.5rem] ">{children}</div>
+      <div className="mx-auto   gap-[0.5rem]  ">{children}</div>
       {second}
       <div className="flex w-full  justify-stretch   ">{buttons}</div>
     </div>

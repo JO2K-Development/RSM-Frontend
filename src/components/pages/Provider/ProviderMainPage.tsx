@@ -5,7 +5,7 @@ import { Navigate, Outlet, useNavigate, useOutlet, useParams } from 'react-route
 import ProviderHeader from './Main/ProviderHeader';
 import RequestCard from './Common/RequestCard';
 import ColumnProvider from './Common/ColumnProvider';
-import Navbar from './Common/Navbar';
+import ProviderNavbar from './Common/ProviderNavbar';
 import { ProviderInfoState, getProviderInfo } from '../../../redux/slices/ProviderInfoSlice';
 import { useEffect, useRef, useState } from 'react';
 import { RequestsSliceState } from '../../../redux/slices/RequestsSlice';
@@ -50,7 +50,7 @@ const ProviderMainPage = () => {
 
   return (
     <AuthViewWrap>
-      <Navbar />
+      <ProviderNavbar />
       <div className="provider-page-bg flex h-screen flex-col  bg-neutral-900/60  pb-[2rem] ">
         <Outlet />
         {!outlet && (

@@ -3,12 +3,14 @@ import FormInput from '../../common/FormInput';
 import { ProviderAuthState, loginProvider } from '../../../redux/slices/ProviderAuthSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, Store } from '../../../redux/store';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import FormContainer from '../../containers/FormContainer';
 import FormButton from '../Request/RequestForm/FormButton';
 import FormTitle from '../Request/RequestForm/FormTitle';
 import { InfinitySpin } from 'react-loader-spinner';
-import BottomHome from '../../common/BottomHome';
+import NavbarContainer from '../../containers/NavbarContainer';
+import { IoHome } from 'react-icons/io5';
+import NavbarIcon from '../../common/NavbarIcon';
 
 const LoginPage = () => {
   const { token, loading, email } = useSelector<Store, ProviderAuthState>(
@@ -68,7 +70,12 @@ const LoginPage = () => {
           </div>
         </FormContainer>
       </div>
-      <BottomHome />
+      <NavbarContainer>
+        <NavbarIcon
+          to="/home"
+          icon={<IoHome />}
+        />
+      </NavbarContainer>
     </div>
   );
 };
