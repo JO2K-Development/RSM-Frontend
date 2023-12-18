@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import NavbarContainer from '../../containers/NavbarContainer';
 import { IoHome } from 'react-icons/io5';
 import NavbarIcon from '../../common/NavbarIcon';
+import PageLayout from '../../containers/PageLayout';
+import FlexCenterContainer from '../../containers/FlexCenterContainer';
 
 const RequestPage = () => {
   const { formState, page, addToForm, goBack } = useRequestForm(2);
@@ -21,17 +23,18 @@ const RequestPage = () => {
   ];
 
   return (
-    <div className="request-page-bg  relative h-screen  w-full">
-      <div className="flex h-screen  w-full flex-col  items-center justify-center bg-black bg-opacity-60 ">
-        {pages[page]}
-      </div>
+    <PageLayout className="request-page-bg">
+      <PageLayout className="bg-black   bg-opacity-80 ">
+        <FlexCenterContainer>{pages[page]}</FlexCenterContainer>
+      </PageLayout>
+
       <NavbarContainer>
         <NavbarIcon
           to="/home"
           icon={<IoHome />}
         />
       </NavbarContainer>
-    </div>
+    </PageLayout>
   );
 };
 
