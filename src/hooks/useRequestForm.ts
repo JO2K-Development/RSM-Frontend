@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import requestSend from '../api/requestSend';
-import RequestWithBackend, { RequestWithoutBackend } from '../types/Request';
+import {
+  RequestDetailsFromUser,
+  RequestPersonalData,
+  RequestWithoutBackend
+} from '../types/Request';
 
 function useRequestForm(pagesLength: number): {
-  formState: RequestWithBackend;
+  formState: RequestWithoutBackend;
   page: number;
-  addToForm: (arg: object) => void;
-  goBack: (arg: object) => void;
+  addToForm: (arg: RequestDetailsFromUser | RequestPersonalData) => void;
+  goBack: (arg: RequestDetailsFromUser | RequestPersonalData) => void;
 } {
   const [formState, setFormState] = useState<RequestWithoutBackend>({
     creator: { firstName: '', lastName: '', phoneNumber: '', email: '' },
@@ -20,19 +24,18 @@ function useRequestForm(pagesLength: number): {
   const [page, setPage] = useState(0);
   const navigate = useNavigate();
 
-  const addToForm = (arg: Object) => {
+  const addToForm = (arg: RequestDetailsFromUser | RequestPersonalData) => {
     console.log(formState);
     setFormState({ ...formState, ...arg });
     if (page < pagesLength - 1) {
       setPage(page + 1);
     } else {
-      console.log(formState);
       requestSend({ ...formState, ...arg }).then((arg) => {
         navigate('/request/sent');
       });
     }
   };
-  const goBack = (arg: Object) => {
+  const goBack = (arg: RequestDetailsFromUser | RequestPersonalData) => {
     setFormState({ ...formState, ...arg });
     setPage(page - 1);
   };

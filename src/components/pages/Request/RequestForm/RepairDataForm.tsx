@@ -1,15 +1,15 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { UseFormGetValues, useForm } from 'react-hook-form';
 import FormInput from '../../../common/FormInput';
 import FormTitle from './FormTitle';
 import FormButton from './FormButton';
 import FormContainer from '../../../containers/FormContainer';
-import { RequestDetailsFromUser } from '../../../../types/Request';
+import { RequestDetailsFromUser, RequestWithoutBackend } from '../../../../types/Request';
 
 interface Props {
-  addToForm: (data: any) => void;
-  goBack: (arg: Object) => void;
-  defaultValues?: RequestDetailsFromUser;
+  addToForm: (data: RequestDetailsFromUser) => void;
+  goBack: (arg: RequestDetailsFromUser) => void;
+  defaultValues: RequestDetailsFromUser;
 }
 const RepairDataForm: React.FC<Props> = ({ addToForm, defaultValues, goBack }) => {
   const {
@@ -17,7 +17,7 @@ const RepairDataForm: React.FC<Props> = ({ addToForm, defaultValues, goBack }) =
     handleSubmit,
     formState: { errors },
     getValues
-  } = useForm();
+  } = useForm<RequestDetailsFromUser>();
   const onSubmit = (data: any) => {
     console.log(data);
     addToForm(data);
@@ -39,10 +39,10 @@ const RepairDataForm: React.FC<Props> = ({ addToForm, defaultValues, goBack }) =
         rest={register('carModel', { required: true, maxLength: 80 })}
       />
       <FormInput
-        type="carYear"
+        type="number"
         placeholder="Car year"
         defaultValue={defaultValues?.carYear?.toString()}
-        rest={register('carYear', { required: true, maxLength: 80, pattern: /^[0-9]*$/ })}
+        rest={register('carYear', { valueAsNumber: true, required: true, maxLength: 80 })}
       />
       <FormInput
         type="licensePlateNumber"

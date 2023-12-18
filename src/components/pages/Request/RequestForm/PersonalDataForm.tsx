@@ -7,8 +7,8 @@ import RequestWithBackend, { RequestPersonalData } from '../../../../types/Reque
 import User from '../../../../types/User';
 
 interface PersonalDataFormProps {
-  addToForm: (data: any) => void;
-  defaultValues?: RequestPersonalData;
+  addToForm: (data: RequestPersonalData) => void;
+  defaultValues: RequestPersonalData;
 }
 
 const PersonalDataForm: React.FC<PersonalDataFormProps> = ({ addToForm, defaultValues }) => {

@@ -15,13 +15,13 @@ export interface RequestDetailsFromUser {
 }
 
 export interface RequestDetailsFromBackend {
-  creationDate?: string;
-  id?: string;
-  assignedTo?: Provider;
-  requestStatus?: RequestStatus;
-  pickupDate?: Date | null;
-  deliveryDate?: Date | null;
-  diagnosis?: string;
+  creationDate: string;
+  id: string;
+  assignedTo: Provider;
+  requestStatus: RequestStatus;
+  pickupDate: Date | null;
+  deliveryDate: Date | null;
+  diagnosis: string | null;
 }
 export interface RequestWithoutBackend extends RequestDetailsFromUser, RequestPersonalData {}
 export interface RequestWithBackend
