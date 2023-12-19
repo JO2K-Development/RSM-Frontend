@@ -32,15 +32,17 @@ const ProviderAccount = () => {
         setEdit(false);
       });
   };
-  useEffect(() => {
-    if (ProviderInfo) {
+  const firstRes = () => {
+    if (ProviderInfo)
       reset({
         firstName: ProviderInfo.firstName || '',
         lastName: ProviderInfo.lastName || '',
         email: ProviderInfo.email || '',
         phoneNumber: ProviderInfo.phoneNumber || ''
       });
-    }
+  };
+  useEffect(() => {
+    firstRes();
   }, [ProviderInfo, reset]);
   return (
     <PageLayout>
@@ -86,6 +88,7 @@ const ProviderAccount = () => {
               <Button
                 type="button"
                 onClick={() => {
+                  edit && firstRes();
                   setEdit(!edit);
                 }}
               >
