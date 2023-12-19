@@ -1,13 +1,14 @@
 interface ProviderButtonProps {
   onClick(): void;
+  text: string;
 }
 
-const ProviderButton: React.FC<ProviderButtonProps> = ({ onClick }) => {
+const SecretText: React.FC<ProviderButtonProps> = ({ onClick, text }) => {
   return (
     <div className="flex justify-center text-sm text-gray-500">
       <p>
         {' '}
-        Are you a provider?
+        {text}
         <span
           className="cursor-pointer font-bold underline"
           onClick={onClick}
@@ -19,4 +20,4 @@ const ProviderButton: React.FC<ProviderButtonProps> = ({ onClick }) => {
   );
 };
 
-export default ProviderButton;
+export default SecretText;

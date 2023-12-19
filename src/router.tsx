@@ -7,8 +7,10 @@ import ProviderStats from './components/pages/Provider/Outlet/Stats/ProviderStat
 import ProviderAccount from './components/pages/Provider/Outlet/Account/ProviderAccout';
 import ProviderRequests from './components/pages/Provider/Outlet/Requests/ProviderRequests';
 import PostSendLobbyPage from './components/pages/Request/PostSendLobbyPage';
+import AdminMainPage from './components/pages/Admin/AdminMainPage';
 
 const router = createBrowserRouter([
+  { path: '/admin', element: <AdminMainPage /> },
   { path: '/home', element: <LandingPage /> },
   { path: '/request', element: <RequestPage /> },
   { path: 'request/sent', element: <PostSendLobbyPage /> },

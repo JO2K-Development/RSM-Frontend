@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import BrandHead from './BrandHead';
 import { useNavigate } from 'react-router-dom';
 import FormButton from '../../../common/FormButton';
-import ProviderButton from './ProviderButton';
+import SecretText from './SecretText';
 
 const FunctionalLandingPage = () => {
   const navigate = useNavigate();
@@ -23,7 +23,8 @@ const FunctionalLandingPage = () => {
           }}
         />
       </div>
-      <ProviderButton
+      <SecretText
+        text={'Are you a provider?'}
         onClick={() => {
           navigate('/provider/login');
         }}

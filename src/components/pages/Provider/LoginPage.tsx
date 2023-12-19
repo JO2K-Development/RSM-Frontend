@@ -12,6 +12,7 @@ import NavbarContainer from '../../containers/NavbarContainer';
 import { IoHome } from 'react-icons/io5';
 import NavbarIcon from '../../common/NavbarIcon';
 import PageLayout from '../../containers/PageLayout';
+import SecretText from '../Home/LandingPage/SecretText';
 
 const LoginPage = () => {
   const { token, loading, email } = useSelector<Store, ProviderAuthState>(
@@ -52,11 +53,20 @@ const LoginPage = () => {
           placeholder="password"
           rest={register('password', { required: true, maxLength: 80 })}
         />
+
         <FormButton
           text="Login"
           onClick={() => {}}
           type="submit"
         />
+        <div className="absolute bottom-0 w-full translate-y-full pt-[0.5rem] ">
+          <SecretText
+            onClick={() => {
+              navigate('/admin');
+            }}
+            text={'Are you an admin? '}
+          />
+        </div>
         <div
           className={`absolute flex  h-full w-full scale-125 items-center justify-center rounded-3xl bg-black opacity-90 duration-[20ms]  ${
             !loading ? 'hidden  ' : ''
@@ -68,6 +78,7 @@ const LoginPage = () => {
           />
         </div>
       </FormContainer>
+
       <NavbarContainer>
         <NavbarIcon
           to="/home"
