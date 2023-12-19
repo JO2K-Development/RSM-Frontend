@@ -19,7 +19,7 @@ const FormInput: React.FC<FormInputProps> = ({
     <div className="flex w-full flex-col ">
       <div className="text-left text-[0.7em] text-white">{label}</div>
       <input
-        className="w-full py-[0.2] pl-2 "
+        className="w-full rounded-md bg-gray-200 py-[0.2] pl-2 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:opacity-50 "
         disabled={disabled}
         type={type}
         defaultValue={defaultValue}

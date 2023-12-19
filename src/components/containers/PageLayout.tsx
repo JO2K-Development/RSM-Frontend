@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react';
 
 interface PageLayoutProps {
-  className: string;
+  className?: string;
 }
 
 const PageLayout: FC<PropsWithChildren<PageLayoutProps>> = ({ children, className }) => {

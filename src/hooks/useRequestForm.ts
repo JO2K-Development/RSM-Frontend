@@ -25,7 +25,7 @@ function useRequestForm(pagesLength: number): {
   const navigate = useNavigate();
 
   const addToForm = (arg: RequestDetailsFromUser | RequestPersonalData) => {
-    console.log(formState);
+    // console.log(formState);
     setFormState({ ...formState, ...arg });
     if (page < pagesLength - 1) {
       setPage(page + 1);

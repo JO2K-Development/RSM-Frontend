@@ -52,7 +52,7 @@ const ProviderMainPage = () => {
   return (
     <AuthViewWrap>
       <ProviderNavbar />
-      <PageLayout className="provider-page-bg flex flex-col bg-neutral-900/60  pb-[2rem]">
+      <PageLayout className="provider-page-bg flex flex-col    ">
         <Outlet />
         {!outlet && (
           <>
