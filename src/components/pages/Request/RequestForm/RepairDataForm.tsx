@@ -2,7 +2,7 @@ import React from 'react';
 import { UseFormGetValues, useForm } from 'react-hook-form';
 import FormInput from '../../../common/FormInput';
 import FormTitle from './FormTitle';
-import FormButton from './FormButton';
+import FormButton from '../../../common/FormButton';
 import FormContainer from '../../../containers/FormContainer';
 import { RequestDetailsFromUser, RequestWithoutBackend } from '../../../../types/Request';
 

@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import BrandHead from './BrandHead';
-import RequestButton from './RequestButton';
-import ProviderButton from './ProviderButton';
 import { useNavigate } from 'react-router-dom';
+import FormButton from '../../../common/FormButton';
+import ProviderButton from './ProviderButton';
 
 const FunctionalLandingPage = () => {
   const navigate = useNavigate();
@@ -14,11 +14,15 @@ const FunctionalLandingPage = () => {
       className="absolute flex h-screen w-full flex-col items-center justify-center bg-black bg-opacity-70 "
     >
       <BrandHead />
-      <RequestButton
-        onClick={() => {
-          navigate('/request');
-        }}
-      />
+
+      <div className="p-[1rem] text-lg">
+        <FormButton
+          text={'Submit Request!'}
+          onClick={() => {
+            navigate('/request');
+          }}
+        />
+      </div>
       <ProviderButton
         onClick={() => {
           navigate('/provider/login');

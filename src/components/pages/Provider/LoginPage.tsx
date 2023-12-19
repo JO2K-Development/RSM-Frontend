@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, Store } from '../../../redux/store';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import FormContainer from '../../containers/FormContainer';
-import FormButton from '../Request/RequestForm/FormButton';
+import FormButton from '../../common/FormButton';
 import FormTitle from '../Request/RequestForm/FormTitle';
 import { InfinitySpin } from 'react-loader-spinner';
 import NavbarContainer from '../../containers/NavbarContainer';

@@ -11,9 +11,9 @@ const FormButton: FunctionComponent<FormButtonProps> = ({ text, onClick, type })
     <button
       onClick={onClick}
       type={type}
-      className=" w-full rounded-lg  bg-green-900 bg-opacity-80 p-[0.8rem]  font-extrabold text-white"
+      className=" group w-full  rounded-lg bg-green-900  bg-opacity-80  p-[1em] font-extrabold text-white"
     >
-      {text}
+      <div className=" duration-300 hover:scale-110">{text}</div>
     </button>
   );
 };

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import FormInput from '../../../common/FormInput';
 import FormTitle from './FormTitle';
-import FormButton from './FormButton';
+import FormButton from '../../../common/FormButton';
 import FormContainer from '../../../containers/FormContainer';
 import RequestWithBackend, { RequestPersonalData } from '../../../../types/Request';
 import User from '../../../../types/User';

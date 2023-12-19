@@ -7,12 +7,10 @@ const ProviderButton: React.FC<ProviderButtonProps> = ({ onClick }) => {
     <div className="flex justify-center text-sm text-gray-500">
       <p>
         {' '}
-        Are you a provider?{' '}
+        Are you a provider?
         <span
           className="cursor-pointer font-bold underline"
-          onClick={() => {
-            onClick();
-          }}
+          onClick={onClick}
         >
           click here
         </span>

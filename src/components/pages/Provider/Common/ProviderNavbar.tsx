@@ -21,15 +21,17 @@ const ProviderNavbar: React.FC<NavbarProps> = () => {
         icon={<IoHome />}
       />
       <NavbarIcon
-        to={`/provider/${token}/account`}
-        icon={<RiAccountCircleLine />}
-      />
-      <NavbarIcon
         to={`/provider/${token}/your-requests`}
         icon={<AiOutlineForm />}
       />
       <NavbarIcon
-        to={`/provider/${token}/statistics`}
+        to={`/provider/${token}/account`}
+        icon={<RiAccountCircleLine />}
+      />
+
+      <NavbarIcon
+        disabled={true}
+        // to={`/provider/${token}/statistics`}
         icon={<IoIosStats />}
       />
       <NavbarIcon
