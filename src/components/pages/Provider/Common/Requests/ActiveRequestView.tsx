@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import RequestWithBackend from '../../../../../types/Request';
-import Accordion from '../../Common/Accordion';
-import ProviderField from '../../Common/ProviderField';
+import Accordion from '../Accordion';
+import ProviderField from '../ProviderField';
 import StatusEditor from './StatusEditor';
 interface ActiveRequestViewProps {
   request: RequestWithBackend | null;

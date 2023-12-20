@@ -1,18 +1,18 @@
 import { useSelector } from 'react-redux';
-import { RequestsSliceState } from '../../../../../redux/slices/RequestsSlice';
-import { Store } from '../../../../../redux/store';
-import ColumnProvider from '../../Common/ColumnProvider';
-import RequestCard from '../../Common/RequestCard';
+import { RequestsSliceState } from '../../../redux/slices/RequestsSlice';
+import { Store } from '../../../redux/store';
+import ColumnProvider from './Common/ColumnProvider';
+import RequestCard from './Common/Requests/RequestCard';
 import { useEffect, useState } from 'react';
-import RequestWithBackend from '../../../../../types/Request';
-import ActiveRequestView from './ActiveRequestView';
+import RequestWithBackend from '../../../types/Request';
+import ActiveRequestView from './Common/Requests/ActiveRequestView';
 import { useLocation } from 'react-router-dom';
-import Loading from '../../../../common/Loading';
-import DoubleColumnWrapper from '../../../../containers/DoubleColumnWrapper';
+import Loading from '../../common/Loading';
+import DoubleColumnWrapper from '../../containers/DoubleColumnWrapper';
 import { useWindowSize } from 'usehooks-ts';
-import { useProviderModal } from '../../../../../hooks/useProviderModal';
+import { useProviderModal } from '../../../hooks/useProviderModal';
 
-const ProviderRequests = () => {
+const ProviderRequestsPage = () => {
   const { assignedRequests, loading: requestLoading } = useSelector<Store, RequestsSliceState>(
     (state) => state.requests
   );
@@ -88,4 +88,4 @@ const ProviderRequests = () => {
   );
 };
 
-export default ProviderRequests;
+export default ProviderRequestsPage;

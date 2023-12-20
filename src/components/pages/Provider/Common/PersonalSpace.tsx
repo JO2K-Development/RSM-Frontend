@@ -1,4 +1,4 @@
-import ProviderField from '../Common/ProviderField';
+import ProviderField from './ProviderField';
 
 interface PersonalSpaceProps {
   firstName?: string;

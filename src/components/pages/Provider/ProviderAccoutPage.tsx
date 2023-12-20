@@ -1,16 +1,16 @@
 import { useForm } from 'react-hook-form';
-import FormInput from '../../../../common/FormInput';
-import { ProviderInfoState, getProviderInfo } from '../../../../../redux/slices/ProviderInfoSlice';
+import FormInput from '../../common/FormInput';
+import { ProviderInfoState, getProviderInfo } from '../../../redux/slices/ProviderInfoSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, Store } from '../../../../../redux/store';
-import FlexCenterContainer from '../../../../containers/FlexCenterContainer';
-import PageLayout from '../../../../containers/PageLayout';
+import { AppDispatch, Store } from '../../../redux/store';
+import FlexCenterContainer from '../../containers/FlexCenterContainer';
+import PageLayout from '../../containers/PageLayout';
 import { useEffect, useState } from 'react';
-import Button from '../../Common/Button';
-import updateProvider from '../../../../../api/updateProvider';
-import { ProviderAuthState } from '../../../../../redux/slices/ProviderAuthSlice';
-import Loading from '../../../../common/Loading';
-const ProviderAccount = () => {
+import Button from './Common/Button';
+import updateProvider from '../../../api/updateProvider';
+import { ProviderAuthState } from '../../../redux/slices/ProviderAuthSlice';
+import Loading from '../../common/Loading';
+const ProviderAccountPage = () => {
   const {
     register,
     handleSubmit,
@@ -109,4 +109,4 @@ const ProviderAccount = () => {
   );
 };
 
-export default ProviderAccount;
+export default ProviderAccountPage;

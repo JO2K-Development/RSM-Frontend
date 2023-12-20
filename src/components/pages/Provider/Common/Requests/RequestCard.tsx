@@ -1,6 +1,6 @@
-import { useHover } from '../../../../hooks/useHover';
-import RequestWithBackend from '../../../../types/Request';
-import { getStatusText } from '../../../../types/RequestStatusEnum';
+import { useHover } from '../../../../../hooks/useHover';
+import RequestWithBackend from '../../../../../types/Request';
+import { getStatusText } from '../../../../../types/RequestStatusEnum';
 
 interface RequestCardProps {
   request: RequestWithBackend;
