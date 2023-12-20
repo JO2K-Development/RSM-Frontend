@@ -12,7 +12,7 @@ import NavbarContainer from '../../containers/NavbarContainer';
 import { IoHome } from 'react-icons/io5';
 import NavbarIcon from '../../common/NavbarIcon';
 import PageLayout from '../../containers/PageLayout';
-import SecretText from '../Home/LandingPage/SecretText';
+import SecretText from '../../common/SecretText';
 
 const LoginPage = () => {
   const { token, loading, email } = useSelector<Store, ProviderAuthState>(
